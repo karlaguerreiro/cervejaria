@@ -7,13 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Software", "Software", "{44
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SofwareContext", "SofwareContext", "{FB927724-9802-4B15-8CDD-270C2A65441E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cervejaria.Apí", "Software\Cervejaria.Apí\Cervejaria.Apí.csproj", "{54DF7A83-D212-4BBE-A66A-4FF3C7E03196}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cervejaria.Api", "Software\Cervejaria.Api\Cervejaria.Api.csproj", "{54DF7A83-D212-4BBE-A66A-4FF3C7E03196}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cervejaria.Service", "SofwareContext\Cervejaria.Service\Cervejaria.Service.csproj", "{25DB32B0-8485-49F8-8F5F-40566A40890E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cervejaria.Service", "SofwareContext\Cervejaria.Service\Cervejaria.Service.csproj", "{25DB32B0-8485-49F8-8F5F-40566A40890E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cervejaria.CrossCutting", "SofwareContext\Cervejaria.CrossCutting\Cervejaria.CrossCutting.csproj", "{DA819E58-AF1F-4BF8-AC63-BE905DE7656E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cervejaria.CrossCutting", "SofwareContext\Cervejaria.CrossCutting\Cervejaria.CrossCutting.csproj", "{DA819E58-AF1F-4BF8-AC63-BE905DE7656E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cervejaria.Repository", "SofwareContext\Cervejaria.Repository\Cervejaria.Repository.csproj", "{D47E3476-305C-45B0-B09E-EB49F4D11AEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cervejaria.Repository", "SofwareContext\Cervejaria.Repository\Cervejaria.Repository.csproj", "{D47E3476-305C-45B0-B09E-EB49F4D11AEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cervejaria.Domain", ""SofwareContext\Cervejaria.Domain\Cervejaria.Domain.csproj", "{E927A9EE-6482-481C-98C0-99566757E920}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{D47E3476-305C-45B0-B09E-EB49F4D11AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D47E3476-305C-45B0-B09E-EB49F4D11AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D47E3476-305C-45B0-B09E-EB49F4D11AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E927A9EE-6482-481C-98C0-99566757E920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E927A9EE-6482-481C-98C0-99566757E920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E927A9EE-6482-481C-98C0-99566757E920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E927A9EE-6482-481C-98C0-99566757E920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{25DB32B0-8485-49F8-8F5F-40566A40890E} = {FB927724-9802-4B15-8CDD-270C2A65441E}
 		{DA819E58-AF1F-4BF8-AC63-BE905DE7656E} = {FB927724-9802-4B15-8CDD-270C2A65441E}
 		{D47E3476-305C-45B0-B09E-EB49F4D11AEE} = {FB927724-9802-4B15-8CDD-270C2A65441E}
+		{E927A9EE-6482-481C-98C0-99566757E920} = {FB927724-9802-4B15-8CDD-270C2A65441E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7D16E4F7-5CE3-4182-BA71-310B638AC35F}

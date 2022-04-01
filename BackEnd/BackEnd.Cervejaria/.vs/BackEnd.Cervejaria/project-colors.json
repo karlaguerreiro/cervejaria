@@ -25,7 +25,12 @@
       "ProjectGuid": "54df7a83-d212-4bbe-a66a-4ff3c7e03196",
       "DisplayName": "Cervejaria.Apí",
       "ColorIndex": 4
+    },
+    "e927a9ee-6482-481c-98c0-99566757e920": {
+      "ProjectGuid": "e927a9ee-6482-481c-98c0-99566757e920",
+      "DisplayName": "Cervejaria.Domain",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 5
+  "NextColorIndex": 6
 }
