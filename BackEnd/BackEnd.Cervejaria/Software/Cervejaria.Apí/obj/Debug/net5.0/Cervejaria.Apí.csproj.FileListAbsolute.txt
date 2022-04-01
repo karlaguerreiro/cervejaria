@@ -1,0 +1,7 @@
+E:\GitPessoal\CSharp\cervejaria\BackEnd\BackEnd.Cervejaria\Software\Cervejaria.Apí\obj\Debug\net5.0\Cervejaria.Apí.csproj.AssemblyReference.cache
+E:\GitPessoal\CSharp\cervejaria\BackEnd\BackEnd.Cervejaria\Software\Cervejaria.Apí\obj\Debug\net5.0\Cervejaria.Apí.GeneratedMSBuildEditorConfig.editorconfig
+E:\GitPessoal\CSharp\cervejaria\BackEnd\BackEnd.Cervejaria\Software\Cervejaria.Apí\obj\Debug\net5.0\Cervejaria.Apí.AssemblyInfoInputs.cache
+E:\GitPessoal\CSharp\cervejaria\BackEnd\BackEnd.Cervejaria\Software\Cervejaria.Apí\obj\Debug\net5.0\Cervejaria.Apí.AssemblyInfo.cs
+E:\GitPessoal\CSharp\cervejaria\BackEnd\BackEnd.Cervejaria\Software\Cervejaria.Apí\obj\Debug\net5.0\Cervejaria.Apí.csproj.CoreCompileInputs.cache
+E:\GitPessoal\CSharp\cervejaria\BackEnd\BackEnd.Cervejaria\Software\Cervejaria.Apí\obj\Debug\net5.0\Cervejaria.Apí.MvcApplicationPartsAssemblyInfo.cs
+E:\GitPessoal\CSharp\cervejaria\BackEnd\BackEnd.Cervejaria\Software\Cervejaria.Apí\obj\Debug\net5.0\Cervejaria.Apí.MvcApplicationPartsAssemblyInfo.cache
