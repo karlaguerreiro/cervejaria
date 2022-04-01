@@ -368,3 +368,6 @@ BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
 BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
 *.v1
 /FrontEnd/Cervejaria.FrontEnd/Cervejaria.Web/ClientApp/e2e
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+BackEnd/BackEnd.Cervejaria/Cervejaria.Repository/obj/Debug/net5.0/Cervejaria.Repository.csproj.AssemblyReference.cache
