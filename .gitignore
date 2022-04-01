@@ -6,6 +6,7 @@
 # User-specific files
 *.rsuser
 *.suo
+*.cache
 *.user
 *.userosscache
 *.sln.docstates
@@ -361,13 +362,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/DesignTimeBuild/.dtbcache.v2
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/DesignTimeBuild/.dtbcache.v2
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.futdcache.v1
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-*.v1
-/FrontEnd/Cervejaria.FrontEnd/Cervejaria.Web/ClientApp/e2e
-.vs/slnx.sqlite
-.vs/VSWorkspaceState.json
-BackEnd/BackEnd.Cervejaria/Cervejaria.Repository/obj/Debug/net5.0/Cervejaria.Repository.csproj.AssemblyReference.cache
+*.suo
+
+*.cache
+*.cache
+BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Repository/obj/project.nuget.cache
