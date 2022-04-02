@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cervejaria.Domain.Models
+namespace Cervejaria.Domain.Enuns
 {
-    internal class Receita
+    public enum TipoEndereco : Int16
     {
+        Email,
+        WhatsApp,
+        Telefone
     }
 }
