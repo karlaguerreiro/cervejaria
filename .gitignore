@@ -367,3 +367,14 @@ FodyWeavers.xsd
 *.cache
 *.cache
 BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Repository/obj/project.nuget.cache
+*.v2
+*.v2
+BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.futdcache.v1
+BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/DesignTimeBuild/.dtbcache.v2
+BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/DesignTimeBuild/.dtbcache.v2
+BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.futdcache.v1
+BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
+BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
+BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
+BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
+BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo

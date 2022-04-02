@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cervejaria.Domain.Models
+namespace Cervejaria.Repository.BusinessRepository
 {
-    internal class Receita
+    internal class UsuarioRepository
     {
     }
 }

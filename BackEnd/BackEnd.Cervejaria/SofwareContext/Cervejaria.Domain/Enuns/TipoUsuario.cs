@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cervejaria.Domain.Enuns
 {
-    internal class TipoUsuario
+    public enum TipoUsuario : Int16
     {
+        Cliente,
+        Fornecedor
     }
 }
