@@ -1,5 +1,4 @@
-﻿using Cervejaria.Api;
-using Cervejaria.Domain.Business;
+﻿using Cervejaria.Domain.Business;
 using Cervejaria.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

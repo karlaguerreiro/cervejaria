@@ -1,16 +1,19 @@
-﻿using Cervejaria.Domain.Business;
-using System;
-using System.Collections.Generic;
+﻿using Cervejaria.Domain.Base;
+using Cervejaria.Domain.Business;
+using Cervejaria.Domain.Enuns;
 
 namespace Cervejaria.Domain.Common
 {
-    public partial class Produto
+    public record Produto : BaseEntity
     {
-        public int Id { get; set; }
-        public string Descricao { get; set; }
-        public decimal? Preco { get; set; }
-        public short Tipo { get; set; }
-        public int? Usuarioid { get; set; }
-        public virtual Usuario Usuario { get; set; }
+        public Produto()
+        {
+
+        }
+        public string Descricao { get; init; }
+        public decimal? Preco { get; init; }
+        public TipoProduto Tipo { get; init; }
+        public int? Usuarioid { get; init; }
+        public virtual Usuario Usuario { get; init; }
     }
 }

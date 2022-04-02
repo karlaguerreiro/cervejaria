@@ -18,4 +18,9 @@
     <PackageReference Include="System.Text.Json" Version="6.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Contracts\BusinessRepositoy\" />
+    <Folder Include="RelationShip\" />
+  </ItemGroup>
+
 </Project>

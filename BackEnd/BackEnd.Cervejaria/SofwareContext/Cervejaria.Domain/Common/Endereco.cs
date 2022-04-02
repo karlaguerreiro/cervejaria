@@ -1,18 +1,26 @@
-﻿namespace Cervejaria.Domain.Common
-{
-    public partial class Endereco
-    {
-        public int Id { get; set; }
-        public string Cep { get; set; }
-        public string Nome { get; set; }
-        public short? Tipo { get; set; }
-        public string Complemento { get; set; }
-        public string Bairro { get; set; }
-        public string Cidade { get; set; }
-        public string Uf { get; set; }
-        public string Pais { get; set; }
-        public int Usuarioid { get; set; }
+﻿using Cervejaria.Domain.Base;
+using Cervejaria.Domain.Business;
+using Cervejaria.Domain.Enuns;
 
-        public virtual Usuario Usuario { get; set; }
+namespace Cervejaria.Domain.Common
+{
+    public record Endereco : BaseEntity
+    {
+        public Endereco()
+        {
+
+        }
+
+        public string Cep { get; init; }
+        public string Nome { get; init; }
+        public TipoEndereco? Tipo { get; init; }
+        public string Complemento { get; init; }
+        public string Bairro { get; init; }
+        public string Cidade { get; init; }
+        public string Uf { get; init; }
+        public string Pais { get; init; }
+        public int Usuarioid { get; init; }
+
+        public virtual Usuario Usuario { get; init; }
     }
 }

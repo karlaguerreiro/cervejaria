@@ -19,4 +19,12 @@
     <PackageReference Include="System.Text.Json" Version="6.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SofwareContext\Cervejaria.Repository\Cervejaria.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

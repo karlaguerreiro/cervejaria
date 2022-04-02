@@ -1,23 +1,23 @@
-﻿using Cervejaria.Domain.Business;
+﻿using Cervejaria.Domain.Base;
+using Cervejaria.Domain.Business;
 using System;
 using System.Collections.Generic;
 
 namespace Cervejaria.Domain.Common
 {
-    public partial class Receita
+    public record Receita : BaseEntity
     {
         public Receita()
         {
             Insumos = new HashSet<Insumo>();
         }
 
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Descricao { get; set; }
-        public int Usuarioid { get; set; }
+        public string Nome { get; init; }
+        public string Descricao { get; init; }
+        public int Usuarioid { get; init; }
 
-        public virtual Usuario Usuario { get; set; }
+        public virtual Usuario Usuario { get; init; }
 
-        public virtual ICollection<Insumo> Insumos { get; set; }
+        public virtual ICollection<Insumo> Insumos { get; init; }
     }
 }

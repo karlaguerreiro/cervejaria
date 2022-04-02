@@ -1,15 +1,19 @@
-﻿using Cervejaria.Domain.Business;
+﻿using Cervejaria.Domain.Base;
+using Cervejaria.Domain.Business;
 using Cervejaria.Domain.Enuns;
 
 namespace Cervejaria.Domain.Common
 {
-    public partial class Contato
+    public record Contato : BaseEntity
     {
-        public int Id { get; set; }
-        public TipoContato Tipo { get; set; }
-        public string Descricao { get; set; }
-        public int Usuarioid { get; set; }
+        public Contato()
+        {
 
-        public virtual Usuario Usuario { get; set; }
+        }
+        public TipoContato Tipo { get; init; }
+        public string Descricao { get; init; }
+        public int Usuarioid { get; init; }
+
+        public virtual Usuario Usuario { get; init; }
     }
 }
