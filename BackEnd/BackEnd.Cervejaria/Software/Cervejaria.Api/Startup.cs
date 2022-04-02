@@ -1,3 +1,4 @@
+using Cervejaria.CrossCutting.IoC;
 using Cervejaria.Repository.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,7 +26,7 @@ namespace Cervejaria.Apí
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-
+            services.RegisterDI();
             services.AddMvc();
             services.AddControllers();
             services.AddSwaggerGen(c =>

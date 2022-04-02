@@ -378,3 +378,12 @@ BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
 BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
 BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
 BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
+BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.CrossCutting/obj/project.assets.json
+BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.CrossCutting/obj/project.nuget.cache
+*.cache
+*.json
+BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Repository/obj/project.assets.json
+BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Repository/obj/project.nuget.cache
+BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Service/obj/Cervejaria.Service.csproj.nuget.dgspec.json
+BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Service/obj/project.assets.json
+BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Service/obj/project.nuget.cache
