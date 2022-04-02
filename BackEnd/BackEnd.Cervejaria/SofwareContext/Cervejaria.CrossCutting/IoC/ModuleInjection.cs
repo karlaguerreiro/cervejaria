@@ -1,6 +1,5 @@
 ﻿using Cervejaria.Domain.Contracts.CommonRepository;
 using Cervejaria.Repository.CommonRepository;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Cervejaria.CrossCutting.IoC
