@@ -26,6 +26,7 @@ namespace Cervejaria.Apí
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AutoMapperModule();
             services.RegisterDI();
             services.AddMvc();
             services.AddControllers();
