@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Cervejaria.Domain.Contracts.Notificator;
-using Cervejaria.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Linq;
@@ -18,48 +17,11 @@ namespace Cervejaria.Api.Controllers.Main
             _notificator = notificator;
         }
 
-        protected bool IsValid()
-        {
-            return !_notificator.HasNotifications();
-        }
-
-        protected ActionResult CustomResponse(object result = null)
-        {
-            if (IsValid())
-            {
-                return Ok(new
-                {
-                    success = true,
-                    data = result
-                });
-            }
-
-            return BadRequest(new
-            {
-                success = false,
-                errors = _notificator.GetNotifications().Select(n => n.Message)
-            });
-        }
-
-        protected ActionResult CustomResponse(ModelStateDictionary modelState)
-        {
-            if (!modelState.IsValid) NotifyErrorModelInvalid(modelState);
-            return CustomResponse();
-        }
-
-        protected void NotifyErrorModelInvalid(ModelStateDictionary modelState)
-        {
-            var erros = modelState.Values.SelectMany(e => e.Errors);
-            foreach (var erro in erros)
-            {
-                var errorMsg = erro.Exception == null ? erro.ErrorMessage : erro.Exception.Message;
-                NotifyError(errorMsg);
-            }
-        }
-
-        protected void NotifyError(string mensagem)
-        {
-            _notificator.Handle(new Notification(mensagem));
-        }
+        protected bool IsValid() =>
+            !_notificator.HasNotifications();
+        
+        protected ActionResult CustomResponse(object result = null) =>
+            IsValid() ? Ok(new { success = true, data = result}) :
+             BadRequest(new { success = false, errors = _notificator.GetNotifications().Select(n => n.ErrorMessage) });
     }
 }

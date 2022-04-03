@@ -1,5 +1,4 @@
-﻿using Cervejaria.Domain.Models;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 using System.Collections.Generic;
 
 namespace Cervejaria.Domain.Contracts.Notificator
