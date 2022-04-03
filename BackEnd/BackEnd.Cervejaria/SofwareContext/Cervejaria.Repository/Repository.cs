@@ -24,25 +24,23 @@ namespace Cervejaria.Repository
         public async Task<IEnumerable<TEntity>> GetByExpressionAsync(Expression<Func<TEntity, bool>> predicate) =>
             await DbSet.AsNoTracking().Where(predicate).ToListAsync();
         
-
         public virtual async Task<TEntity> GetByIdAsync(int id) =>
             await DbSet.AsNoTracking().Where(e => e.Id == id).FirstOrDefaultAsync();
         
-
         public virtual async Task<List<TEntity>> GetAsync() =>
             await DbSet.ToListAsync();
         
-
-        public virtual async Task SaveAsync(TEntity entity)
+        public virtual async Task<TEntity> SaveAsync(TEntity entity)
         {
-            DbSet.Add(entity);
-            await SaveChangesAsync();
+            await DbSet.AddAsync(entity);
+            return await this.GetByIdAsync(await SaveChangesAsync());
         }
 
-        public virtual async Task UpdateAsync(TEntity entity)
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
             DbSet.Update(entity);
             await SaveChangesAsync();
+            return await this.GetByIdAsync(await SaveChangesAsync());
         }
 
         public virtual async Task DeleteAsync(int id)
