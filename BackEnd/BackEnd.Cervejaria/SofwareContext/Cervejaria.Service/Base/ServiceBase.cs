@@ -1,6 +1,5 @@
 ﻿using Cervejaria.Domain.Base;
 using Cervejaria.Domain.Contracts.Notificator;
-using Cervejaria.Domain.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
