@@ -26,5 +26,11 @@ namespace Cervejaria.Api.Controllers.V1
 
             return CustomResponse();
         }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            return CustomResponse(await _service.GetByIdAsync(id));
+        }
     }
 }

@@ -17,9 +17,14 @@ namespace Cervejaria.Service.CommonServices
             this._repository = repository;
         }
 
-        public Task<Insumo> GetByIdAsync(int id)
+        public async Task<Insumo> GetByIdAsync(int id)
         {
-            return _repository.GetByIdAsync(id);
+            var result = await _repository.GetByIdAsync(id);
+
+            if (result is null)
+                _notificador.Handle(new FluentValidation.Results.ValidationFailure(null, "Insumo não encontrado!"));
+
+            return result;
         }
 
         public async Task SaveAsync(Insumo insumo)

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Cervejaria.Apí
+namespace Cervejaria.Api
 {
     public class Program
     {
