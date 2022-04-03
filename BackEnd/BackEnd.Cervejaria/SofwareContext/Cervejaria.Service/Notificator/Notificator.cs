@@ -1,5 +1,5 @@
 ﻿using Cervejaria.Domain.Contracts.Notificator;
-using Cervejaria.Domain.Models;
+using FluentValidation.Results;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,26 +7,20 @@ namespace Cervejaria.Service.Notificator
 {
     public class Notificator : INotificator
     {
-        private readonly List<Notification> _notifications;
+        private readonly ValidationResult _notifications;
 
         public Notificator()
         {
-            _notifications = new List<Notification>();
+            _notifications = new ValidationResult();
         }
 
-        public void Handle(Notification Notification)
-        {
-            _notifications.Add(Notification);
-        }
-
-        public List<Notification> GetNotifications()
-        {
-            return _notifications;
-        }
-
-        public bool HasNotifications()
-        {
-            return _notifications.Any();
-        }
+        public void Handle(ValidationFailure Notification) =>
+            _notifications.Errors.Add(Notification);
+        
+        public List<ValidationFailure> GetNotifications() =>
+            _notifications.Errors;
+        
+        public bool HasNotifications() =>
+            _notifications.Errors.Any();
     }
 }

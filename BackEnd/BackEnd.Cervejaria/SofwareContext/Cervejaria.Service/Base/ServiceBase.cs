@@ -8,7 +8,7 @@ namespace Cervejaria.Service.Base
 {
     public abstract class ServiceBase
     {
-        private readonly INotificator _notificador;
+        protected readonly INotificator _notificador;
 
         protected ServiceBase(INotificator notificador)
         {
@@ -16,11 +16,8 @@ namespace Cervejaria.Service.Base
         }
 
         protected void Notify(ValidationResult validationResult) =>
-            validationResult.Errors.ForEach(error => Notify(error.ErrorMessage));
+            validationResult.Errors.ForEach(error => _notificador.Handle(error));
 
-        protected void Notify(string mensagem) =>
-            _notificador.Handle(new Notification(mensagem));
-        
         protected bool IsValid<TV, TE>(TV validacao, TE entidade) where TV : AbstractValidator<TE> where TE : BaseEntity
         {
             var validator = validacao.Validate(entidade);

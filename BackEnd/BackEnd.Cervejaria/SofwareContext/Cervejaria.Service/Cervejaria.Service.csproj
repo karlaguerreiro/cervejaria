@@ -4,4 +4,16 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="BusinessServices\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cervejaria.Domain\Cervejaria.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

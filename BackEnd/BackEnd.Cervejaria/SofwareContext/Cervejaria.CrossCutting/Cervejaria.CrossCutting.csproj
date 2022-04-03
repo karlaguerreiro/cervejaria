@@ -5,12 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Cervejaria.Repository\Cervejaria.Repository.csproj" />
+    <ProjectReference Include="..\Cervejaria.Service\Cervejaria.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interop\Dto\" />
   </ItemGroup>
 
 </Project>

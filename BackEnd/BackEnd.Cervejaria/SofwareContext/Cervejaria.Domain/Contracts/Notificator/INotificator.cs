@@ -1,4 +1,5 @@
 ﻿using Cervejaria.Domain.Models;
+using FluentValidation.Results;
 using System.Collections.Generic;
 
 namespace Cervejaria.Domain.Contracts.Notificator
@@ -6,7 +7,7 @@ namespace Cervejaria.Domain.Contracts.Notificator
     public interface INotificator
     {
         bool HasNotifications();
-        List<Notification> GetNotifications();
-        void Handle(Notification notificacao);
+        List<ValidationFailure> GetNotifications();
+        void Handle(ValidationFailure notification);
     }
 }
