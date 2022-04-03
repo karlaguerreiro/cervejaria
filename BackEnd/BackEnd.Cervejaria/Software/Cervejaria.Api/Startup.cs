@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace Cervejaria.Api
 {
@@ -28,7 +30,7 @@ namespace Cervejaria.Api
 
             services.AutoMapperModule();
             services.RegisterDI();
-            services.AddMvc();
+            services.AddMvc(); 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

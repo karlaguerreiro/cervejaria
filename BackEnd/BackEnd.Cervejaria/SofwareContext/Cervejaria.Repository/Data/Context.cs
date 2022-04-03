@@ -26,13 +26,13 @@ namespace Cervejaria.Repository.Data
         public virtual DbSet<Receita> Receita { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-ARTKF28\\SQLEXPRESS;Initial Catalog=CERVEJARIA;Integrated Security=True");
-            }
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        optionsBuilder.UseSqlServer("Data Source=DESKTOP-ARTKF28\\SQLEXPRESS;Initial Catalog=CERVEJARIA;Integrated Security=True");
+        //    }
+        //} 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
