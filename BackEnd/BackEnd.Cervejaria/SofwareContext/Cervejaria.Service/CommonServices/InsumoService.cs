@@ -27,12 +27,14 @@ namespace Cervejaria.Service.CommonServices
             return result;
         }
 
-        public async Task SaveAsync(Insumo insumo)
+        public async Task<Insumo> SaveAsync(Insumo insumo)
         {
-            if (!IsValid(new InsumoValidation(), insumo)) return;
+            if (!IsValid(new InsumoValidation(), insumo)) return null;
 
             if (!_notificador.HasNotifications())
-                await _repository.SaveAsync(insumo);
+                return await _repository.SaveAsync(insumo);
+
+            return null;
         }
     }
 }

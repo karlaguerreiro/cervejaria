@@ -9,18 +9,18 @@ namespace Cervejaria.Domain.Common
     {
         public Insumo()
         {
-            Receita = new HashSet<Receita>();
+            Receitas = new List<Receita>();
         }
 
         public string Nome { get; init; }
-        public DateTime? Datacompra { get; init; }
-        public DateTime? Datavalidade { get; init; }
+        public DateTime Datacompra { get; init; } = DateTime.Now;
+        public DateTime? DataValidade { get; init; }
         public decimal? Preco { get; init; }
         public string Unidademed { get; init; }
-        public int Usuarioid { get; init; }
+        public int? Usuarioid { get; init; }
 
         public virtual Usuario Usuario { get; init; }
 
-        public virtual ICollection<Receita> Receita { get; init; }
+        public virtual List<Receita> Receitas { get; init; }
     }
 }

@@ -2,6 +2,9 @@
 using Cervejaria.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Cervejaria.Repository.Data
 {
@@ -38,7 +41,7 @@ namespace Cervejaria.Repository.Data
                 entity.ToTable("CONTATO");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.Descricao)
@@ -60,7 +63,7 @@ namespace Cervejaria.Repository.Data
                 entity.ToTable("ENDERECO");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.Bairro)
@@ -108,12 +111,14 @@ namespace Cervejaria.Repository.Data
                 entity.ToTable("INSUMO");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.Datacompra).HasColumnName("DATACOMPRA");
+                entity.Property(e => e.Datacompra)
+                    .HasColumnType("DATETIME2").HasColumnName("DATACOMPRA");
 
-                entity.Property(e => e.Datavalidade).HasColumnName("DATAVALIDADE");
+                entity.Property(e => e.DataValidade)
+                    .HasColumnType("DATETIME2").HasColumnName("DATAVALIDADE");
 
                 entity.Property(e => e.Nome)
                     .HasMaxLength(100)
@@ -140,7 +145,7 @@ namespace Cervejaria.Repository.Data
                 entity.ToTable("PRODUTO");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.Descricao)
@@ -166,7 +171,7 @@ namespace Cervejaria.Repository.Data
                 entity.ToTable("RECEITA");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.Descricao)
@@ -177,15 +182,15 @@ namespace Cervejaria.Repository.Data
                     .HasMaxLength(100)
                     .HasColumnName("NOME");
 
-                entity.Property(e => e.Usuarioid).HasColumnName("USUARIOID");
+                entity.Property(e => e.UsuarioId).HasColumnName("USUARIOID");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.Receita)
-                    .HasForeignKey(d => d.Usuarioid)
+                    .HasForeignKey(d => d.UsuarioId)
                     .HasConstraintName("FK_USUARIORECEITA_ID");
 
                 entity.HasMany(d => d.Insumos)
-                    .WithMany(p => p.Receita)
+                    .WithMany(p => p.Receitas)
                     .UsingEntity<Dictionary<string, object>>(
                         "Receitainsumo",
                         l => l.HasOne<Insumo>().WithMany().HasForeignKey("Insumoid").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_INSUMORECEITA_ID"),
@@ -207,7 +212,7 @@ namespace Cervejaria.Repository.Data
                 entity.ToTable("USUARIO");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.Cnpj)

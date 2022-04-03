@@ -5,7 +5,7 @@ namespace Cervejaria.Domain.Contracts.Service.CommonServices
 {
     public interface IInsumoService
     {
-        Task SaveAsync(Insumo insumo);
+        Task<Insumo> SaveAsync(Insumo insumo);
         Task<Insumo> GetByIdAsync(int id);
     }
 }
