@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Cervejaria.CrossCutting.Interop.ViewModel.Common
 {
@@ -7,6 +8,8 @@ namespace Cervejaria.CrossCutting.Interop.ViewModel.Common
         public int? Id { get; set; }
         public string Nome { get; init; }
         public string Descricao { get; init; }
-        public List<InsumoViewModel> insumos { get; init; }
+
+        [JsonIgnore]
+        public List<InsumoViewModel> Insumos { get; init; }
     }
 }

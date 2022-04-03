@@ -8,7 +8,7 @@ namespace Cervejaria.CrossCutting.Mapper.Common
     {
         public ReceitaMapper()
         {
-            CreateMap<ReceitaViewModel, Receita>();
+            CreateMap<ReceitaViewModel, Receita>().ReverseMap();
         }
     }
 }

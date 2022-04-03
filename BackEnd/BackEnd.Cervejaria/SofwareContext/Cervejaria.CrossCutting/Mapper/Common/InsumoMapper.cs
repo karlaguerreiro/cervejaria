@@ -8,7 +8,7 @@ namespace Cervejaria.CrossCutting.Mapper.Common
     {
         public InsumoMapper()
         {
-            CreateMap<InsumoViewModel, Insumo>();
+            CreateMap<InsumoViewModel, Insumo>().ReverseMap();
         }
     }
 }
