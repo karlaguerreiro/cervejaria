@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace Cervejaria.Apí
+namespace Cervejaria.Api
 {
     public class Startup
     {
@@ -32,7 +32,7 @@ namespace Cervejaria.Apí
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cervejaria.Apí", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cervejaria.Api", Version = "v1" });
             });
         }
 
@@ -42,7 +42,7 @@ namespace Cervejaria.Apí
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cervejaria.Apí v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cervejaria.Api v1"));
             }
 
             app.UseHttpsRedirection();

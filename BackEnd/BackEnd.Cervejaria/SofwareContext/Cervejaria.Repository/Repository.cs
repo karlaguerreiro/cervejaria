@@ -21,20 +21,17 @@ namespace Cervejaria.Repository
             DbSet = db.Set<TEntity>();
         }
 
-        public async Task<IEnumerable<TEntity>> GetByExpressionAsync(Expression<Func<TEntity, bool>> predicate)
-        {
-            return await DbSet.AsNoTracking().Where(predicate).ToListAsync();
-        }
+        public async Task<IEnumerable<TEntity>> GetByExpressionAsync(Expression<Func<TEntity, bool>> predicate) =>
+            await DbSet.AsNoTracking().Where(predicate).ToListAsync();
+        
 
-        public virtual async Task<TEntity> GetByIdAsync(int id)
-        {
-            return await DbSet.FindAsync(id);
-        }
+        public virtual async Task<TEntity> GetByIdAsync(int id) =>
+            await DbSet.AsNoTracking().Where(e => e.Id == id).FirstOrDefaultAsync();
+        
 
-        public virtual async Task<List<TEntity>> GetAsync()
-        {
-            return await DbSet.ToListAsync();
-        }
+        public virtual async Task<List<TEntity>> GetAsync() =>
+            await DbSet.ToListAsync();
+        
 
         public virtual async Task SaveAsync(TEntity entity)
         {
@@ -54,14 +51,10 @@ namespace Cervejaria.Repository
             await SaveChangesAsync();
         }
 
-        public async Task<int> SaveChangesAsync()
-        {
-            return await Db.SaveChangesAsync();
-        }
-
-        public void Dispose()
-        {
+        public async Task<int> SaveChangesAsync() =>
+            await Db.SaveChangesAsync();
+        
+        public void Dispose() =>
             Db?.Dispose();
-        }
     }
 }
