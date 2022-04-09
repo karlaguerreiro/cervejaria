@@ -20,9 +20,6 @@ namespace Cervejaria.Repository.CommonRepository
 
         public override async Task<Insumo> SaveAsync(Insumo entity)
         {
-            if (entity.IdClienteFornecedor == 0)
-                Db.Set<ClienteFornecedor>().Add(new ClienteFornecedor());
-            await SaveChangesAsync();
             await DbSet.AddAsync(entity);
             return await this.GetByIdAsync(await SaveChangesAsync());
         }
