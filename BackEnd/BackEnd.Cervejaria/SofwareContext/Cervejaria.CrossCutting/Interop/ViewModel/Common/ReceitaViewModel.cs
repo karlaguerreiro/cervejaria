@@ -5,11 +5,10 @@ namespace Cervejaria.CrossCutting.Interop.ViewModel.Common
 {
     public record ReceitaViewModel
     {
-        public int? Id { get; set; }
+        public int? Id { get; set;}
         public string Nome { get; init; }
         public string Descricao { get; init; }
 
-        [JsonIgnore]
-        public List<InsumoViewModel> Insumos { get; init; }
+        public virtual List<InsumoReceitaViewModel> InsumoReceitas { get; init; }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Cervejaria.Domain.Contracts.Notificator;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Linq;
 
 namespace Cervejaria.Api.Controllers.Main

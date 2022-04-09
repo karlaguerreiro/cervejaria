@@ -1,6 +1,7 @@
 ﻿using Cervejaria.Domain.Base;
 using Cervejaria.Domain.Business;
-using Cervejaria.Domain.Enuns;
+using System;
+using System.Collections.Generic;
 
 namespace Cervejaria.Domain.Common
 {
@@ -8,12 +9,15 @@ namespace Cervejaria.Domain.Common
     {
         public Contato()
         {
-
+            ClienteFornecedors = new HashSet<ClienteFornecedor>();
+            InfoUsuarios = new HashSet<InfoUsuario>();
         }
-        public TipoContato Tipo { get; init; }
-        public string Descricao { get; init; }
-        public int Usuarioid { get; init; }
 
-        public virtual Usuario Usuario { get; init; }
+        public string Telefone { get; init; }
+        public string Contato1 { get; init; }
+        public string Email { get; init; }
+
+        public virtual ICollection<ClienteFornecedor> ClienteFornecedors { get; init; }
+        public virtual ICollection<InfoUsuario> InfoUsuarios { get; init; }
     }
 }

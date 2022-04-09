@@ -1,4 +1,5 @@
-﻿using Cervejaria.Domain.Common;
+﻿using Cervejaria.Domain.Business;
+using Cervejaria.Domain.Common;
 using Cervejaria.Domain.Contracts.CommonRepository;
 using Cervejaria.Repository.Data;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,6 @@ namespace Cervejaria.Repository.CommonRepository
 
         public override async Task<Insumo> GetByIdAsync(int id) =>
             await DbSet.AsNoTracking()
-                .Include(e => e.Receitas)
                 .Where(e => e.Id == id).FirstOrDefaultAsync();
 
         public override async Task<Insumo> SaveAsync(Insumo entity)

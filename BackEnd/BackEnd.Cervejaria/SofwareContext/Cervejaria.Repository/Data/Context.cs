@@ -1,10 +1,6 @@
 ﻿using Cervejaria.Domain.Business;
 using Cervejaria.Domain.Common;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Cervejaria.Repository.Data
 {
@@ -19,215 +15,363 @@ namespace Cervejaria.Repository.Data
         {
         }
 
+        public virtual DbSet<Cargo> Cargos { get; set; }
+        public virtual DbSet<ClienteFornecedor> ClienteFornecedors { get; set; }
         public virtual DbSet<Contato> Contatos { get; set; }
+        public virtual DbSet<EmpregoAnterior> EmpregoAnteriors { get; set; }
         public virtual DbSet<Endereco> Enderecos { get; set; }
+        public virtual DbSet<InfoUsuario> InfoUsuarios { get; set; }
         public virtual DbSet<Insumo> Insumos { get; set; }
         public virtual DbSet<Produto> Produtos { get; set; }
+        public virtual DbSet<InsumoReceita> Receitainsumos { get; set; }
         public virtual DbSet<Receita> Receita { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        optionsBuilder.UseSqlServer("Data Source=DESKTOP-ARTKF28\\SQLEXPRESS;Initial Catalog=CERVEJARIA;Integrated Security=True");
-        //    }
-        //} 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Contato>(entity =>
+            modelBuilder.Entity<Cargo>(entity =>
             {
-                entity.ToTable("CONTATO");
+                entity.ToTable("cargo");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Descricao)
                     .HasMaxLength(100)
-                    .HasColumnName("DESCRICAO");
+                    .IsUnicode(false)
+                    .HasColumnName("descricao");
 
-                entity.Property(e => e.Tipo).HasColumnName("TIPO");
+                entity.Property(e => e.Funcao)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("funcao");
+            });
 
-                entity.Property(e => e.Usuarioid).HasColumnName("USUARIOID");
+            modelBuilder.Entity<ClienteFornecedor>(entity =>
+            {
+                entity.ToTable("cliente_fornecedor");
 
-                entity.HasOne(d => d.Usuario)
-                    .WithMany(p => p.Contatos)
-                    .HasForeignKey(d => d.Usuarioid)
-                    .HasConstraintName("FK_USUARIOCONTATO_ID");
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.CnpjCpf)
+                    .HasMaxLength(15)
+                    .IsUnicode(false)
+                    .HasColumnName("cnpj_cpf");
+
+                entity.Property(e => e.IdContato).HasColumnName("id_contato");
+
+                entity.Property(e => e.IdEndereco).HasColumnName("id_endereco");
+
+                entity.Property(e => e.Ie)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("ie");
+
+                entity.Property(e => e.Nome)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("nome");
+
+                entity.Property(e => e.Tipo).HasColumnName("tipo");
+
+                entity.HasOne(d => d.Contato)
+                    .WithMany(p => p.ClienteFornecedors)
+                    .HasForeignKey(d => d.IdContato)
+                    .HasConstraintName("FK__cliente_f__id_co__3F466844");
+
+                entity.HasOne(d => d.Endereco)
+                    .WithMany(p => p.ClienteFornecedors)
+                    .HasForeignKey(d => d.IdEndereco)
+                    .HasConstraintName("FK__cliente_f__id_en__3E52440B");
+            });
+
+            modelBuilder.Entity<Contato>(entity =>
+            {
+                entity.ToTable("contato");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Contato1)
+                    .HasMaxLength(15)
+                    .IsUnicode(false)
+                    .HasColumnName("contato");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("email");
+
+                entity.Property(e => e.Telefone)
+                    .HasMaxLength(15)
+                    .IsUnicode(false)
+                    .HasColumnName("telefone");
+            });
+
+            modelBuilder.Entity<EmpregoAnterior>(entity =>
+            {
+                entity.ToTable("emprego_anterior");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Cargo)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("cargo");
+
+                entity.Property(e => e.DataEntrada)
+                    .HasColumnType("date")
+                    .HasColumnName("data_entrada");
+
+                entity.Property(e => e.DataSaida)
+                    .HasColumnType("date")
+                    .HasColumnName("data_saida");
+
+                entity.Property(e => e.Empresa)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("empresa");
             });
 
             modelBuilder.Entity<Endereco>(entity =>
             {
-                entity.ToTable("ENDERECO");
+                entity.ToTable("endereco");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.Bairro)
-                    .HasMaxLength(100)
-                    .HasColumnName("BAIRRO");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Cep)
-                    .HasMaxLength(100)
-                    .HasColumnName("CEP");
-
-                entity.Property(e => e.Cidade)
-                    .HasMaxLength(100)
-                    .HasColumnName("CIDADE");
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("cep");
 
                 entity.Property(e => e.Complemento)
-                    .HasMaxLength(100)
-                    .HasColumnName("COMPLEMENTO");
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("complemento");
+
+                entity.Property(e => e.Numero).HasColumnName("numero");
+            });
+
+            modelBuilder.Entity<InfoUsuario>(entity =>
+            {
+                entity.ToTable("info_usuario");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Cpf)
+                    .HasMaxLength(15)
+                    .IsUnicode(false)
+                    .HasColumnName("cpf");
+
+                entity.Property(e => e.DataNasc)
+                    .HasColumnType("date")
+                    .HasColumnName("data_nasc");
+
+                entity.Property(e => e.IdCargo).HasColumnName("id_cargo");
+
+                entity.Property(e => e.IdContato).HasColumnName("id_contato");
+
+                entity.Property(e => e.IdEmprego).HasColumnName("id_emprego");
+
+                entity.Property(e => e.IdEndereco).HasColumnName("id_endereco");
+
+                entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
 
                 entity.Property(e => e.Nome)
                     .HasMaxLength(100)
-                    .HasColumnName("NOME");
-
-                entity.Property(e => e.Pais)
-                    .HasMaxLength(100)
-                    .HasColumnName("PAIS");
-
-                entity.Property(e => e.Tipo).HasColumnName("TIPO");
-
-                entity.Property(e => e.Uf)
-                    .HasMaxLength(2)
                     .IsUnicode(false)
-                    .HasColumnName("UF")
-                    .IsFixedLength();
+                    .HasColumnName("nome");
 
-                entity.Property(e => e.Usuarioid).HasColumnName("USUARIOID");
+                entity.HasOne(d => d.Cargo  )
+                    .WithMany(p => p.InfoUsuarios)
+                    .HasForeignKey(d => d.IdCargo)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__info_usua__id_ca__48CFD27E");
+
+                entity.HasOne(d => d.Contato)
+                    .WithMany(p => p.InfoUsuarios)
+                    .HasForeignKey(d => d.IdContato)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__info_usua__id_co__46E78A0C");
+
+                entity.HasOne(d => d.Emprego)
+                    .WithMany(p => p.InfoUsuarios)
+                    .HasForeignKey(d => d.IdEmprego)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__info_usua__id_em__47DBAE45");
+
+                entity.HasOne(d => d.Endereco)
+                    .WithMany(p => p.InfoUsuarios)
+                    .HasForeignKey(d => d.IdEndereco)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__info_usua__id_en__45F365D3");
 
                 entity.HasOne(d => d.Usuario)
-                    .WithMany(p => p.Enderecos)
-                    .HasForeignKey(d => d.Usuarioid)
-                    .HasConstraintName("FK_USUARIOENDERECO_ID");
+                    .WithMany(p => p.InfoUsuarios)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__info_usua__id_us__49C3F6B7");
             });
 
             modelBuilder.Entity<Insumo>(entity =>
             {
-                entity.ToTable("INSUMO");
+                entity.ToTable("insumo");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Datacompra)
-                    .HasColumnType("DATETIME2").HasColumnName("DATACOMPRA");
+                entity.Property(e => e.DataCompra)
+                    .HasColumnType("datetime")
+                    .HasColumnName("data_compra")
+                    .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.DataValidade)
-                    .HasColumnType("DATETIME2").HasColumnName("DATAVALIDADE");
+                entity.Property(e => e.IdClienteFornecedor).HasColumnName("id_cliente_fornecedor");
 
                 entity.Property(e => e.Nome)
-                    .HasMaxLength(100)
-                    .HasColumnName("NOME");
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("nome");
 
-                entity.Property(e => e.Preco)
-                    .HasColumnType("decimal(5, 0)")
-                    .HasColumnName("PRECO");
+                entity.Property(e => e.PrecoUnit).HasColumnName("preco_unit");
 
-                entity.Property(e => e.Unidademed)
-                    .HasMaxLength(100)
-                    .HasColumnName("UNIDADEMED");
+                entity.Property(e => e.UndMedida)
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .HasColumnName("und_medida");
 
-                entity.Property(e => e.Usuarioid).HasColumnName("USUARIOID");
+                entity.Property(e => e.Validade)
+                    .HasColumnType("date")
+                    .HasColumnName("validade");
 
-                entity.HasOne(d => d.Usuario)
+                entity.HasOne(d => d.ClienteFornecedores)
                     .WithMany(p => p.Insumos)
-                    .HasForeignKey(d => d.Usuarioid)
-                    .HasConstraintName("FK_INSUMOUSUARIO_ID");
+                    .HasForeignKey(d => d.IdClienteFornecedor)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__insumo__id_clien__4D94879B");
             });
 
             modelBuilder.Entity<Produto>(entity =>
             {
-                entity.ToTable("PRODUTO");
+                entity.ToTable("produto");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("created_at")
+                    .HasDefaultValueSql("(getdate())");
 
                 entity.Property(e => e.Descricao)
-                    .HasMaxLength(100)
-                    .HasColumnName("DESCRICAO");
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("descricao");
 
-                entity.Property(e => e.Preco)
-                    .HasColumnType("decimal(18, 0)")
-                    .HasColumnName("PRECO");
+                entity.Property(e => e.Fabricacao)
+                    .HasColumnType("datetime")
+                    .HasColumnName("fabricacao")
+                    .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.Tipo).HasColumnName("TIPO");
+                entity.Property(e => e.IdReceita).HasColumnName("id_receita");
 
-                entity.Property(e => e.Usuarioid).HasColumnName("USUARIOID");
+                entity.Property(e => e.Nome)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("nome");
 
-                entity.HasOne(d => d.Usuario)
+                entity.Property(e => e.Quantidade).HasColumnName("quantidade");
+
+                entity.Property(e => e.UndMedida)
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .HasColumnName("und_medida");
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("updated_at")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Validade)
+                    .HasColumnType("date")
+                    .HasColumnName("validade");
+
+                entity.HasOne(d => d.Receita    )
                     .WithMany(p => p.Produtos)
-                    .HasForeignKey(d => d.Usuarioid)
-                    .HasConstraintName("FK_USUARIOPRODUTO_ID");
+                    .HasForeignKey(d => d.IdReceita)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__produto__id_rece__571DF1D5");
+            });
+
+            modelBuilder.Entity<InsumoReceita>(entity =>
+            {
+                entity.HasKey(e => new { e.IdReceita, e.IdInsumo })
+                    .HasName("PK_RECEITAID_ID");
+
+                entity.ToTable("RECEITAINSUMO");
+
+                entity.Property(e => e.IdReceita).HasColumnName("RECEITAID");
+
+                entity.Property(e => e.IdInsumo).HasColumnName("INSUMOID");
+
+                entity.Property(e => e.QuantidadeInsumo).HasColumnName("QUantidadeInsumo");
+
+                entity.HasOne(d => d.Insumo)
+                    .WithMany(p => p.InsumoReceitas)
+                    .HasForeignKey(d => d.IdInsumo)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_INSUMORECEITA_ID");
+
+                entity.HasOne(d => d.Receita)
+                    .WithMany(p => p.InsumoReceitas)
+                    .HasForeignKey(d => d.IdReceita)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RECEITAINSUMO_ID");
             });
 
             modelBuilder.Entity<Receita>(entity =>
             {
-                entity.ToTable("RECEITA");
+                entity.ToTable("receita");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Descricao)
                     .HasMaxLength(100)
-                    .HasColumnName("DESCRICAO");
+                    .IsUnicode(false)
+                    .HasColumnName("descricao");
 
                 entity.Property(e => e.Nome)
-                    .HasMaxLength(100)
-                    .HasColumnName("NOME");
-
-                entity.Property(e => e.UsuarioId).HasColumnName("USUARIOID");
-
-                entity.HasOne(d => d.Usuario)
-                    .WithMany(p => p.Receita)
-                    .HasForeignKey(d => d.UsuarioId)
-                    .HasConstraintName("FK_USUARIORECEITA_ID");
-
-                entity.HasMany(d => d.Insumos)
-                    .WithMany(p => p.Receitas)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "Receitainsumo",
-                        l => l.HasOne<Insumo>().WithMany().HasForeignKey("Insumoid").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_INSUMORECEITA_ID"),
-                        r => r.HasOne<Receita>().WithMany().HasForeignKey("Receitaid").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_RECEITAINSUMO_ID"),
-                        j =>
-                        {
-                            j.HasKey("Receitaid", "Insumoid").HasName("PK_RECEITAID_ID");
-
-                            j.ToTable("RECEITAINSUMO");
-
-                            j.IndexerProperty<int>("Receitaid").HasColumnName("RECEITAID");
-
-                            j.IndexerProperty<int>("Insumoid").HasColumnName("INSUMOID");
-                        });
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("nome");
             });
 
             modelBuilder.Entity<Usuario>(entity =>
             {
-                entity.ToTable("USUARIO");
+                entity.ToTable("usuario");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Cnpj)
-                    .HasMaxLength(100)
-                    .HasColumnName("CNPJ");
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("created_at")
+                    .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.Ie)
-                    .HasMaxLength(100)
-                    .HasColumnName("IE");
+                entity.Property(e => e.DeletedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("deleted_at");
 
-                entity.Property(e => e.Nome)
-                    .HasMaxLength(100)
-                    .HasColumnName("NOME");
+                entity.Property(e => e.NivelAcesso).HasColumnName("nivel_acesso");
 
-                entity.Property(e => e.Tipo).HasColumnName("TIPO");
+                entity.Property(e => e.NomeUsuario)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("nome_usuario");
+
+                entity.Property(e => e.Senha)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("senha");
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("updated_at")
+                    .HasDefaultValueSql("(getdate())");
             });
 
             OnModelCreatingPartial(modelBuilder);

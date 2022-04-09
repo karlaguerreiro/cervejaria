@@ -7,8 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json;
-using System.Text.Json;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Cervejaria.Api
 {
@@ -30,7 +30,7 @@ namespace Cervejaria.Api
 
             services.AutoMapperModule();
             services.RegisterDI();
-            services.AddMvc(); 
+            ConfigureFormatters(services);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -57,6 +57,14 @@ namespace Cervejaria.Api
             {
                 endpoints.MapControllers();
             });
+        }
+        private static void ConfigureFormatters(IServiceCollection services)
+        {
+            services.AddMvc()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                }).AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
         }
     }
 }

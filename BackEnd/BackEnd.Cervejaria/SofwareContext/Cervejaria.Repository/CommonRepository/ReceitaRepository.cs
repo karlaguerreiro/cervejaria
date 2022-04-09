@@ -8,7 +8,6 @@ namespace Cervejaria.Repository.CommonRepository
     {
         public ReceitaRepository(Context context) : base(context)
         {
-
         }
     }
 }
