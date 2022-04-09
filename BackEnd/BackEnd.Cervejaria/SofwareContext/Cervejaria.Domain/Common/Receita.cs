@@ -1,5 +1,5 @@
 ﻿using Cervejaria.Domain.Base;
-using Cervejaria.Domain.Business;
+using System;
 using System.Collections.Generic;
 
 namespace Cervejaria.Domain.Common
@@ -8,15 +8,14 @@ namespace Cervejaria.Domain.Common
     {
         public Receita()
         {
-            Insumos = new List<Insumo>();
+            Produtos = new HashSet<Produto>();
         }
 
         public string Nome { get; init; }
         public string Descricao { get; init; }
-        public int? UsuarioId { get; init; }
 
-        public virtual Usuario Usuario { get; init; }
 
-        public virtual List<Insumo> Insumos { get; init; }
+        public virtual ICollection<InsumoReceita> InsumoReceitas { get; init; }
+        public virtual ICollection<Produto> Produtos { get; init; }
     }
 }

@@ -4,6 +4,7 @@ using Cervejaria.Domain.Contracts.Notificator;
 using Cervejaria.Domain.Contracts.Service.CommonServices;
 using Cervejaria.Domain.Validations.Common;
 using Cervejaria.Service.Base;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cervejaria.Service.CommonServices
@@ -29,12 +30,32 @@ namespace Cervejaria.Service.CommonServices
 
         public async Task<Insumo> SaveAsync(Insumo insumo)
         {
-            if (!IsValid(new InsumoValidation(), insumo)) return null;
+            if (!IsValid(new InsumoValidation(), insumo)) return await Task.FromResult<Insumo>(null);
 
             if (!_notificador.HasNotifications())
                 return await _repository.SaveAsync(insumo);
 
-            return null;
+            return await Task.FromResult<Insumo>(null);
+        }        
+        
+        public async Task<Insumo> UpdateAsync(Insumo insumo)
+        {
+            if (!IsValid(new InsumoValidation(), insumo)) return await Task.FromResult<Insumo>(null);
+
+            if (!_notificador.HasNotifications())
+                return await _repository.UpdateAsync(insumo);
+
+            return await Task.FromResult<Insumo>(null);
+        }
+
+        public async Task<IEnumerable<Insumo>> Get()
+        {
+            var result = await _repository.GetAsync();
+
+            if (result is null)
+                _notificador.Handle(new FluentValidation.Results.ValidationFailure(null, "Insumo não encontrado!"));
+
+            return result;
         }
     }
 }

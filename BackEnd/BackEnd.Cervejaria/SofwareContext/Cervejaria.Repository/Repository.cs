@@ -23,7 +23,7 @@ namespace Cervejaria.Repository
 
         public async Task<IEnumerable<TEntity>> GetByExpressionAsync(Expression<Func<TEntity, bool>> predicate) =>
             await DbSet.AsNoTracking().Where(predicate).ToListAsync();
-        
+
         public virtual async Task<TEntity> GetByIdAsync(int id) =>
             await DbSet.AsNoTracking().Where(e => e.Id == id).FirstOrDefaultAsync();
         

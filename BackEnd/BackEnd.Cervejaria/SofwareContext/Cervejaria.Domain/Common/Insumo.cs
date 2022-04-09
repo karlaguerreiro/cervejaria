@@ -7,20 +7,15 @@ namespace Cervejaria.Domain.Common
 {
     public record Insumo : BaseEntity
     {
-        public Insumo()
-        {
-            Receitas = new List<Receita>();
-        }
-
         public string Nome { get; init; }
-        public DateTime Datacompra { get; init; } = DateTime.Now;
-        public DateTime? DataValidade { get; init; }
-        public decimal? Preco { get; init; }
-        public string Unidademed { get; init; }
-        public int? Usuarioid { get; init; }
+        public DateTime DataCompra { get; init; }
+        public DateTime? Validade { get; init; }
+        public int? PrecoUnit { get; init; }
+        public string UndMedida { get; init; }
+        public int IdClienteFornecedor { get; init; }
 
-        public virtual Usuario Usuario { get; init; }
 
-        public virtual List<Receita> Receitas { get; init; }
+        public virtual ICollection<InsumoReceita> InsumoReceitas { get; init; }
+        public virtual ClienteFornecedor ClienteFornecedores { get; init; }
     }
 }

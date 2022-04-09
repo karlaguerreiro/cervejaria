@@ -22,7 +22,11 @@ namespace Cervejaria.Api.Controllers.V1
         [HttpPost]
         public async Task<IActionResult> Post(InsumoViewModel viewModel) =>
             CustomResponse(await _service.SaveAsync(_mapper.Map<Insumo>(viewModel)));
-        
+
+        [HttpPut]
+        public async Task<IActionResult> Put(InsumoViewModel viewModel) =>
+            CustomResponse(await _service.UpdateAsync(_mapper.Map<Insumo>(viewModel)));
+
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id) =>
             CustomResponse(_mapper.Map<InsumoViewModel>(await _service.GetByIdAsync(id)));
