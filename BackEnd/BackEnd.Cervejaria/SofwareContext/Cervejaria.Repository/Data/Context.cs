@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cervejaria.Repository.Data
 {
-    public partial class Context : DbContext, IDbContextFactory<Context>
+    public partial class Context : DbContext
     {
         public Context()
         {
@@ -22,15 +22,10 @@ namespace Cervejaria.Repository.Data
         public virtual DbSet<Endereco> Enderecos { get; set; }
         public virtual DbSet<InfoUsuario> InfoUsuarios { get; set; }
         public virtual DbSet<Insumo> Insumos { get; set; }
-        public virtual DbSet<InsumoReceita> InsumoReceita { get; set; }
         public virtual DbSet<Produto> Produtos { get; set; }
+        public virtual DbSet<InsumoReceita> Receitainsumos { get; set; }
         public virtual DbSet<Receita> Receita { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
-
-        public Context CreateDbContext()
-        {
-            return new Context();
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -81,13 +76,11 @@ namespace Cervejaria.Repository.Data
                 entity.HasOne(d => d.Contato)
                     .WithMany(p => p.ClienteFornecedors)
                     .HasForeignKey(d => d.IdContato)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__cliente_f__id_co__3F466844");
 
                 entity.HasOne(d => d.Endereco)
                     .WithMany(p => p.ClienteFornecedors)
                     .HasForeignKey(d => d.IdEndereco)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__cliente_f__id_en__3E52440B");
             });
 
@@ -187,7 +180,7 @@ namespace Cervejaria.Repository.Data
                     .IsUnicode(false)
                     .HasColumnName("nome");
 
-                entity.HasOne(d => d.Cargo)
+                entity.HasOne(d => d.Cargo  )
                     .WithMany(p => p.InfoUsuarios)
                     .HasForeignKey(d => d.IdCargo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
@@ -252,32 +245,6 @@ namespace Cervejaria.Repository.Data
                     .HasForeignKey(d => d.IdClienteFornecedor)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__insumo__id_clien__4D94879B");
-
-            });
-
-            modelBuilder.Entity<InsumoReceita>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("insumo_receita");
-
-                entity.Property(e => e.IdInsumo).HasColumnName("id_insumo");
-
-                entity.Property(e => e.IdReceita).HasColumnName("id_receita");
-
-                entity.Property(e => e.QuantidadeInsumo).HasColumnName("quantidade_insumo");
-
-                entity.HasOne(d => d.Insumo)
-                    .WithMany()
-                    .HasForeignKey(d => d.IdInsumo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__insumo_re__id_in__5165187F");
-
-                entity.HasOne(d => d.Receita)
-                    .WithMany()
-                    .HasForeignKey(d => d.IdReceita)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__insumo_re__id_re__52593CB8");
             });
 
             modelBuilder.Entity<Produto>(entity =>
@@ -324,11 +291,37 @@ namespace Cervejaria.Repository.Data
                     .HasColumnType("date")
                     .HasColumnName("validade");
 
-                entity.HasOne(d => d.Receita)
+                entity.HasOne(d => d.Receita    )
                     .WithMany(p => p.Produtos)
                     .HasForeignKey(d => d.IdReceita)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__produto__id_rece__5629CD9C");
+                    .HasConstraintName("FK__produto__id_rece__571DF1D5");
+            });
+
+            modelBuilder.Entity<InsumoReceita>(entity =>
+            {
+                entity.HasKey(e => new { e.IdReceita, e.IdInsumo })
+                    .HasName("PK_RECEITAID_ID");
+
+                entity.ToTable("RECEITAINSUMO");
+
+                entity.Property(e => e.IdReceita).HasColumnName("RECEITAID");
+
+                entity.Property(e => e.IdInsumo).HasColumnName("INSUMOID");
+
+                entity.Property(e => e.QuantidadeInsumo).HasColumnName("QUantidadeInsumo");
+
+                entity.HasOne(d => d.Insumo)
+                    .WithMany(p => p.InsumoReceitas)
+                    .HasForeignKey(d => d.IdInsumo)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_INSUMORECEITA_ID");
+
+                entity.HasOne(d => d.Receita)
+                    .WithMany(p => p.InsumoReceitas)
+                    .HasForeignKey(d => d.IdReceita)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RECEITAINSUMO_ID");
             });
 
             modelBuilder.Entity<Receita>(entity =>
@@ -346,11 +339,6 @@ namespace Cervejaria.Repository.Data
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("nome");
-
-                entity.HasMany(e => e.InsumoReceitas)
-                    .WithOne(e => e.Receita)
-                    .HasForeignKey(e => e.IdReceita);
-
             });
 
             modelBuilder.Entity<Usuario>(entity =>
@@ -368,8 +356,7 @@ namespace Cervejaria.Repository.Data
                     .HasColumnType("datetime")
                     .HasColumnName("deleted_at");
 
-                entity.Property(e => e.NivelAcesso)
-                    .HasColumnName("nivel_acesso");
+                entity.Property(e => e.NivelAcesso).HasColumnName("nivel_acesso");
 
                 entity.Property(e => e.NomeUsuario)
                     .HasMaxLength(50)

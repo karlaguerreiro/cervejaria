@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using Cervejaria.CrossCutting.Interop.ViewModel.Common;
 using Cervejaria.Domain.Common;
 
 namespace Cervejaria.CrossCutting.Mapper.Common
 {
-    public class InsumoReceitaViewModel : Profile
+    public class InsumoReceitaMapper : Profile
     {
-        public InsumoReceitaViewModel()
+        public InsumoReceitaMapper()
         {
             CreateMap<InsumoReceitaViewModel, InsumoReceita>().ReverseMap();
         }
