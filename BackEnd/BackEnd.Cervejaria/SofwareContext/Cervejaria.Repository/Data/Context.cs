@@ -303,13 +303,13 @@ namespace Cervejaria.Repository.Data
                 entity.HasKey(e => new { e.IdReceita, e.IdInsumo })
                     .HasName("PK_RECEITAID_ID");
 
-                entity.ToTable("RECEITAINSUMO");
+                entity.ToTable("receita_insumo");
 
-                entity.Property(e => e.IdReceita).HasColumnName("RECEITAID");
+                entity.Property(e => e.IdReceita).HasColumnName("id_receita");
 
-                entity.Property(e => e.IdInsumo).HasColumnName("INSUMOID");
+                entity.Property(e => e.IdInsumo).HasColumnName("id_insumo");
 
-                entity.Property(e => e.QuantidadeInsumo).HasColumnName("QUantidadeInsumo");
+                entity.Property(e => e.QuantidadeInsumo).HasColumnName("qnt_insumo");
 
                 entity.HasOne(d => d.Insumo)
                     .WithMany(p => p.InsumoReceitas)
