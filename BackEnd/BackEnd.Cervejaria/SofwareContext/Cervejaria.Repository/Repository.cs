@@ -26,10 +26,10 @@ namespace Cervejaria.Repository
 
         public virtual async Task<TEntity> GetByIdAsync(int id) =>
             await DbSet.AsNoTracking().Where(e => e.Id == id).FirstOrDefaultAsync();
-        
+
         public virtual async Task<List<TEntity>> GetAsync() =>
             await DbSet.ToListAsync();
-        
+
         public virtual async Task<TEntity> SaveAsync(TEntity entity)
         {
             await DbSet.AddAsync(entity);
@@ -49,8 +49,11 @@ namespace Cervejaria.Repository
             await SaveChangesAsync();
         }
 
-        public async Task<int> SaveChangesAsync() =>
-            await Db.SaveChangesAsync();
+        public async Task<int> SaveChangesAsync()
+        {
+            return await Db.SaveChangesAsync();
+           
+        }
         
         public void Dispose() =>
             Db?.Dispose();
