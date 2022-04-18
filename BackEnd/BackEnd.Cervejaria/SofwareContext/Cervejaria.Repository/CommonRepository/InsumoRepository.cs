@@ -17,11 +17,5 @@ namespace Cervejaria.Repository.CommonRepository
         public override async Task<Insumo> GetByIdAsync(int id) =>
             await DbSet.AsNoTracking()
                 .Where(e => e.Id == id).FirstOrDefaultAsync();
-
-        public override async Task<Insumo> SaveAsync(Insumo entity)
-        {
-            await DbSet.AddAsync(entity);
-            return await this.GetByIdAsync(await SaveChangesAsync());
-        }
     }
 }
