@@ -33,14 +33,14 @@ namespace Cervejaria.Repository
         public virtual async Task<TEntity> SaveAsync(TEntity entity)
         {
             await DbSet.AddAsync(entity);
-            return await this.GetByIdAsync(await SaveChangesAsync());
+            return await this.GetByIdAsync((int)entity.Id);
         }
 
         public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
             DbSet.Update(entity);
             await SaveChangesAsync();
-            return await this.GetByIdAsync(await SaveChangesAsync());
+            return await this.GetByIdAsync((int)entity.Id);
         }
 
         public virtual async Task DeleteAsync(int id)
