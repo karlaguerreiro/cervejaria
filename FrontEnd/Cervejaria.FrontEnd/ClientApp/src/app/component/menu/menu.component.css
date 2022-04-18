@@ -10,15 +10,12 @@
     width: 200%;
 }
 
-
-
-    
 .navbar {
-    overflow: hidden;
     background-color: #FFAF00; 
     display: flex;
     align-items: center;
     cursor: pointer;
+    padding: 0  !important;
   }
   
   .navbar a {
@@ -43,7 +40,7 @@
     border: none;
     outline: none;
     color: white;
-    padding: 14px 16px;
+    padding: 16px 16px;
     background-color: inherit;
     font-family: inherit;
     margin: 0;
@@ -81,3 +78,5 @@
     display: flex;
     justify-content: space-around;
   }
+
+  
