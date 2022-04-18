@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Software", "Software", "{44AC2E7B-2BD8-4B0E-B42A-90989C25C151}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{44AC2E7B-2BD8-4B0E-B42A-90989C25C151}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SofwareContext", "SofwareContext", "{FB927724-9802-4B15-8CDD-270C2A65441E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Context", "Context", "{FB927724-9802-4B15-8CDD-270C2A65441E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cervejaria.Api", "Software\Cervejaria.Api\Cervejaria.Api.csproj", "{54DF7A83-D212-4BBE-A66A-4FF3C7E03196}"
 EndProject
@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cervejaria.CrossCutting", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cervejaria.Repository", "SofwareContext\Cervejaria.Repository\Cervejaria.Repository.csproj", "{D47E3476-305C-45B0-B09E-EB49F4D11AEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cervejaria.Domain", ""SofwareContext\Cervejaria.Domain\Cervejaria.Domain.csproj", "{E927A9EE-6482-481C-98C0-99566757E920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cervejaria.Domain", "SofwareContext\Cervejaria.Domain\Cervejaria.Domain.csproj", "{E927A9EE-6482-481C-98C0-99566757E920}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
