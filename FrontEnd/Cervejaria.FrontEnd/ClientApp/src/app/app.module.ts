@@ -8,14 +8,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './views/home/home.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ListItemComponent } from './component/list-item/list-item.component';
+import { MatTableModule } from  '@angular/material/table';
+import { ListInsumoComponent } from './component/list-insumo/list-insumo.component';
+import { InsumoComponent } from './views/insumo/insumo.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
-    ListItemComponent
+    ListInsumoComponent,
+    InsumoComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,9 @@ import { ListItemComponent } from './component/list-item/list-item.component';
     BrowserAnimationsModule,
     MatToolbarModule, 
     MatMenuModule, 
-    NgbModule
+    NgbModule,
+    MatTableModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
