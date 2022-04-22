@@ -30,5 +30,10 @@ namespace Cervejaria.Api.Controllers.V1
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id) =>
             CustomResponse(_mapper.Map<InsumoViewModel>(await _service.GetByIdAsync(id)));
+
+        [HttpGet]
+        public async Task<IActionResult> Get() =>
+            CustomResponse(await _service.Get());
+        
     }
 }

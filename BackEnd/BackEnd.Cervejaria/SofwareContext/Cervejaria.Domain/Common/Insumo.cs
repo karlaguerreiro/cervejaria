@@ -12,7 +12,7 @@ namespace Cervejaria.Domain.Common
         public DateTime? Validade { get; init; }
         public int? PrecoUnit { get; init; }
         public string UndMedida { get; init; }
-        public int IdClienteFornecedor { get; init; }
+        public int? IdClienteFornecedor { get; init; }
 
 
         public virtual ICollection<InsumoReceita> InsumoReceitas { get; init; }
