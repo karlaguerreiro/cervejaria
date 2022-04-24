@@ -1,11 +1,10 @@
-﻿using Cervejaria.Domain.Base;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
-namespace Cervejaria.Domain.Common
+namespace Cervejaria.CrossCutting.Interop.ViewModel.Common
 {
-    public record Produto : BaseEntity
+    public record ProdutoViewModel
     {
+        public int? Id { get; init; }
         public string Nome { get; init; }
         public string Descricao { get; init; }
         public DateTime? Fabricacao { get; init; }
@@ -16,6 +15,6 @@ namespace Cervejaria.Domain.Common
         public DateTime CreatedAt { get; init; }
         public DateTime? UpdatedAt { get; init; }
 
-        public virtual Receita Receita{ get; init; }
+        public virtual ReceitaViewModel Receita { get; init; }
     }
 }

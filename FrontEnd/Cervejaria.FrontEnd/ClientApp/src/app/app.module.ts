@@ -8,9 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './views/home/home.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InsumoService } from './component/list-insumo/list-insumo.service';
 import { MatTableModule } from  '@angular/material/table';
 import { ListInsumoComponent } from './component/list-insumo/list-insumo.component';
-import { InsumoComponent } from './views/insumo/insumo.component'
+import { InsumoComponent } from './views/insumo/insumo.component';
+import { HttpClientModule } from '@angular/common/http';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,13 +27,17 @@ import { InsumoComponent } from './views/insumo/insumo.component'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule, 
-    MatMenuModule, 
+    MatToolbarModule,
+    MatMenuModule,
     NgbModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule,
 
   ],
-  providers: [],
+  providers: [
+    InsumoService,
+    {provide: APP_BASE_HREF, useValue: '/'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@
 
 namespace Cervejaria.Domain.Contracts.Service.CommonServices
 {
-    public interface IInsumoService : IService<Insumo>
+    public interface IReceitaService : IService<Receita>
     {
     }
 }

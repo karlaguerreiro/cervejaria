@@ -7,11 +7,11 @@ using Cervejaria.Service.Base;
 
 namespace Cervejaria.Service.CommonServices
 {
-    public class InsumoService : Service<Insumo>, IInsumoService
+    public class ReceitaService : Service<Receita>, IReceitaService
     {
-        public InsumoService(INotificator notificator, IRepository<Insumo> repositoy) : base(notificator, repositoy)
+        public ReceitaService(INotificator notificador, IRepository<Receita> repository) : base(notificador, repository)
         {
-            _validations = new InsumoValidation();
+            _validations = new ReceitaValidation();
         }
     }
 }

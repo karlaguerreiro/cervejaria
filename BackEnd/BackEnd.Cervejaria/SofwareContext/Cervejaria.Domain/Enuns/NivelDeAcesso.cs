@@ -2,7 +2,7 @@
 {
     public enum NivelDeAcesso : byte
     {
-        Pcp = 1,
+        Pcp,
         Rh ,
         Admin 
     }

@@ -215,7 +215,9 @@ namespace Cervejaria.Repository.Data
             {
                 entity.ToTable("insumo");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("id");
 
                 entity.Property(e => e.DataCompra)
                     .HasColumnType("datetime")
@@ -251,7 +253,9 @@ namespace Cervejaria.Repository.Data
             {
                 entity.ToTable("produto");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("id");
 
                 entity.Property(e => e.CreatedAt)
                     .HasColumnType("datetime")
@@ -278,7 +282,7 @@ namespace Cervejaria.Repository.Data
                 entity.Property(e => e.Quantidade).HasColumnName("quantidade");
 
                 entity.Property(e => e.UndMedida)
-                    .HasMaxLength(1)
+                    .HasMaxLength(55)
                     .IsUnicode(false)
                     .HasColumnName("und_medida");
 
@@ -328,7 +332,9 @@ namespace Cervejaria.Repository.Data
             {
                 entity.ToTable("receita");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Descricao)
                     .HasMaxLength(100)

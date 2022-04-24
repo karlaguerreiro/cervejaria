@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Cervejaria.Repository
 {
-    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity, new()
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity, new()
     {
         protected readonly Context Db;
         protected readonly DbSet<TEntity> DbSet;
 
-        protected Repository(Context db)
+        public Repository(Context db)
         {
             Db = db;
             DbSet = db.Set<TEntity>();
@@ -33,6 +33,7 @@ namespace Cervejaria.Repository
         public virtual async Task<TEntity> SaveAsync(TEntity entity)
         {
             await DbSet.AddAsync(entity);
+            await SaveChangesAsync();
             return await this.GetByIdAsync((int)entity.Id);
         }
 
