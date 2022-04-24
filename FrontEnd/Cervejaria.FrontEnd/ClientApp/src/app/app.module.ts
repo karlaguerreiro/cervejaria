@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './views/home/home.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTableModule } from '@angular/material/table';
 import { InsumoService } from './component/list-insumo/list-insumo.service';
 import { MatTableModule } from  '@angular/material/table';
 import { ListInsumoComponent } from './component/list-insumo/list-insumo.component';
@@ -27,8 +28,8 @@ import { APP_BASE_HREF } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatMenuModule,
+    MatToolbarModule, 
+    MatMenuModule, 
     NgbModule,
     MatTableModule,
     HttpClientModule,
