@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-receita',
@@ -10,16 +10,24 @@ export class AddReceitaComponent implements OnInit {
   isLinear = false;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
-
-  constructor(private _formBuilder: FormBuilder) { }
+  control!: FormControl;
+  constructor(private _formBuilder: FormBuilder)
+  {
+    this.control = _formBuilder.control({value: 'my val', disabled: true});
+  }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+      tituloReceita: ['', Validators.required],
+      ingredientes: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
-    });
+      modoDePreparo: ['', Validators.required],
+    })
   }
 
+  public Save()
+  {
+    //var x = this.firstFormGroup.controls('tituloReceita')
+  }
 }
