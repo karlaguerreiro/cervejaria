@@ -2033,19 +2033,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Arthur Pereira\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Repository\\Cervejaria.Repository.csproj",
+      "projectUniqueName": "E:\\GitPessoal\\CSharp\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Repository\\Cervejaria.Repository.csproj",
       "projectName": "Cervejaria.Repository",
-      "projectPath": "C:\\Users\\User\\Documents\\GitHub\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Repository\\Cervejaria.Repository.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Documents\\GitHub\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Repository\\obj\\",
+      "projectPath": "E:\\GitPessoal\\CSharp\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Repository\\Cervejaria.Repository.csproj",
+      "packagesPath": "C:\\Users\\Arthur Pereira\\.nuget\\packages\\",
+      "outputPath": "E:\\GitPessoal\\CSharp\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Arthur Pereira\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2059,8 +2059,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\User\\Documents\\GitHub\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Domain\\Cervejaria.Domain.csproj": {
-              "projectPath": "C:\\Users\\User\\Documents\\GitHub\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Domain\\Cervejaria.Domain.csproj"
+            "E:\\GitPessoal\\CSharp\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Domain\\Cervejaria.Domain.csproj": {
+              "projectPath": "E:\\GitPessoal\\CSharp\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Domain\\Cervejaria.Domain.csproj"
             }
           }
         }
@@ -2115,7 +2115,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.104\\RuntimeIdentifierGraph.json"
       }
     }
   }
