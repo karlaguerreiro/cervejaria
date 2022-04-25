@@ -20,12 +20,12 @@ namespace Cervejaria.CrossCutting.IoC
             services
                 .AddScoped(typeof(IRepository<>), typeof(Repository<>))
                 .AddScoped(typeof(IService<>), typeof(Service<>))
-                //.AddScoped<IInsumoRepository, InsumoRepository>()
-                //.AddScoped<IReceitaRepository, ReceitaRepository>()
-                //.AddScoped<IProdutoRepository, ProdutoRepository>()
-                //.AddScoped<IInsumoService, InsumoService>()
+                .AddScoped<IInsumoRepository, InsumoRepository>()
+                .AddScoped<IReceitaRepository, ReceitaRepository>()
+                .AddScoped<IProdutoRepository, ProdutoRepository>()
+                .AddScoped<IInsumoService, InsumoService>()
                 .AddScoped<IProdutoService, ProdutoService>()
-                //.AddScoped<IReceitaService, ReceitaService>()
+                .AddScoped<IReceitaService, ReceitaService>()
                 .AddScoped<INotificator, Notificator>();
     }
 }
