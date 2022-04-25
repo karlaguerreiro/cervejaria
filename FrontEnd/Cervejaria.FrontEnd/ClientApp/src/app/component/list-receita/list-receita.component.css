@@ -14,9 +14,17 @@ table {
     background: #efefef;
   }
   
+  th{
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+    font-size:18px;
+  }
+  
   .example-element-row td {
     border-bottom-width: 0;
     cursor: pointer;
+    width: 200px;
   }
   
   .example-element-detail {
@@ -25,8 +33,6 @@ table {
   }
   
   .example-element-diagram {
-    min-width: 80px;
-    border: 2px solid black;
     padding: 8px;
     font-weight: lighter;
     margin: 8px 0;
@@ -38,11 +44,20 @@ table {
     line-height: normal;
   }
   
-  .example-element-description {
+  .example-element-description ,
+  .example-element-insumo{
     padding: 16px;
+
   }
   
   .example-element-description-attribution {
     opacity: 0.5;
   }
   
+img{
+    width: 100px;
+
+    padding: 10px 0 10px 0;
+    border-radius: 50%;
+
+}
