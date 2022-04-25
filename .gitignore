@@ -6,7 +6,6 @@
 # User-specific files
 *.rsuser
 *.suo
-*.cache
 *.user
 *.userosscache
 *.sln.docstates
@@ -33,6 +32,7 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
+obj/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -362,41 +362,3 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-*.suo
-
-*.cache
-*.cache
-BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Repository/obj/project.nuget.cache
-*.v2
-*.v2
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.futdcache.v1
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/DesignTimeBuild/.dtbcache.v2
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/DesignTimeBuild/.dtbcache.v2
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.futdcache.v1
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.CrossCutting/obj/project.assets.json
-BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.CrossCutting/obj/project.nuget.cache
-*.cache
-*.json
-BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Repository/obj/project.assets.json
-BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Repository/obj/project.nuget.cache
-BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Service/obj/Cervejaria.Service.csproj.nuget.dgspec.json
-BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Service/obj/project.assets.json
-BackEnd/BackEnd.Cervejaria/SofwareContext/Cervejaria.Service/obj/project.nuget.cache
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-*.v1
-*.v2
-*.v2
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/DesignTimeBuild/.dtbcache.v2
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/project-colors.json
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.futdcache.v1
-BackEnd/BackEnd.Cervejaria/.vs/BackEnd.Cervejaria/v17/.suo
