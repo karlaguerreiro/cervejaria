@@ -17,9 +17,10 @@ import { ListReceitaComponent } from './component/list-receita/list-receita.comp
 import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReceitaListaComponent } from './views/receita-lista/receita-lista.component';
-import { InsumoService } from './component/list-insumo/list-insumo.service';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { AddInsumoComponent } from './component/add-insumo/add-insumo.component';
+import { InsumoService } from './Service/list-insumo.service';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     AddReceitaComponent,
     ListReceitaComponent,
     ReceitaListaComponent,
+    AddInsumoComponent
   ],
   imports: [
     BrowserModule,

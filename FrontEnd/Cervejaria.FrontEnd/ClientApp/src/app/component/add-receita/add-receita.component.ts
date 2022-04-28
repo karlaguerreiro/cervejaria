@@ -19,15 +19,8 @@ export class AddReceitaComponent implements OnInit {
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       tituloReceita: ['', Validators.required],
-      ingredientes: ['', Validators.required]
+      ingredientes: ['', Validators.required],
+      modoDePreparo: ['', Validators.required]
     });
-    this.secondFormGroup = this._formBuilder.group({
-      modoDePreparo: ['', Validators.required],
-    })
-  }
-
-  public Save()
-  {
-    //var x = this.firstFormGroup.controls('tituloReceita')
   }
 }

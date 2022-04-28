@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Insumo } from './Insumo';
-import { BaseResponse } from './BaseResponse';
 import { Observable } from 'rxjs';
+import { BaseResponse } from '../Models/BaseResponse';
+import { Insumo } from '../Models/Insumo';
 
 
 @Injectable()
@@ -13,5 +13,9 @@ constructor(private http: HttpClient) { }
 
     public obterInsumos() : Observable< BaseResponse<Insumo[]>> {
       return this.http.get<BaseResponse<Insumo[]>>(this.UrlServiceV1 + "api/V1/Insumo");
+    }
+
+    public inserirInsumos(args: any) : void {
+      this.http.post(this.UrlServiceV1 + "api/V1/Insumo", args);
     }
 }

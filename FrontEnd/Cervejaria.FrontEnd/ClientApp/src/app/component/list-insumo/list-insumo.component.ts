@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InsumoService } from '../list-insumo/list-insumo.service';
+import { InsumoService } from 'src/app/Service/list-insumo.service';
 
 @Component({
   selector: 'app-list-insumo',
@@ -21,7 +21,7 @@ export class ListInsumoComponent implements OnInit {
         let x = base;
         this.dataSource = x.data;
         console.log(this.dataSource);
-      }, error: error => console.log(error)}
+      }}
     );
   }
 }

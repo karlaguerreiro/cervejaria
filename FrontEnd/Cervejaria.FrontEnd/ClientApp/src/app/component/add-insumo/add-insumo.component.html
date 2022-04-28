@@ -1,10 +1,10 @@
 <mat-stepper [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Insira o Titulo da receita</ng-template>
+            <ng-template matStepLabel>Insira o Titulo do insumo</ng-template>
             <mat-form-field appearance="fill">
-                <mat-label>Titulo Receita: </mat-label>
-                <input matInput placeholder="Título da Receita" formControlName="tituloReceita" required>
+                <mat-label>Titulo insumo: </mat-label>
+                <input matInput placeholder="Título da Insumo" formControlName="tituloInsumo" required>
             </mat-form-field>
             <div>
                 <button mat-button matStepperNext>Próximo</button>
@@ -24,7 +24,7 @@
             </div>
         </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Preparo">
+    <mat-step [stepControl]="firstFormGroup" label="Preparo">
         <form [formGroup]="firstFormGroup">
             <mat-form-field appearance="fill">
                 <mat-label>Modo de Preparo: </mat-label>
@@ -42,6 +42,7 @@
         <div>
             <button mat-button matStepperPrevious>Voltar</button>
             <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button (click)="Save()">save</button>
         </div>
     </mat-step>
 </mat-stepper>

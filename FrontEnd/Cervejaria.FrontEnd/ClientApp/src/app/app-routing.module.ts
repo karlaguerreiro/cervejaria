@@ -5,6 +5,7 @@ import { HomeComponent } from './views/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReceitaListaComponent } from './views/receita-lista/receita-lista.component';
+import { AddInsumoComponent } from './component/add-insumo/add-insumo.component';
 
 const routes: Routes = [
 
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'list-receita',
     component: ReceitaListaComponent
+  },
+  {
+    path: 'add-insumo',
+    component: AddInsumoComponent
   }
 
 ];
