@@ -21,6 +21,9 @@ import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AddInsumoComponent } from './component/add-insumo/add-insumo.component';
 import { InsumoService } from './Service/list-insumo.service';
+import { ListFornecedorComponent } from './component/list-fornecedor/list-fornecedor.component';
+import { FornecedorComponent } from './views/fornecedor/fornecedor.component';
+import { AddFornecedorComponent } from './component/add-fornecedor/add-fornecedor.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { InsumoService } from './Service/list-insumo.service';
     AddReceitaComponent,
     ListReceitaComponent,
     ReceitaListaComponent,
-    AddInsumoComponent
+    AddInsumoComponent,
+    ListFornecedorComponent,
+    FornecedorComponent,
+    AddFornecedorComponent
   ],
   imports: [
     BrowserModule,
