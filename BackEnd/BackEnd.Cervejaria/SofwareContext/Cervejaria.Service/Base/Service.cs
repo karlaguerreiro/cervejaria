@@ -4,6 +4,8 @@ using Cervejaria.Domain.Contracts.Notificator;
 using Cervejaria.Domain.Contracts.Service;
 using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -13,12 +15,13 @@ namespace Cervejaria.Service.Base
     {
         protected readonly INotificator _notificador;
         protected readonly IRepository<T> _repository;
+        protected readonly ILogger _iLogger;
         public AbstractValidator<T> _validations;
-
-        public Service(INotificator notificador, IRepository<T> repository)
+        public Service(INotificator notificador, IRepository<T> repository, ILogger logger)
         {
             _notificador = notificador;
             _repository = repository;
+            _iLogger = logger;
         }
 
         protected void Notify(ValidationResult validationResult) =>
@@ -46,8 +49,10 @@ namespace Cervejaria.Service.Base
 
                 return result;
             }
-            catch
+            catch(Exception e)
             {
+                _iLogger.LogError(e, e.Message, e.StackTrace);
+                Console.WriteLine(e.Message);
                 throw;
             }
         }
@@ -61,8 +66,10 @@ namespace Cervejaria.Service.Base
 
                 return await Task.FromResult<T>(null);
             }
-            catch
+            catch (Exception e)
             {
+                _iLogger.LogError(e, e.Message, e.StackTrace);
+                Console.WriteLine(e.Message);
                 throw;
             }
         }
@@ -76,8 +83,10 @@ namespace Cervejaria.Service.Base
 
                 return await Task.FromResult<T>(null);
             }
-            catch
+            catch (Exception e)
             {
+                _iLogger.LogError(e, e.Message, e.StackTrace);
+                Console.WriteLine(e.Message);
                 throw;
             }
         }
@@ -93,8 +102,10 @@ namespace Cervejaria.Service.Base
 
                 return result;
             }
-            catch
+            catch (Exception e)
             {
+                _iLogger.LogError(e, e.Message, e.StackTrace);
+                Console.WriteLine(e.Message);
                 throw;
             }
         }
@@ -105,8 +116,10 @@ namespace Cervejaria.Service.Base
             {
                 await _repository.DeleteAsync(id);
             }
-            catch
+            catch (Exception e)
             {
+                _iLogger.LogError(e, e.Message, e.StackTrace);
+                Console.WriteLine(e.Message);
                 throw;
             }
         }

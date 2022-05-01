@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cervejaria.Domain", "Sofwar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{C92D15F4-03ED-4026-BB6F-9EB45D0314EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cervejaria.Test", "Test\Cervejaria.Test\Cervejaria.Test.csproj", "{2A58EC3B-053F-4996-A230-D784257110AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cervejaria.Test", "Test\Cervejaria.Test\Cervejaria.Test.csproj", "{2A58EC3B-053F-4996-A230-D784257110AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
