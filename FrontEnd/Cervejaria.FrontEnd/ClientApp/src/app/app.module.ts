@@ -16,14 +16,24 @@ import { AddReceitaComponent } from './component/add-receita/add-receita.compone
 import { ListReceitaComponent } from './component/list-receita/list-receita.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ReceitaListaComponent } from './views/receita-lista/receita-lista.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AddInsumoComponent } from './component/add-insumo/add-insumo.component';
+import { InsumoService } from './Service/list-insumo.service';
+import { ListFornecedorComponent } from './component/list-fornecedor/list-fornecedor.component';
+import { FornecedorComponent } from './views/fornecedor/fornecedor.component';
+import { AddFornecedorComponent } from './component/add-fornecedor/add-fornecedor.component';
+import { AddClienteComponent } from './component/add-cliente/add-cliente.component';
+import { ListClienteComponent } from './component/list-cliente/list-cliente.component';
+import { ListProdutoComponent } from './component/list-produto/list-produto.component';
+import { AddProdutoComponent } from './component/add-produto/add-produto.component';
+import { AddFuncionarioComponent } from './component/add-funcionario/add-funcionario.component';
+import { ListFuncionarioComponent } from './component/list-funcionario/list-funcionario.component';
+import { ClienteComponent } from './views/cliente/cliente.component';
+import { FuncionarioComponent } from './views/funcionario/funcionario.component';
 import { InsumoService } from './Service/insumo.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
 
 @NgModule({
   declarations: [
@@ -35,8 +45,19 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReceitaComponent,
     AddReceitaComponent,
     ListReceitaComponent,
-    ReceitaListaComponent,
-    AddInsumoComponent
+    AddInsumoComponent,
+    ListFornecedorComponent,
+    FornecedorComponent,
+    AddFornecedorComponent,
+    AddClienteComponent,
+    ListClienteComponent,
+    ListProdutoComponent,
+    AddProdutoComponent,
+    AddFuncionarioComponent,
+    ListFuncionarioComponent,
+    ClienteComponent,
+    FuncionarioComponent,
+
   ],
   imports: [
     MatDatepickerModule,
@@ -51,7 +72,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatStepperModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     InsumoService,

@@ -1,38 +1,47 @@
 <div class="navbar">
-    <a class="w-16" href="#home">CLIENTES</a>
+    <div class="subnav">
+        <button class="subnavbtn">CLIENTES</button>
+        <div class="subnav-content">
+            <a routerLink="clientes">Listar</a>
+            <a href="add-cliente">Cadastrar</a>
+       
+        </div>
+    </div>
     <div class="subnav">
         <button class="subnavbtn">FORNECEDORES</button>
         <div class="subnav-content">
-            <a href="#company">Company</a>
-            <a href="#team">Team</a>
-            <a href="#careers">Careers</a>
+            <a routerLink="fornecedor">Listar</a>
+            <a routerLink="add-fornecedor">Cadastrar</a>
         </div>
     </div>
     <div class="subnav">
         <button class="subnavbtn">INSUMOS</button>
         <div class="subnav-content">
-            <a routerLink="add-insumo">adicionar Insumo</a>
-            <a routerLink="insumos">Listar Insumos</a>
-            <a href="#package">Package</a>
-            <a href="#express">Express</a>
+            <a routerLink="insumos">Listar</a>
+            <a routerLink="add-insumo">Cadastrar</a>
         </div>
     </div>
     <div class="subnav">
         <button class="subnavbtn">RECEITAS</button>
         <div class="subnav-content">
-            <a routerLink="add-receita">Adicionar Receitas</a>
-            <a routerLink="list-receita">Listar Receitas</a>
-            <a href="#link3">Atualizar Receitas</a>
+            <a routerLink="receitas">Listar</a>
+            <a routerLink="add-receita">Cadastrar</a>
         </div>
     </div>
     <div class="subnav">
         <button class="subnavbtn">PRODUTOS</button>
         <div class="subnav-content">
-            <a href="#link1">Link 1</a>
-            <a href="#link2">Link 2</a>
-            <a href="#link3">Link 3</a>
-            <a href="#link4">Link 4</a>
+            <a href="produtos">Listar</a>
+            <a href="add-produto">Cadastrar</a>
+       
         </div>
     </div>
-    <a class="w-16" href="#contact">FUNCIONÁRIOS</a>
+    <div class="subnav">
+        <button class="subnavbtn">FUNCIONÁRIOS</button>
+        <div class="subnav-content">
+            <a href="funcionarios">Listar</a>
+            <a href="add-funcionario">Cadastrar</a>
+       
+        </div>
+    </div>
 </div>
