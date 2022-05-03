@@ -11,6 +11,7 @@ using Cervejaria.Service.CommonServices;
 using Cervejaria.Service.Notificator;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Cervejaria.CrossCutting.IoC
 {

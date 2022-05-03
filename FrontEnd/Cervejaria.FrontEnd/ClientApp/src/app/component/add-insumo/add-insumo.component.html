@@ -1,10 +1,10 @@
 <mat-stepper [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Insira o Titulo do insumo</ng-template>
+            <ng-template matStepLabel>Insira Nome do insumo</ng-template>
             <mat-form-field appearance="fill">
-                <mat-label>Titulo insumo: </mat-label>
-                <input matInput placeholder="Título da Insumo" formControlName="tituloInsumo" required>
+                <mat-label>Nome do insumo: </mat-label>
+                <input matInput placeholder="Nome do Insumo" formControlName="nome" required>
             </mat-form-field>
             <div>
                 <button mat-button matStepperNext>Próximo</button>
@@ -13,10 +13,15 @@
     </mat-step>
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Lista de Ingredientes</ng-template>
+            <ng-template matStepLabel>Lista de dataCompra</ng-template>
             <mat-form-field appearance="fill">
-                <mat-label>Ingredientes: </mat-label>
-                <input matInput placeholder="Ingredientes" formControlName="ingredientes" required>
+                <mat-label>dataCompra: </mat-label>
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dataCompra">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
             </mat-form-field>
             <div>
                 <button mat-button matStepperPrevious>Voltar</button>

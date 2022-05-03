@@ -20,7 +20,9 @@ import { ReceitaListaComponent } from './views/receita-lista/receita-lista.compo
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AddInsumoComponent } from './component/add-insumo/add-insumo.component';
-import { InsumoService } from './Service/list-insumo.service';
+import { InsumoService } from './Service/insumo.service';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { InsumoService } from './Service/list-insumo.service';
     AddInsumoComponent
   ],
   imports: [
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -13,17 +13,68 @@ namespace Cervejaria.Test.Services
         [Fact]
         public void WhereTeste()
         {
-            var controller = new InsumoController(null, null, null);
-
-            controller.Wheretest();
+            Wheretest();
         }
 
         [Fact]
         public void FirstTest()
         {
-            var controller = new InsumoController(null, null, null);
-
-            controller.firsttest();
+            firsttest();
         }
+        public List<Operador> operadors { get; set; } = new List<Operador>()
+        {
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(3,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+            new Operador(1,2),
+        };
+
+        public Operador Wheretest()
+        => operadors.Where(e => e.id == 3).First();
+
+        public Operador firsttest()
+        => operadors.First(e => e.id == 3);
     }
+    public record Operador(int id, int list);
 }
+

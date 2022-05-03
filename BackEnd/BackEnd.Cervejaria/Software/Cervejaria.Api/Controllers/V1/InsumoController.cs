@@ -17,14 +17,16 @@ namespace Cervejaria.Api.Controllers.V1
     public class InsumoController : MainController
     {
         private readonly IService<Insumo> _service;
-        public InsumoController(INotificator notificator, IService<Insumo> service, IMapper mapper) : base(notificator, mapper)
+        private readonly IInsumoService _insumoService;
+        public InsumoController(INotificator notificator, IService<Insumo> service, IMapper mapper, IInsumoService insumoService) : base(notificator, mapper)
         {
             this._service = service;
+            _insumoService = insumoService;
         }
 
         [HttpPost]
         public async Task<IActionResult> Post(InsumoViewModel viewModel) =>
-            CustomResponse(await _service.SaveAsync(_mapper.Map<Insumo>(viewModel)));
+            CustomResponse(await _insumoService.SaveAsync(_mapper.Map<Insumo>(viewModel)));
 
         [HttpPut]
         public async Task<IActionResult> Put(InsumoViewModel viewModel) =>
@@ -39,65 +41,10 @@ namespace Cervejaria.Api.Controllers.V1
             CustomResponse(await _service.Get());
 
         [HttpDelete("{id:int}")]
-        public async Task<IActionResult> Delete(int id) 
+        public async Task<IActionResult> Delete(int id)
         {
             await _service.Delete(id);
             return CustomResponse();
         }
-
-        public List<Operador> operadors { get; set; } = new List<Operador>() 
-        { 
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(3,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-            new Operador(1,2),
-        };
-
-        public Operador Wheretest()
-        => operadors.Where(e => e.id == 3).First();
-        
-        public Operador firsttest()
-        => operadors.First(e => e.id == 3);
     }
-    public record Operador(int id, int list);
 }

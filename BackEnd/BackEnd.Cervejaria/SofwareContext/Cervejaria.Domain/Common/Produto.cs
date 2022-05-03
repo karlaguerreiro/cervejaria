@@ -6,6 +6,10 @@ namespace Cervejaria.Domain.Common
 {
     public record Produto : BaseEntity
     {
+        public Produto()
+        {
+
+        }
         public string Nome { get; init; }
         public string Descricao { get; init; }
         public DateTime? Fabricacao { get; init; }

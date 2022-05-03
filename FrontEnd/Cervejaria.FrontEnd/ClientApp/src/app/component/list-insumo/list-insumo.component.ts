@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InsumoService } from 'src/app/Service/list-insumo.service';
+import { InsumoService } from 'src/app/Service/insumo.service';
 
 @Component({
   selector: 'app-list-insumo',
@@ -14,8 +14,6 @@ export class ListInsumoComponent implements OnInit {
    }
 
    ngOnInit(): void {
-
-    //this.dataSource = this.insumoService.obterInsumos().subscribe(e => this.dataSource = e.Data);
      this.insumoService.obterInsumos().subscribe(
       { next: base => {
         let x = base;
