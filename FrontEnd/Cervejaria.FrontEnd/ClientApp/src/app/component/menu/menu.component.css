@@ -70,8 +70,8 @@
   }
   
   .subnav-content a:hover {
-    background-color: #8C8C8C;
-    color: white;
+    background-color: #c4c4c4e2;
+    width: 50%;
   }
   
   .subnav:hover .subnav-content {

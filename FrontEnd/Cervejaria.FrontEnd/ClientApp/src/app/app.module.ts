@@ -53,7 +53,7 @@ import { AddFornecedorComponent } from './component/add-fornecedor/add-fornecedo
     MatStepperModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     InsumoService,
