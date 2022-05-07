@@ -1,47 +1,72 @@
-<mat-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Nome do Fornecedor</ng-template>
-            <mat-form-field appearance="fill">
-                <mat-label>Nome Fornecedor: </mat-label>
-                <input matInput placeholder="Nome Fornecedor" formControlName="nomeFornecedor" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperNext>Próximo</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>CNPJ do Fornecedor</ng-template>
-            <mat-form-field appearance="fill">
-                <mat-label>CNPJ: </mat-label>
-                <input matInput placeholder="CNPJ" formControlName="cnpj" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperPrevious>Voltar</button>
-                <button mat-button matStepperNext>Próximo</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Produto fornecido">
-        <form [formGroup]="firstFormGroup">
-            <mat-form-field appearance="fill">
-                <mat-label>Produto: </mat-label>
-                <input matInput formControlName="Produto" placeholder="Nome produto" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperPrevious>Voltar</button>
-                <button mat-button matStepperNext>Próximo</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Concluido!</ng-template>
-        <p>Fornecedor cadastrado com sucesso!</p>
-        <div>
-            <button mat-button matStepperPrevious>Voltar</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
-    </mat-step>
-</mat-stepper>
+<form class="formulario">
+    <mat-form-field class="width" appearance="fill">
+      <mat-label>Tipo: Fornecedor</mat-label>
+      <input matInput disabled value="">
+    </mat-form-field>
+  
+    <table class="width" cellspacing="0"><tr>
+      <td><mat-form-field class="width" appearance="fill">
+        <mat-label>Nome do Fornecedor</mat-label>
+        <input matInput>
+      </mat-form-field></td>
+      <br>
+      <td><mat-form-field class="width" appearance="fill">
+        <mat-label>CPF/CNPJ</mat-label>
+        <input matInput>
+      </mat-form-field></td>
+      <td><mat-form-field class="width" appearance="fill">
+        <mat-label>Inscrição Estadual</mat-label>
+        <input matInput>
+      </mat-form-field></td>
+  
+    </tr></table>
+    <table class="width" cellspacing="0"><tr>
+      <td><mat-form-field class="width" appearance="fill">
+        <mat-label>Nome do Contato</mat-label>
+        <input matInput placeholder="Ex. João Carlos">
+      </mat-form-field></td>
+      <td><mat-form-field class="width" appearance="fill">
+        <mat-label>Contato (email)</mat-label>
+        <input matInput placeholder="Ex. contato@empresa.com.br">
+      </mat-form-field></td>
+      <td><mat-form-field class="width" appearance="fill">
+        <mat-label>Telefone</mat-label>
+        <input matInput placeholder="Ex. (41) 3666-4545">
+      </mat-form-field></td>
+    </tr></table>
+  
+    <table class="width" cellspacing="0"><tr>
+      <td><mat-form-field class="width" appearance="fill">
+        <mat-label>Endereço</mat-label>
+        <input matInput placeholder="Ex. Rua Antonia">
+      </mat-form-field></td>
+      <td><mat-form-field class="width" appearance="fill">
+        <mat-label>Número</mat-label>
+        <input matInput placeholder="Ex. 1069">
+      </mat-form-field></td>
+      <td><mat-form-field class="width" appearance="fill">
+        <mat-label>Complemento</mat-label>
+        <input matInput placeholder="Ex. Barracão, Loja, etc...">
+      </mat-form-field></td>
+      </tr></table>
+  
+    <table class="width" cellspacing="0"><tr>
+      <td><mat-form-field class="width" appearance="fill">
+        <mat-label>Cidade</mat-label>
+        <input matInput placeholder="Ex. Curitiba">
+      </mat-form-field></td>
+      <td><mat-form-field class="width" appearance="fill">
+        <mat-label>Estado</mat-label>
+        <input matInput placeholder="Ex. PR">      
+      </mat-form-field></td>
+      <td><mat-form-field class="width" appearance="fill">
+        <mat-label>CEP</mat-label>
+        <input matInput #postalCode maxlength="15" placeholder="Ex. 83333-111">
+        <mat-hint align="end">{{postalCode.value.length}} / 8</mat-hint>
+      </mat-form-field></td>
+    </tr></table>
+    <button type="submit" mat-raised-button class="Salvar">Salvar</button>
+    <button type="reset" mat-raised-button class="Limpar">Limpar</button>
+  
+  </form>
+  

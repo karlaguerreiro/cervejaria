@@ -11,6 +11,7 @@ import { AddFornecedorComponent } from './component/add-fornecedor/add-fornecedo
 import { AddClienteComponent } from './component/add-cliente/add-cliente.component';
 import { ListProdutoComponent } from './component/list-produto/list-produto.component';
 import { AddReceitaComponent } from './component/add-receita/add-receita.component';
+import { AddFuncionarioComponent } from './component/add-funcionario/add-funcionario.component';
 
 const routes: Routes = [
   {
@@ -61,10 +62,14 @@ const routes: Routes = [
     path: 'add-fornecedor',
     component: AddFornecedorComponent,
   },
+  {
+    path: 'add-funcionario',
+    component: AddFuncionarioComponent,
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -19,7 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AddInsumoComponent } from './component/add-insumo/add-insumo.component';
-import { InsumoService } from './Service/list-insumo.service';
+//import { InsumoService } from './Service/list-insumo.service';
 import { ListFornecedorComponent } from './component/list-fornecedor/list-fornecedor.component';
 import { FornecedorComponent } from './views/fornecedor/fornecedor.component';
 import { AddFornecedorComponent } from './component/add-fornecedor/add-fornecedor.component';
@@ -34,6 +34,9 @@ import { FuncionarioComponent } from './views/funcionario/funcionario.component'
 import { InsumoService } from './Service/insumo.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { Component } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -73,10 +76,12 @@ import { MatNativeDateModule } from '@angular/material/core';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatInputModule,
+    MatButtonModule,
   ],
   providers: [
     InsumoService,
-    {provide: APP_BASE_HREF, useValue: '/'}
+    { provide: APP_BASE_HREF, useValue: '/' }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],

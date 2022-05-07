@@ -13,7 +13,7 @@
     </mat-step>
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Lista de dataCompra</ng-template>
+            <ng-template matStepLabel>Data de Compra</ng-template>
             <mat-form-field appearance="fill">
                 <mat-label>dataCompra: </mat-label>
                 <mat-form-field appearance="fill">
@@ -29,10 +29,10 @@
             </div>
         </form>
     </mat-step>
-    <mat-step [stepControl]="firstFormGroup" label="Preparo">
+    <mat-step [stepControl]="firstFormGroup" label="Valor">
         <form [formGroup]="firstFormGroup">
             <mat-form-field appearance="fill">
-                <mat-label>Modo de Preparo: </mat-label>
+                <mat-label>Valor de Compra </mat-label>
                 <input matInput formControlName="modoDePreparo" placeholder="Modo de Preparo" required>
             </mat-form-field>
             <div>
@@ -43,11 +43,11 @@
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Feito!</ng-template>
-        <p>Receita Adicionada com Sucesso!</p>
+        <p>Insumo adicionado com Sucesso!</p>
         <div>
             <button mat-button matStepperPrevious>Voltar</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-            <button mat-button (click)="Save()">save</button>
+            <button mat-button (click)="stepper.reset()">Limpar</button>
+            <button mat-button (click)="Save()">Salvar</button>
         </div>
     </mat-step>
 </mat-stepper>
