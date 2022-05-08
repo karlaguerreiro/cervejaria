@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { InsumoService } from 'src/app/Service/insumo.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { InsumoService } from 'src/app/Service/insumo.service';
   styleUrls: ['./add-insumo.component.css']
 })
 export class AddInsumoComponent implements OnInit {
-  isLinear = false;
+  isLinear!: true;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
   control!: FormControl;
@@ -19,11 +18,14 @@ export class AddInsumoComponent implements OnInit {
   {
   }
 
+
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
+      tituloInsumo: ['', Validators.required],
+      ingredientes: ['', Validators.required],
+      modoDePreparo: ['', Validators.required],
       nome: ['', Validators.required],
       dataCompra: [Date,  Validators.required],
-      modoDePreparo: [''],
       unidademed: ['', Validators.required],
     });
   }
@@ -32,11 +34,7 @@ export class AddInsumoComponent implements OnInit {
   {
     this.firstFormGroup.value.dataCompra = this.firstFormGroup.value.dataCompra.toISOString()
     console.log(this.firstFormGroup.value)
+    this.insumoService.inserirInsumos(this.firstFormGroup.value);
     this.insumoService.inserirInsumos(this.firstFormGroup.value.dataCompra.toISOString);
-  }
-  public GetDate(matDatepicker: Date): string {
-    if(matDatepicker === null || matDatepicker === undefined)
-      matDatepicker = new Date;
-    return matDatepicker.toISOString();
   }
 }
