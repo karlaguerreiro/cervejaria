@@ -1,4 +1,4 @@
-﻿    namespace Cervejaria.CrossCutting.Interop.ViewModel.Common
+﻿namespace Cervejaria.CrossCutting.Interop.ViewModel.Common
 {
     public record InsumoReceitaViewModel
     {

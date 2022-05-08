@@ -19,7 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AddInsumoComponent } from './component/add-insumo/add-insumo.component';
-//import { InsumoService } from './Service/list-insumo.service';
+import { InsumoService } from './Service/insumo.service';
 import { ListFornecedorComponent } from './component/list-fornecedor/list-fornecedor.component';
 import { FornecedorComponent } from './views/fornecedor/fornecedor.component';
 import { AddFornecedorComponent } from './component/add-fornecedor/add-fornecedor.component';
@@ -31,12 +31,14 @@ import { AddFuncionarioComponent } from './component/add-funcionario/add-funcion
 import { ListFuncionarioComponent } from './component/list-funcionario/list-funcionario.component';
 import { ClienteComponent } from './views/cliente/cliente.component';
 import { FuncionarioComponent } from './views/funcionario/funcionario.component';
-import { InsumoService } from './Service/insumo.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Component } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { ClienteService } from './Service/Cliente.Service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -78,9 +80,12 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     MatInputModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [
     InsumoService,
+    ClienteService,
     { provide: APP_BASE_HREF, useValue: '/' }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

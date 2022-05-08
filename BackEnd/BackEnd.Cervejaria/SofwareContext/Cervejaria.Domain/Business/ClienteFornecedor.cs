@@ -1,7 +1,6 @@
 ﻿using Cervejaria.Domain.Base;
 using Cervejaria.Domain.Common;
 using Cervejaria.Domain.Enuns;
-using System;
 using System.Collections.Generic;
 
 namespace Cervejaria.Domain.Business
@@ -11,10 +10,6 @@ namespace Cervejaria.Domain.Business
         public ClienteFornecedor()
         {
             Insumos = new HashSet<Insumo>();
-            Nome = "asasasas";
-            CnpjCpf = "123123123";
-            Ie = "asasasas";
-            Tipo = TipoUsuario.Fornecedor;
         }
 
         public string Nome { get; init; }
