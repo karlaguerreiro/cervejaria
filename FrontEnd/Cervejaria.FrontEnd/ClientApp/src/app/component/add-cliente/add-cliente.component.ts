@@ -43,6 +43,7 @@ export class AddClienteComponent implements OnInit {
   Save(){
     console.log(this.firstFormGroup.value);
     this._clienteService.inserirClientes(this.firstFormGroup.value);
+    this.ngOnInit();
   }
 }
 

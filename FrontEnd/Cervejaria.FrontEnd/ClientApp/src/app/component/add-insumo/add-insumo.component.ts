@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { InsumoService } from 'src/app/Service/insumo.service';
+import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
+import { window, windowToggle } from 'rxjs';
 
 @Component({
   selector: 'app-add-insumo',
@@ -18,23 +20,22 @@ export class AddInsumoComponent implements OnInit {
   {
   }
 
-
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       tituloInsumo: ['', Validators.required],
       ingredientes: ['', Validators.required],
-      modoDePreparo: ['', Validators.required],
+      Preco: [0, Validators.required],
       nome: ['', Validators.required],
-      dataCompra: [Date,  Validators.required],
+      dataCompra: [new Date(),  Validators.required],
       unidademed: ['', Validators.required],
     });
-  }
+}
 
   public Save()
   {
-    this.firstFormGroup.value.dataCompra = this.firstFormGroup.value.dataCompra.toISOString()
-    console.log(this.firstFormGroup.value)
+    this.firstFormGroup.value.dataCompra = this.firstFormGroup.value.dataCompra.toISOString();
+    console.log(this.firstFormGroup.value);
     this.insumoService.inserirInsumos(this.firstFormGroup.value);
-    this.insumoService.inserirInsumos(this.firstFormGroup.value.dataCompra.toISOString);
+    this.ngOnInit();
   }
 }

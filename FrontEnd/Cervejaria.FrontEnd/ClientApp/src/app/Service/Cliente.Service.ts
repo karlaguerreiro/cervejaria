@@ -15,6 +15,6 @@ constructor(private http: HttpClient) { }
     }
 
     public inserirClientes(args: any) : void {
-      this.http.post(this.UrlServiceV1 + "api/V1/ClienteFornecedor", args);
+      this.http.post<void>(this.UrlServiceV1 + "api/V1/ClienteFornecedor", args);
     }
 }

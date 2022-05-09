@@ -14,15 +14,14 @@
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Data de Compra</ng-template>
-            <mat-form-field appearance="fill">
-                <mat-label>dataCompra: </mat-label>
+            <div>
+                <mat-label>Data Compra: </mat-label>
                 <mat-form-field appearance="fill">
-                    <mat-label>Choose a date</mat-label>
                     <input matInput [matDatepicker]="picker" formControlName="dataCompra">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
-            </mat-form-field>
+            </div>
             <div>
                 <button mat-button matStepperPrevious>Voltar</button>
                 <button mat-button matStepperNext>Próximo</button>
@@ -33,7 +32,7 @@
         <form [formGroup]="firstFormGroup">
             <mat-form-field appearance="fill">
                 <mat-label>Valor de Compra </mat-label>
-                <input matInput formControlName="modoDePreparo" placeholder="Modo de Preparo" required>
+                <input matInput type="number" formControlName="Preco" placeholder="Valor" required>
             </mat-form-field>
             <div>
                 <button mat-button matStepperPrevious>Voltar</button>
