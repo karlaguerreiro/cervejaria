@@ -10,11 +10,11 @@ constructor(private http: HttpClient) { }
 
     protected UrlServiceV1: string = "https://localhost:5001/";
 
-    public obterClientes() : Observable< BaseResponse<ClienteFornecedor[]>> {
-      return this.http.get<BaseResponse<ClienteFornecedor[]>>(this.UrlServiceV1 + "api/V1/Insumo");
+    public obterClientes() : Observable<BaseResponse<ClienteFornecedor[]>> {
+      return this.http.get<BaseResponse<ClienteFornecedor[]>>(this.UrlServiceV1 + "api/V1/ClienteFornecedor");
     }
 
-    public inserirClientes(args: any) : void {
-      this.http.post<void>(this.UrlServiceV1 + "api/V1/ClienteFornecedor", args);
+    public inserirClientes(args: any) : any {
+      return this.http.post<any>(this.UrlServiceV1 + "api/V1/ClienteFornecedor", args);
     }
 }

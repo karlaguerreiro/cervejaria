@@ -34,8 +34,8 @@ export class AddInsumoComponent implements OnInit {
   public Save()
   {
     this.firstFormGroup.value.dataCompra = this.firstFormGroup.value.dataCompra.toISOString();
-    console.log(this.firstFormGroup.value);
-    this.insumoService.inserirInsumos(this.firstFormGroup.value);
+    var test = this.insumoService.inserirInsumos(this.firstFormGroup.value);
+    console.log(test);
     this.ngOnInit();
   }
 }

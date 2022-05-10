@@ -1,17 +1,15 @@
 ﻿using AutoMapper;
 using Cervejaria.Api.Controllers.Main;
 using Cervejaria.CrossCutting.Interop.ViewModel.Business;
-using Cervejaria.CrossCutting.Interop.ViewModel.Common;
 using Cervejaria.Domain.Business;
 using Cervejaria.Domain.Contracts.Notificator;
 using Cervejaria.Domain.Contracts.Service;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Cervejaria.Api.Controllers.V1
 {
-    [Route("api/[controller]")]
+    [Route("api/V1/[controller]")]
     [ApiController]
     public class ClienteFornecedorController : MainController
     {
