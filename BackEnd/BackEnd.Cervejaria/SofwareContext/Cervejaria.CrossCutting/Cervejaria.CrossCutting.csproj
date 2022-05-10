@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Cervejaria.Service\Cervejaria.Service.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interop\Dto\" />
-  </ItemGroup>
-
 </Project>

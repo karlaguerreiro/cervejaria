@@ -2,11 +2,15 @@
 using Cervejaria.Domain.Contracts;
 using Cervejaria.Domain.Contracts.CommonRepository;
 using Cervejaria.Domain.Contracts.Notificator;
+using Cervejaria.Domain.Contracts.Repository.BusinessRepositoy;
 using Cervejaria.Domain.Contracts.Service;
+using Cervejaria.Domain.Contracts.Service.BusinessServices;
 using Cervejaria.Domain.Contracts.Service.CommonServices;
 using Cervejaria.Repository;
+using Cervejaria.Repository.BusinessRepository;
 using Cervejaria.Repository.CommonRepository;
 using Cervejaria.Service.Base;
+using Cervejaria.Service.BusinessServices;
 using Cervejaria.Service.CommonServices;
 using Cervejaria.Service.Notificator;
 using FluentValidation;
@@ -24,8 +28,10 @@ namespace Cervejaria.CrossCutting.IoC
                 .AddScoped<IInsumoRepository, InsumoRepository>()
                 .AddScoped<IReceitaRepository, ReceitaRepository>()
                 .AddScoped<IProdutoRepository, ProdutoRepository>()
+                .AddScoped<IClienteFornecedorRepository, ClienteFornecedorRepository>()
                 .AddScoped<IInsumoService, InsumoService>()
                 .AddScoped<IProdutoService, ProdutoService>()
+                .AddScoped<IClienteFornecedorService, ClienteFornecedorService>()
                 .AddScoped<IReceitaService, ReceitaService>()
                 .AddScoped<INotificator, Notificator>();
     }
