@@ -1,72 +1,109 @@
 <form class="formulario">
-    <mat-form-field class="width" appearance="fill">
-      <mat-label>Tipo: Fornecedor</mat-label>
-      <input matInput disabled value="">
-    </mat-form-field>
-  
-    <table class="width" cellspacing="0"><tr>
-      <td><mat-form-field class="width" appearance="fill">
-        <mat-label>Nome do Fornecedor</mat-label>
-        <input matInput>
-      </mat-form-field></td>
-      <br>
-      <td><mat-form-field class="width" appearance="fill">
-        <mat-label>CPF/CNPJ</mat-label>
-        <input matInput>
-      </mat-form-field></td>
-      <td><mat-form-field class="width" appearance="fill">
-        <mat-label>Inscrição Estadual</mat-label>
-        <input matInput>
-      </mat-form-field></td>
-  
-    </tr></table>
-    <table class="width" cellspacing="0"><tr>
-      <td><mat-form-field class="width" appearance="fill">
-        <mat-label>Nome do Contato</mat-label>
-        <input matInput placeholder="Ex. João Carlos">
-      </mat-form-field></td>
-      <td><mat-form-field class="width" appearance="fill">
-        <mat-label>Contato (email)</mat-label>
-        <input matInput placeholder="Ex. contato@empresa.com.br">
-      </mat-form-field></td>
-      <td><mat-form-field class="width" appearance="fill">
-        <mat-label>Telefone</mat-label>
-        <input matInput placeholder="Ex. (41) 3666-4545">
-      </mat-form-field></td>
-    </tr></table>
-  
-    <table class="width" cellspacing="0"><tr>
-      <td><mat-form-field class="width" appearance="fill">
-        <mat-label>Endereço</mat-label>
-        <input matInput placeholder="Ex. Rua Antonia">
-      </mat-form-field></td>
-      <td><mat-form-field class="width" appearance="fill">
-        <mat-label>Número</mat-label>
-        <input matInput placeholder="Ex. 1069">
-      </mat-form-field></td>
-      <td><mat-form-field class="width" appearance="fill">
-        <mat-label>Complemento</mat-label>
-        <input matInput placeholder="Ex. Barracão, Loja, etc...">
-      </mat-form-field></td>
-      </tr></table>
-  
-    <table class="width" cellspacing="0"><tr>
-      <td><mat-form-field class="width" appearance="fill">
-        <mat-label>Cidade</mat-label>
-        <input matInput placeholder="Ex. Curitiba">
-      </mat-form-field></td>
-      <td><mat-form-field class="width" appearance="fill">
-        <mat-label>Estado</mat-label>
-        <input matInput placeholder="Ex. PR">      
-      </mat-form-field></td>
-      <td><mat-form-field class="width" appearance="fill">
-        <mat-label>CEP</mat-label>
-        <input matInput #postalCode maxlength="15" placeholder="Ex. 83333-111">
-        <mat-hint align="end">{{postalCode.value.length}} / 8</mat-hint>
-      </mat-form-field></td>
-    </tr></table>
+  <p class="new-header fw-bold my-3 h4">Novo Fornecedor</p>
+  <mat-form-field class="w-99" appearance="fill">
+    <mat-label>Tipo: Fornecedor</mat-label>
+    <input matInput disabled value="" />
+  </mat-form-field>
+
+  <table class="w-100" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Nome do Fornecedor</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </td>
+      <br/>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>CPF/CNPJ</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Inscrição Estadual</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="w-100" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Nome do Contato</mat-label>
+          <input matInput placeholder="Ex. João Carlos" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Contato (email)</mat-label>
+          <input matInput placeholder="Ex. contato@empresa.com.br" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Telefone</mat-label>
+          <input matInput placeholder="Ex. (41) 3666-4545" />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="w-100" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Endereço</mat-label>
+          <input matInput placeholder="Ex. Rua Antonia" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Número</mat-label>
+          <input matInput placeholder="Ex. 1069" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Complemento</mat-label>
+          <input matInput placeholder="Ex. Barracão, Loja, etc..." />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="w-100" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Cidade</mat-label>
+          <input matInput placeholder="Ex. Curitiba" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Estado</mat-label>
+          <input matInput placeholder="Ex. PR" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>CEP</mat-label>
+          <input
+            matInput
+            #postalCode
+            maxlength="15"
+            placeholder="Ex. 83333-111"
+          />
+          <mat-hint align="end">{{ postalCode.value.length }} / 8</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <div class="btn-finish">
     <button type="submit" mat-raised-button class="Salvar">Salvar</button>
     <button type="reset" mat-raised-button class="Limpar">Limpar</button>
-  
-  </form>
-  
+  </div>
+</form>
