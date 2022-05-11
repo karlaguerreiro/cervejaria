@@ -19,6 +19,7 @@ namespace Cervejaria.CrossCutting.Mapper.Common
                 .ForMember(dest => dest.Complemento, opt => opt.MapFrom(e => e.Endereco.Complemento))
                 .ForMember(dest => dest.Numero, opt => opt.MapFrom(e => e.Endereco.Numero))
                 .ReverseMap();
+
             CreateMap<ContatoViewModel, Contato>().ReverseMap();
             CreateMap<EnderecoViewModel, Endereco>().ReverseMap();
             CreateMap<InfoUsuarioViewModel, InfoUsuario>().ReverseMap();

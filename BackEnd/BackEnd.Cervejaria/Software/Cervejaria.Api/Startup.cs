@@ -3,6 +3,7 @@ using Cervejaria.Repository.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,7 +27,8 @@ namespace Cervejaria.Api
         {
             services.AddDbContext<Context>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseInMemoryDatabase("CERVEJARIA");
+                // options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddSingleton(sp => sp.GetRequiredService<ILoggerFactory>().CreateLogger("DefaultLogger"));
 
@@ -65,6 +67,7 @@ namespace Cervejaria.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapSwagger();
             });
         }
         private static void ConfigureFormatters(IServiceCollection services)
