@@ -1,0 +1,57 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 80%;
+    /* padding-left: 10px; */
+  }
+  
+  .p {
+    align-content: space-between;
+  }
+  
+  .w-99{
+    width: 99.5%;
+  }
+  
+  td{
+    padding:0px 10px 0px 5px;
+  }
+  
+  section {
+    display: table;
+  }
+  
+  
+  .formulario{
+    padding: 0 25px 0 25px;
+    width: 100%;
+  }
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    min-width: 120px;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+  
+  .btn-finish{
+    justify-content: right;
+    display: flex;
+    padding-top: 10px;
+  }
+  
+  .Salvar {
+    background-color: #FFAF00;
+    color: aliceblue;
+    margin: 5px 2px 0 2px;
+  }
+  
+  .Limpar {
+    background-color: black;
+    color: aliceblue;
+    margin: 5px 2px 0 2px;
+  }
