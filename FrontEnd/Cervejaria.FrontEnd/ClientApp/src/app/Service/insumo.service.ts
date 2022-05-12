@@ -9,7 +9,7 @@ import { Insumo } from '../Models/Insumo';
 export class InsumoService {
 constructor(private http: HttpClient) { }
 
-    protected UrlServiceV1: string = "https://localhost:5001/";
+    protected UrlServiceV1: string = "https://cervejaria-api.herokuapp.com/";
 
     headerOptions = {
       headers: new HttpHeaders({

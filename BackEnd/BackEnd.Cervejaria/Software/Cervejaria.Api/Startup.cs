@@ -28,7 +28,7 @@ namespace Cervejaria.Api
             services.AddDbContext<Context>(options =>
             {
                 options.UseInMemoryDatabase("CERVEJARIA");
-                // options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                // options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")); DESCOMENTAR PARA UTILIZAR O SQLSERVER
             });
             services.AddSingleton(sp => sp.GetRequiredService<ILoggerFactory>().CreateLogger("DefaultLogger"));
 

@@ -8,7 +8,7 @@ import { ClienteFornecedor } from '../Models/ClienteFornecedor';
 export class ClienteService {
 constructor(private http: HttpClient) { }
 
-    protected UrlServiceV1: string = "https://localhost:5001/";
+    protected UrlServiceV1: string = "https://cervejaria-api.herokuapp.com/";
 
     public obterClientes() : Observable<BaseResponse<ClienteFornecedor[]>> {
       return this.http.get<BaseResponse<ClienteFornecedor[]>>(this.UrlServiceV1 + "api/V1/ClienteFornecedor");
