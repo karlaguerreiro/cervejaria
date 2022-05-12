@@ -4,14 +4,10 @@
         <mat-label>Tipo: Cliente</mat-label>
         <input matInput value="" formControlName="Tipo">
     </mat-form-field>-->
-  <mat-form-field class="w-99" appearance="fill">
-    <mat-label>Tipo: Cliente</mat-label>
-    <mat-select [formControl]="tipoControl" name="Tipo" ngDefaultControl>
-      <mat-option *ngFor="let tipo of tipos" [value]="tipo.value">
-        {{ tipo.viewValue }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field class="w-99" appearance="fill">
+      <mat-label>Tipo: Cliente</mat-label>
+      <input matInput disabled value="" />
+    </mat-form-field>
 
   <table class="w-100" cellspacing="5">
     <tr>
