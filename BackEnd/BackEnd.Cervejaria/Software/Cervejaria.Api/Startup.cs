@@ -30,6 +30,7 @@ namespace Cervejaria.Api
                 options.UseInMemoryDatabase("CERVEJARIA");
                 // options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")); DESCOMENTAR PARA UTILIZAR O SQLSERVER
             });
+
             services.AddSingleton(sp => sp.GetRequiredService<ILoggerFactory>().CreateLogger("DefaultLogger"));
 
             services.AutoMapperModule();
