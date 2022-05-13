@@ -1,13 +1,9 @@
 <form class="formulario" [formGroup]="firstFormGroup">
   <p class="new-header fw-bold my-3 h4">Novo cliente</p>
-  <!--<mat-form-field class="w-100" appearance="fill">
-        <mat-label>Tipo: Cliente</mat-label>
-        <input matInput value="" formControlName="Tipo">
-    </mat-form-field>-->
-    <mat-form-field class="w-99" appearance="fill">
-      <mat-label>Tipo: Cliente</mat-label>
-      <input matInput disabled value="" />
-    </mat-form-field>
+  <mat-form-field class="w-99" appearance="fill">
+    <mat-label>Cliente</mat-label>
+    <input matInput disabled value="" />
+  </mat-form-field>
 
   <table class="w-100" cellspacing="5">
     <tr>
@@ -39,31 +35,19 @@
         <td>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Nome do Contato</mat-label>
-            <input
-              matInput
-              placeholder="Ex. João Carlos"
-              formControlName="Contato1"
-            />
+            <input matInput placeholder="Ex. João Carlos" formControlName="Contato1" />
           </mat-form-field>
         </td>
         <td>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Contato (email)</mat-label>
-            <input
-              matInput
-              placeholder="Ex. contato@empresa.com.br"
-              formControlName="Email"
-            />
+            <input matInput placeholder="Ex. contato@empresa.com.br" formControlName="Email" />
           </mat-form-field>
         </td>
         <td>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Telefone</mat-label>
-            <input
-              matInput
-              placeholder="Ex. (41) 3666-4545"
-              formControlName="Telefone"
-            />
+            <input matInput placeholder="Ex. (41) 3666-4545" formControlName="Telefone" />
           </mat-form-field>
         </td>
       </tr>
@@ -76,12 +60,7 @@
         <td>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>CEP</mat-label>
-            <input
-              matInput
-              #postalCode
-              maxlength="15"
-              placeholder="Ex. 83333-111"
-            />
+            <input matInput #postalCode maxlength="15" placeholder="Ex. 83333-111" />
           </mat-form-field>
         </td>
         <td>
@@ -93,13 +72,7 @@
         <td>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Número</mat-label>
-            <input
-              matInput
-              placeholder="Ex. 1069"
-              formControlName="Numero"
-              type="number"
-              maxlength="15"
-            />
+            <input matInput placeholder="Ex. 1069" formControlName="Numero" type="number" maxlength="15" />
           </mat-form-field>
         </td>
       </tr>
@@ -108,11 +81,7 @@
         <td>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Complemento</mat-label>
-            <input
-              matInput
-              placeholder="Ex. Barracão, Loja, etc..."
-              formControlName="Complemento"
-            />
+            <input matInput placeholder="Ex. Barracão, Loja, etc..." formControlName="Complemento" />
           </mat-form-field>
         </td>
 
