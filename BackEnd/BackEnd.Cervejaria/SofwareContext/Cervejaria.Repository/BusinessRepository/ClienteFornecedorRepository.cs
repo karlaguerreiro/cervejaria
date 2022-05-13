@@ -1,7 +1,9 @@
 ﻿using Cervejaria.Domain.Business;
+using Cervejaria.Domain.Common;
 using Cervejaria.Domain.Contracts.Repository.BusinessRepositoy;
 using Cervejaria.Repository.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,5 +19,16 @@ namespace Cervejaria.Repository.BusinessRepository
                 .Include(e => e.Endereco)
                 .Include(e => e.Insumos)
                 .Where(e => e.Id == id).FirstOrDefaultAsync();
+
+        public async Task<IEnumerable<ClienteFornecedor>> GetByType(int type) => 
+            await DbSet.Select(e => new ClienteFornecedor()
+        {
+            Nome = e.Nome,
+            Id = e.Id,
+            Contato = new Contato()
+            {
+                Contato1 = e.Contato.Contato1
+            },
+        }).Where(e => (int)e.Tipo == type).ToListAsync();
     }
 }
