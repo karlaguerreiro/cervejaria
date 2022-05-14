@@ -1,33 +1,49 @@
-<form class="formulario">
-    <p class="new-header fw-bold my-3 h4">Novo Funcionário</p>
-    <mat-form-field class="w-99" appearance="fill">
-      <mat-label>Tipo: Funcionário</mat-label>
-      <input matInput disabled value="" />
-    </mat-form-field>
-  
+<form class="formulario" [formGroup]="firstFormGroup">
+  <p class="new-header fw-bold my-3 h4">Novo Funcionário</p>
+  <mat-form-field class="w-99" appearance="fill">
+    <mat-label>Funcionário</mat-label>
+    <input matInput disabled value="" />
+  </mat-form-field>
+
+  <table class="w-100" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Nome do Funcionario</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </td>
+      <br />
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>CPF</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Data de Nascimento</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <!-- TODO Arrumar o tamanho do datapicker -->
+
+  <form [formGroup]="secondFormGroup">
     <table class="w-100" cellspacing="0">
       <tr>
         <td>
           <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Nome do Funcionário</mat-label>
-            <input matInput />
+            <mat-label>Contato de Emergência</mat-label>
+            <input matInput placeholder=" João Carlos" />
           </mat-form-field>
         </td>
-        <br/>
         <td>
           <mat-form-field class="w-100" appearance="fill">
-            <mat-label>CPF</mat-label>
-            <input matInput />
-          </mat-form-field>
-        </td>
-        <td>          
-      </tr>
-    </table>
-    <table class="w-100" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Contato (email)</mat-label>
+            <mat-label>Email</mat-label>
             <input matInput placeholder="Ex. contato@empresa.com.br" />
           </mat-form-field>
         </td>
@@ -39,9 +55,18 @@
         </td>
       </tr>
     </table>
-  
+  </form>
+
+
+  <form [formGroup]="thirdFormGroup">
     <table class="w-100" cellspacing="0">
       <tr>
+        <td>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>CEP</mat-label>
+            <input matInput #postalCode maxlength="15" placeholder="Ex. 83333-111" />
+          </mat-form-field>
+        </td>
         <td>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Endereço</mat-label>
@@ -51,20 +76,19 @@
         <td>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Número</mat-label>
-            <input matInput placeholder="Ex. 1069" />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Complemento</mat-label>
-            <input matInput placeholder="Ex. Barracão, Loja, etc..." />
+            <input matInput placeholder="Ex. 1069" formControlName="Numero" type="number" maxlength="15" />
           </mat-form-field>
         </td>
       </tr>
-    </table>
-  
-    <table class="w-100" cellspacing="0">
+
       <tr>
+        <td>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Complemento</mat-label>
+            <input matInput placeholder="Ex. Barracão, Loja, etc..." formControlName="Complemento" />
+          </mat-form-field>
+        </td>
+
         <td>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Cidade</mat-label>
@@ -74,26 +98,78 @@
         <td>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Estado</mat-label>
-            <input matInput placeholder="Ex. PR" />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>CEP</mat-label>
-            <input
-              matInput
-              #postalCode
-              maxlength="15"
-              placeholder="Ex. 83333-111"
-            />
-            <mat-hint align="end">{{ postalCode.value.length }} / 6</mat-hint>
+            <input matInput placeholder="Ex. PR" maxlength="2" />
           </mat-form-field>
         </td>
       </tr>
     </table>
-    <div class="btn-finish">
-      <button type="submit" mat-raised-button class="Salvar">Salvar</button>
-      <button type="reset" mat-raised-button class="Limpar">Limpar</button>
-    </div>
   </form>
-  
+
+  <p class="new-header my-3 h5">Emprego Anterior</p>
+  <form [formGroup]="fourthFormGroup">
+    <table class="w-100" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Empresa</mat-label>
+            <input matInput placeholder="Ex. Empresa X" formControlName="Empresa" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Cargo</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Data de Entrada</mat-label>
+            <input matInput [matDatepicker]="picker1">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Data de Saída</mat-label>
+            <input matInput [matDatepicker]="picker2">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <!-- TODO - Adicionar um mais para adicionar mais empregos anteriores -->
+
+  <p class="new-header my-3 h5">Cargo na Empresa</p>
+  <form [formGroup]="fifthFormGroup">
+    <table class="w-100" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Cargo</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Descrição</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Período</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <div class="btn-finish">
+    <button type="submit" mat-raised-button class="Salvar">Salvar</button>
+    <button type="reset" mat-raised-button class="Limpar">Limpar</button>
+  </div>
+</form>

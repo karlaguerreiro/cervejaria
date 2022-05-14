@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, 
+          FormControl, 
+          FormGroup, 
+          Validators 
+} from '@angular/forms';
 import { InsumoService } from 'src/app/Service/insumo.service';
+import { tipoUsuario } from 'src/app/Models/TipoUsuario';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { window, windowToggle } from 'rxjs';
 
@@ -9,25 +14,31 @@ import { window, windowToggle } from 'rxjs';
   templateUrl: './add-insumo.component.html',
   styleUrls: ['./add-insumo.component.css']
 })
+
+
 export class AddInsumoComponent implements OnInit {
-  isLinear!: true;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
+  thirdFormGroup!: FormGroup;
   control!: FormControl;
-  matDatepicker = new Date;
-  data!: Date;
-  constructor(private _formBuilder: FormBuilder, private insumoService: InsumoService)
-  {
-  }
+  @Input()
+  tipoControl: FormControl = new FormControl(0);
+  dataSource: any;
+  date = new FormControl(new Date());
+  serializedDate = new FormControl(new Date().toISOString());
+
+  constructor(
+    private _formBuilder: FormBuilder, 
+    private insumoService: InsumoService){}
+
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      tituloInsumo: ['', Validators.required],
-      ingredientes: ['', Validators.required],
-      Preco: [0, Validators.required],
+      preco_unit: [0, Validators.required],
       nome: ['', Validators.required],
       dataCompra: [new Date(),  Validators.required],
       unidademed: ['', Validators.required],
+      validade: [new Date(), Validators.required],
     });
 }
 

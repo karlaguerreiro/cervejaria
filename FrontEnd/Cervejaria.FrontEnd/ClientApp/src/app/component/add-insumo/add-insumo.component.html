@@ -1,52 +1,76 @@
-<mat-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Insira Nome do insumo</ng-template>
-            <mat-form-field appearance="fill">
-                <mat-label>Nome do insumo: </mat-label>
-                <input matInput placeholder="Nome do Insumo" formControlName="nome" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperNext>Próximo</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Data de Compra</ng-template>
-            <div>
-                <mat-label>Data Compra: </mat-label>
-                <mat-form-field appearance="fill">
-                    <input matInput [matDatepicker]="picker" formControlName="dataCompra">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
+<form class="formulario" [formGroup]="firstFormGroup">
+    <p class="new-header fw-bold my-3 h4">Novo Insumo</p>
+  <mat-form-field class="w-99" appearance="fill">
+    <mat-label>Insumo</mat-label>
+    <input matInput disabled value="" />
+  </mat-form-field>    
+    <table class="w-100" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Nome Insumo</mat-label>
+                    <input matInput formControlName="nome"/>
                 </mat-form-field>
-            </div>
-            <div>
-                <button mat-button matStepperPrevious>Voltar</button>
-                <button mat-button matStepperNext>Próximo</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="firstFormGroup" label="Valor">
-        <form [formGroup]="firstFormGroup">
-            <mat-form-field appearance="fill">
-                <mat-label>Valor de Compra </mat-label>
-                <input matInput type="number" formControlName="Preco" placeholder="Valor" required>
+            </td>
+            <td>
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Fornecedor</mat-label>
+                    <input matInput formControlName="id_cliente_fornecedor">
+                </mat-form-field>
+            </td>  
+            <td>
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label>Data da Compra</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="dataCompra"/>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </td>       
+        </tr>
+    </table>
+  
+    
+
+    
+    <form [formGroup]="secondFormGroup">
+        <table class="w-100" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Valor Unitário</mat-label>
+                        <input matInput formControlName="preco_unit">
+                    </mat-form-field>
+                </td>      
+                <td>
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Validade Insumo</mat-label>
+                        <input matInput [matDatepicker]="picker1" formControlName="validade">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <form [formGroup]="thirdFormGroup">
+        <table class="w-100" cellspacing="0"><tr>
+        <td>
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Selecione uma Unidade de Medida</mat-label>
+                    <select matNativeControl formControlName="unidademed">
+                    <option value="Selecione" selected>Selecione...</option>
+                    <option value="litros">Litros</option>
+                    <option value="kilos">KG</option>
+                    <option value="unidade">Unidade</option>              
+                    </select>
             </mat-form-field>
-            <div>
-                <button mat-button matStepperPrevious>Voltar</button>
-                <button mat-button matStepperNext>Próximo</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Feito!</ng-template>
-        <p>Insumo adicionado com Sucesso!</p>
-        <div>
-            <button mat-button matStepperPrevious>Voltar</button>
-            <button mat-button (click)="stepper.reset()">Limpar</button>
-            <button mat-button (click)="Save()">Salvar</button>
-        </div>
-    </mat-step>
-</mat-stepper>
+        </td>
+    </table>
+    </form>
+
+    <div class="btn-finish">
+        <button type="submit" mat-raised-button class="Salvar">Salvar</button>
+        <button type="reset" mat-raised-button class="Limpar">Limpar</button>
+      </div>
+</form>
