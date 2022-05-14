@@ -25,6 +25,7 @@ namespace Cervejaria.Repository.BusinessRepository
         {
             Nome = e.Nome,
             Id = e.Id,
+            Tipo = e.Tipo,
             Contato = new Contato()
             {
                 Contato1 = e.Contato.Contato1
