@@ -15,6 +15,7 @@ namespace Cervejaria.CrossCutting.Interop.ViewModel.Business
             Insumos = new HashSet<InsumoViewModel>();
         }
 
+        public int? Id { get; init; }
         public string Nome { get; init; }
         public string CnpjCpf { get; init; }
         public string Ie { get; init; }

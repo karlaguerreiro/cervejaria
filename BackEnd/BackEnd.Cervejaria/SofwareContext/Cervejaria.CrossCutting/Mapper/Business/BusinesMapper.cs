@@ -23,6 +23,8 @@ namespace Cervejaria.CrossCutting.Mapper.Common
             CreateMap<ContatoViewModel, Contato>().ReverseMap();
             CreateMap<EnderecoViewModel, Endereco>().ReverseMap();
             CreateMap<InfoUsuarioViewModel, InfoUsuario>().ReverseMap();
+            CreateMap<EmpregoAnteriorViewModel, EmpregoAnterior>().ReverseMap();
+            CreateMap<CargoViewModel, Cargo>().ReverseMap();
             CreateMap<UsuarioViewModel, Usuario>().ReverseMap();
         }
     }
