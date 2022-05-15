@@ -5,6 +5,7 @@ using Cervejaria.Domain.Contracts.Repository.BusinessRepositoy;
 using Cervejaria.Domain.Contracts.Service.BusinessServices;
 using Cervejaria.Service.Base;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cervejaria.Service.BusinessServices
@@ -26,6 +27,11 @@ namespace Cervejaria.Service.BusinessServices
         public override async Task<ClienteFornecedor> GetByIdAsync(int id)
         {
             return await _clienteFornecedorRepository.GetByIdAsync(id);
+        }
+
+        public async Task<IEnumerable<ClienteFornecedor>> GetByType(int type)
+        {
+            return await _clienteFornecedorRepository.GetByType(type);
         }
     }
 }

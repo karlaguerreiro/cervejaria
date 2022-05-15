@@ -68,7 +68,6 @@ namespace Cervejaria.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapSwagger();
             });
         }
         private static void ConfigureFormatters(IServiceCollection services)

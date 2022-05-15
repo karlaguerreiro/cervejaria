@@ -1,7 +1,6 @@
 ﻿using Cervejaria.Domain.Base;
 using Cervejaria.Domain.Common;
 using System;
-using System.Collections.Generic;
 
 namespace Cervejaria.Domain.Business
 {

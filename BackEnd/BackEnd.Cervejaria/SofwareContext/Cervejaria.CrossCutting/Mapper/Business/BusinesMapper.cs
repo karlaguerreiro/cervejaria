@@ -6,9 +6,9 @@ using Cervejaria.Domain.Common;
 
 namespace Cervejaria.CrossCutting.Mapper.Common
 {
-    public class ClienteFornecedorMapper : Profile
+    public class BusinesMapper : Profile
     {
-        public ClienteFornecedorMapper()
+        public BusinesMapper()
         {
             CreateMap<ClienteFornecedorViewModel, ClienteFornecedor>().ReverseMap();
             CreateMap<ClienteFornecedor, ClienteFornecedorDto>()
@@ -23,6 +23,9 @@ namespace Cervejaria.CrossCutting.Mapper.Common
             CreateMap<ContatoViewModel, Contato>().ReverseMap();
             CreateMap<EnderecoViewModel, Endereco>().ReverseMap();
             CreateMap<InfoUsuarioViewModel, InfoUsuario>().ReverseMap();
+            CreateMap<EmpregoAnteriorViewModel, EmpregoAnterior>().ReverseMap();
+            CreateMap<CargoViewModel, Cargo>().ReverseMap();
+            CreateMap<UsuarioViewModel, Usuario>().ReverseMap();
         }
     }
 }
