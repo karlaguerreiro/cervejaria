@@ -1,76 +1,54 @@
 <form class="formulario" [formGroup]="firstFormGroup">
-    <p class="new-header fw-bold my-3 h4">Novo Insumo</p>
+  <p class="new-header fw-bold my-3 h4">Novo Insumo</p>
   <mat-form-field class="w-99" appearance="fill">
     <mat-label>Insumo</mat-label>
     <input matInput disabled value="" />
-  </mat-form-field>    
-    <table class="w-100" cellspacing="0">
-        <tr>
-            <td>
-                <mat-form-field class="w-100" appearance="fill">
-                    <mat-label>Nome Insumo</mat-label>
-                    <input matInput formControlName="nome"/>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field class="w-100" appearance="fill">
-                    <mat-label>Fornecedor</mat-label>
-                    <input matInput formControlName="id_cliente_fornecedor">
-                </mat-form-field>
-            </td>  
-            <td>
-                <mat-form-field class="w-100" appearance="fill">
-                  <mat-label>Data da Compra</mat-label>
-                  <input matInput [matDatepicker]="picker" formControlName="dataCompra"/>
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-              </td>       
-        </tr>
-    </table>
-  
-    
+  </mat-form-field>
+  <div class="w-100 d-flex flex-wrap justify-content-between">
+    <mat-form-field class="col-4" appearance="fill">
+      <mat-label>Nome Insumo</mat-label>
+      <input matInput formControlName="nome" />
+    </mat-form-field>
 
-    
-    <form [formGroup]="secondFormGroup">
-        <table class="w-100" cellspacing="0">
-            <tr>
-                <td>
-                    <mat-form-field class="w-100" appearance="fill">
-                        <mat-label>Valor Unitário</mat-label>
-                        <input matInput formControlName="preco_unit">
-                    </mat-form-field>
-                </td>      
-                <td>
-                    <mat-form-field class="w-100" appearance="fill">
-                        <mat-label>Validade Insumo</mat-label>
-                        <input matInput [matDatepicker]="picker1" formControlName="validade">
-                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                        <mat-datepicker #picker1></mat-datepicker>
-                      </mat-form-field>
-                </td>
-            </tr>
-        </table>
-    </form>
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Fornecedor</mat-label>
+      <input matInput formControlName="fornecedor" />
+    </mat-form-field>
 
-    <form [formGroup]="thirdFormGroup">
-        <table class="w-100" cellspacing="0"><tr>
-        <td>
-            <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Selecione uma Unidade de Medida</mat-label>
-                    <select matNativeControl formControlName="unidademed">
-                    <option value="Selecione" selected>Selecione...</option>
-                    <option value="litros">Litros</option>
-                    <option value="kilos">KG</option>
-                    <option value="unidade">Unidade</option>              
-                    </select>
-            </mat-form-field>
-        </td>
-    </table>
-    </form>
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Data da Compra</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dataCompra" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
-    <div class="btn-finish">
-        <button type="submit" mat-raised-button class="Salvar">Salvar</button>
-        <button type="reset" mat-raised-button class="Limpar">Limpar</button>
-      </div>
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Valor Unitário</mat-label>
+      <input matInput formControlName="valorUnitario" />
+    </mat-form-field>
+
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Validade Insumo</mat-label>
+      <input matInput [matDatepicker]="picker1" formControlName="validade" />
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-4 px-2">
+      <mat-label>Selecione uma Unidade de Medida</mat-label>
+      <select matNativeControl formControlName="unidadeMedida">
+        <option value="Selecione" selected>Selecione...</option>
+        <option value="litros">Litros</option>
+        <option value="kilos">KG</option>
+        <option value="unidade">Unidade</option>
+      </select>
+    </mat-form-field>
+  </div>
+
+  <div class="btn-finish">
+    <button type="submit" mat-raised-button class="Salvar" (click)="Save()">
+      Salvar
+    </button>
+    <button type="reset" mat-raised-button class="Limpar">Limpar</button>
+  </div>
 </form>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { BaseResponse } from '../Models/BaseResponse';
-import { Insumo } from '../Models/Insumo';
+import { DtoInsumo, Insumo } from '../Models/Insumo';
 
 
 @Injectable()
@@ -20,7 +20,7 @@ constructor(private http: HttpClient) { }
       return this.http.get<BaseResponse<Insumo[]>>(this.UrlServiceV1 + "api/V1/Insumo");
     }
 
-    public inserirInsumos(args: any) : Observable<any> {
-      return this.http.post<any>(this.UrlServiceV1 + "api/V1/Insumo", args, this.headerOptions);
+    public inserirInsumo(insumo: DtoInsumo) : Observable<Insumo> {
+      return this.http.post<any>(this.UrlServiceV1 + "api/V1/Insumo", insumo, this.headerOptions);
     }
 }
