@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ClienteFornecedor } from 'src/app/Models/ClienteFornecedor';
 
 @Component({
   selector: 'app-list-cliente',
@@ -41,7 +42,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
     Código: 101,
     Contato: 'Jorge',
   },
-
   {
     Cliente: "Cliente 2",
     Código: 102,
