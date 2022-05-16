@@ -18,5 +18,6 @@ namespace Cervejaria.CrossCutting.Interop.Dto
         public string Cep { get; init; }
         public byte? Numero { get; init; }
         public string Complemento { get; init; }
+        public string Descricao => $"O {Tipo} com telefone {Telefone} e contato {Contato1} e Email {Email} com endereço {Complemento + " no " + Numero + " no " + Cep}";
     }
 }
