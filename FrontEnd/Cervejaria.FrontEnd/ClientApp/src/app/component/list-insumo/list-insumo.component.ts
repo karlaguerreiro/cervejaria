@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InsumoService } from 'src/app/Service/insumo.service';
+import { InsumoService } from 'src/app/Service/Insumo.service';
 
 @Component({
   selector: 'app-list-insumo',

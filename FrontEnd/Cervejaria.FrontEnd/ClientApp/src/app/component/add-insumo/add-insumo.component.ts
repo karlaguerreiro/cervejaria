@@ -5,11 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { InsumoService } from 'src/app/Service/insumo.service';
+import { InsumoService } from 'src/app/Service/Insumo.service';
 import { tipoUsuario } from 'src/app/Models/TipoUsuario';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
-import { window, windowToggle } from 'rxjs';
-import { DtoInsumo, Insumo } from 'src/app/Models/Insumo';
+import { DtoInsumo } from 'src/app/Models/Insumo';
 
 @Component({
   selector: 'app-add-insumo',
@@ -35,24 +34,21 @@ export class AddInsumoComponent implements OnInit {
       valorUnitario: ['', Validators.required],
       validade: ['', Validators.required],
       unidadeMedida: ['', Validators.required],
-  });
+    });
   }
 
-  ngOnInit() {
-
-    // async functions 
-  }
+  ngOnInit() { }
 
   public Save() {
     console.log(JSON.stringify(this.firstFormGroup.valid));
-    if(this.firstFormGroup.valid){
-      const dtoInsumo : DtoInsumo = {
-        nome        : this.firstFormGroup.value.nome,
-        dataCompra  : this.firstFormGroup.value.dataCompra,
-        precoUnit   : this.firstFormGroup.value.valorUnitario,
-        unidMedida  : this.firstFormGroup.value.unidadeMedida,
+    if (this.firstFormGroup.valid) {
+      const dtoInsumo: DtoInsumo = {
+        nome: this.firstFormGroup.value.nome,
+        dataCompra: this.firstFormGroup.value.dataCompra,
+        precoUnit: this.firstFormGroup.value.valorUnitario,
+        unidMedida: this.firstFormGroup.value.unidadeMedida,
         idFornecedor: this.firstFormGroup.value.fornecedor,
-        validade    : this.firstFormGroup.value.validade
+        validade: this.firstFormGroup.value.validade
       }
       this.insumoService.inserirInsumo(dtoInsumo).subscribe(
         (response) => {
@@ -64,6 +60,6 @@ export class AddInsumoComponent implements OnInit {
     // this.firstFormGroup.value.dataCompra = this.firstFormGroup.value.dataCompra.toISOString();
     // var test = this.insumoService.inserirInsumos(this.firstFormGroup.value);
     // console.log(test);
-    
+
   }
 }

@@ -16,6 +16,7 @@ constructor(private http: HttpClient) { }
         'Content-Type': 'application/json'
       })
     }
+    
     public obterInsumos() : Observable< BaseResponse<Insumo[]>> {
       return this.http.get<BaseResponse<Insumo[]>>(this.UrlServiceV1 + "api/V1/Insumo");
     }

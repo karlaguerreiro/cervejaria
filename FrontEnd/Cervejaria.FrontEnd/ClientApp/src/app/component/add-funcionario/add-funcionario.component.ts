@@ -1,73 +1,124 @@
+import { DtoContato } from './../../DTOs/DtoContato';
+import { DtoEndereco } from './../../DTOs/DtoEndereco';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder,
-         FormControl, 
-         FormGroup, 
-         Validators 
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
 } from '@angular/forms';
-import { tipoUsuario } from 'src/app/Models/TipoUsuario';
-import { ClienteService } from 'src/app/Service/Cliente.Service';
+import { FuncionarioService } from 'src/app/Service/Funcionario.service';
+import { DtoInfoUsuario } from 'src/app/DTOs/DtoInfoUsuario';
+import { DtoUsuario } from 'src/app/DTOs/DtoUsuario';
+import { DtoCargo } from 'src/app/DTOs/DtoCargo';
+import { DtoEmpregoAnterior } from 'src/app/DTOs/DtoEmpregoAnterior';
 
 @Component({
   selector: 'app-add-funcionario',
   templateUrl: './add-funcionario.component.html',
-  styleUrls: ['./add-funcionario.component.css']
+  styleUrls: ['./add-funcionario.component.css'],
 })
-
-
 export class AddFuncionarioComponent implements OnInit {
-  firstFormGroup!: FormGroup;
-  secondFormGroup!: FormGroup;
-  thirdFormGroup!: FormGroup;
-  fourthFormGroup!: FormGroup;
-  fifthFormGroup!: FormGroup;
+  funcionarioForm: FormGroup;
   @Input()
   tipoControl: FormControl = new FormControl(0);
   dataSource: any;
+  date = new FormControl(new Date());
+  serializedDate = new FormControl(new Date().toISOString());
+
   constructor(
     private _formBuilder: FormBuilder,
-    private _clienteService: ClienteService
-  ) {}
+    private _funcionarioService: FuncionarioService
+  ) {
+    this.funcionarioForm = this._formBuilder.group({
+      //Info Usuario
+      nome: ['', Validators.required],
+      cpf: ['', Validators.required],
+      dataNascimento: ['', Validators.required],
 
-  ngOnInit(): void {
-    this.firstFormGroup = this._formBuilder.group({
-      Nome: [''],
-      Cpf: [''],
-      Contato: (this.secondFormGroup = this._formBuilder.group({
-        Telefone: ['', Validators.required],
-        Contato1: ['', Validators.required],
-        Email: ['', Validators.email],
-      })),
-      Endereco: (this.thirdFormGroup = this._formBuilder.group({
-        CEP: ['', Validators.max(8)],
-        Numero: [0, Validators.required],
-        Complemento: ['', Validators.required],
-      })),
-      EmpregoAnterior: (this.fourthFormGroup = this._formBuilder.group({
-        Empresa: ['', Validators.required],
-        Cargo: ['', Validators.required],
-      })),
-      EmpregoAtual: (this.fifthFormGroup = this._formBuilder.group({
-        Funcao: ['', Validators.required],
-        Descricao: ['', Validators.required],
-      })),
+      //Contato
+      contato: ['', Validators.required],
+      email: ['', Validators.email],
+      telefone: ['', Validators.required],
+
+      //Endereco
+      cep: ['', Validators.required],
+      endereco: ['', Validators.required],
+      numero: ['', Validators.required],
+      complemento: ['', Validators.required],
+
+      //Emprego anterior
+      empresa: ['', Validators.required],
+      cargo: ['', Validators.required],
+      dataEntrada: ['', Validators.required],
+      dataSaida: ['', Validators.required],
+
+      //Usuario
+      nomeUsuario: ['', Validators.required],
+      senha: ['', Validators.required],
+      nivelAcesso: ['', Validators.required],
     });
   }
-// TODO terminar de criar o componente
 
+  ngOnInit() {}
 
+  // TODO terminar de criar o componente
 
-  Save() {
-    //console.log(this.firstFormGroup.value);
-    var x = this._clienteService
-      .inserirClientes(this.firstFormGroup.value)
-      .subscribe({
-        next: (base: any) => {
-          let x = base;
-          this.firstFormGroup.value.Nome = x.data.nome;
-          this.firstFormGroup.value.CnpjCpf = x.data.cpf;
-          console.log(this.firstFormGroup.value);
-        },
-      });
+  public async Save() {
+    console.log(JSON.stringify(this.funcionarioForm.valid));
+    if (this.funcionarioForm.valid) {
+      const endereco: DtoEndereco = {
+        cep: this.funcionarioForm.value.cep,
+        complemento: this.funcionarioForm.value.complemento,
+        numero: this.funcionarioForm.value.numero,
+      };
+      const contato: DtoContato = {
+        email: this.funcionarioForm.value.email,
+        telefone: this.funcionarioForm.value.telefone,
+        contato: this.funcionarioForm.value.contato,
+      };
+      const usuario: DtoUsuario = {
+        nome_usuario: this.funcionarioForm.value.nomeUsuario,
+        senha: this.funcionarioForm.value.senha,
+        nivel_acesso: this.funcionarioForm.value.nivelAcesso,
+      };
+      //Emprego Anterior
+      const emprego: DtoEmpregoAnterior = {
+        empresa: this.funcionarioForm.value.empresa,
+        cargo: this.funcionarioForm.value.cargo,
+        data_entrada: this.funcionarioForm.value.dataEntrada,
+        data_saida: this.funcionarioForm.value.dataSaida,
+      };
+      //Cargo á exercer
+      const cargo: DtoCargo = {
+        funcao: this.funcionarioForm.value.funcao,
+        // salario: this.funcionarioForm.value.salario,
+        // data_admissao: this.funcionarioForm.value.dataAdmissao,
+        // data_demissao: this.funcionarioForm.value.dataDemissao,
+        descricao: this.funcionarioForm.value.descricao,
+      };
+
+      const info_usuario: DtoInfoUsuario = {
+        nome: this.funcionarioForm.value.nome,
+        cpf: this.funcionarioForm.value.cpf,
+        data_nasc: this.funcionarioForm.value.dataNascimento,
+        // POST Endereco, return id
+        id_endereco: await this._funcionarioService.createEndereco(endereco),
+        // POST Cargo,  return id
+        id_cargo: await this._funcionarioService.createCargo(cargo),
+        // POST Contato, return id
+        id_contato: await this._funcionarioService.createContato(contato),
+        // POST Emprego Anterior,  return id
+        id_emprego: await this._funcionarioService.createEmpregoAnterior(
+          emprego
+        ),
+        // POST Usuario,  return id
+        id_usuario: await this._funcionarioService.createUsuario(usuario),
+      };
+
+      const idInfoUsuario = await this._funcionarioService.createInfoUsuario(
+        info_usuario
+      );
+    }
   }
-
 }

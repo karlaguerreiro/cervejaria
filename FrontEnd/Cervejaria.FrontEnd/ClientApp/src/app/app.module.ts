@@ -19,7 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AddInsumoComponent } from './component/add-insumo/add-insumo.component';
-import { InsumoService } from './Service/insumo.service';
+import { InsumoService } from './Service/Insumo.service';
 import { ListFornecedorComponent } from './component/list-fornecedor/list-fornecedor.component';
 import { FornecedorComponent } from './views/fornecedor/fornecedor.component';
 import { AddFornecedorComponent } from './component/add-fornecedor/add-fornecedor.component';
