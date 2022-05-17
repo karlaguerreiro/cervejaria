@@ -39,6 +39,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ClienteService } from './Service/Cliente.Service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { FuncionarioService } from './Service/Funcionario.service';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { MatSelectModule } from '@angular/material/select';
   providers: [
     InsumoService,
     ClienteService,
+    FuncionarioService,
     { provide: APP_BASE_HREF, useValue: '/' }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
