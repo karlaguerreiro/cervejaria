@@ -1,3 +1,6 @@
+// import { ReceitaService } from './Service/Receita.service';
+// import { ProdutoService } from './Service/Produto.service';
+// import { FornecedorService } from './Service/Fornecedor.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -87,6 +90,9 @@ import { FuncionarioService } from './Service/Funcionario.service';
   providers: [
     InsumoService,
     ClienteService,
+    // FornecedorService,
+    // ProdutoService,
+    // ReceitaService,
     FuncionarioService,
     { provide: APP_BASE_HREF, useValue: '/' }
   ],

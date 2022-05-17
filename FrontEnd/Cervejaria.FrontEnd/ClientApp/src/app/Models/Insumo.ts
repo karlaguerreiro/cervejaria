@@ -7,12 +7,3 @@ export interface  Insumo {
   //fornecedor : Fornecedor;
 }
 
-// TODO> Criar um DTO para cada tabela do banco de dados.
-export interface  DtoInsumo {
-  nome: string ;
-  dataCompra: string;
-  precoUnit: number;
-  unidMedida: string;
-  idFornecedor: number;
-  validade: string;
-}

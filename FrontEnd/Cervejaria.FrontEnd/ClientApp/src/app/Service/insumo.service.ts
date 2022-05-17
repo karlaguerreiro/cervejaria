@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { BaseResponse } from '../Models/BaseResponse';
-import { DtoInsumo, Insumo } from '../Models/Insumo';
+import { Insumo } from '../Models/Insumo';
+import { DtoInsumo } from '../DTOs/DtoInsumo';
 
 
 @Injectable()
