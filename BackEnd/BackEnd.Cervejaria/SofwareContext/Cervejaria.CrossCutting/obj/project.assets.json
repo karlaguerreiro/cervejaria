@@ -2007,37 +2007,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Arthur Pereira\\.nuget\\packages\\": {}
+    "C:\\Users\\programacao\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\GitPessoal\\CSharp\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.CrossCutting\\Cervejaria.CrossCutting.csproj",
+      "projectUniqueName": "C:\\Users\\programacao\\Documents\\GitHub\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.CrossCutting\\Cervejaria.CrossCutting.csproj",
       "projectName": "Cervejaria.CrossCutting",
-      "projectPath": "E:\\GitPessoal\\CSharp\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.CrossCutting\\Cervejaria.CrossCutting.csproj",
-      "packagesPath": "C:\\Users\\Arthur Pereira\\.nuget\\packages\\",
-      "outputPath": "E:\\GitPessoal\\CSharp\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.CrossCutting\\obj\\",
+      "projectPath": "C:\\Users\\programacao\\Documents\\GitHub\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.CrossCutting\\Cervejaria.CrossCutting.csproj",
+      "packagesPath": "C:\\Users\\programacao\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\programacao\\Documents\\GitHub\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.CrossCutting\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Arthur Pereira\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\programacao\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\GitPessoal\\CSharp\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Repository\\Cervejaria.Repository.csproj": {
-              "projectPath": "E:\\GitPessoal\\CSharp\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Repository\\Cervejaria.Repository.csproj"
+            "C:\\Users\\programacao\\Documents\\GitHub\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Repository\\Cervejaria.Repository.csproj": {
+              "projectPath": "C:\\Users\\programacao\\Documents\\GitHub\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Repository\\Cervejaria.Repository.csproj"
             },
-            "E:\\GitPessoal\\CSharp\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Service\\Cervejaria.Service.csproj": {
-              "projectPath": "E:\\GitPessoal\\CSharp\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Service\\Cervejaria.Service.csproj"
+            "C:\\Users\\programacao\\Documents\\GitHub\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Service\\Cervejaria.Service.csproj": {
+              "projectPath": "C:\\Users\\programacao\\Documents\\GitHub\\cervejaria\\BackEnd\\BackEnd.Cervejaria\\SofwareContext\\Cervejaria.Service\\Cervejaria.Service.csproj"
             }
           }
         }
@@ -2080,7 +2078,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
