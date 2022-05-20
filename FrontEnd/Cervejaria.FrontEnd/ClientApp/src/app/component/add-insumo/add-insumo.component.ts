@@ -8,7 +8,7 @@ import {
 import { InsumoService } from 'src/app/Service/Insumo.service';
 import { tipoUsuario } from 'src/app/Models/TipoUsuario';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
-import { DtoInsumo } from 'src/app/Models/Insumo';
+import { DtoInsumo } from 'src/app/DTOs/DtoInsumo';
 
 @Component({
   selector: 'app-add-insumo',
