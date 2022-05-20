@@ -16,7 +16,7 @@ import { ClienteFornecedor } from 'src/app/Models/ClienteFornecedor';
 })
 export class ListClienteComponent implements OnInit {
   dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['Código', 'Cliente', 'Contato'];
+  columnsToDisplay = ['Código', 'Cliente', 'Contato','IE' , 'Estado'];
   expandedElement: PeriodicElement | undefined;
   isUrl(str: string) {
     if (typeof str == "number") return false;
@@ -33,6 +33,9 @@ export interface PeriodicElement {
   Cliente: string;
   Código: number;
   Contato: string;
+  IE:number,
+  Estado:string,
+  
 
 }
 
@@ -41,11 +44,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
     Cliente: "Cliente 1",
     Código: 101,
     Contato: 'Jorge',
+    IE: 125452125,
+    Estado:"PR",
   },
   {
     Cliente: "Cliente 2",
     Código: 102,
     Contato: 'João',
+    IE:124195235,
+    Estado:"RJ",
   },
 
 ];
