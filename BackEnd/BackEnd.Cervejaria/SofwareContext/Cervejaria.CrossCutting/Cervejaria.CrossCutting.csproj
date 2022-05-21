@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cervejaria.Domain\Cervejaria.Domain.csproj" />
     <ProjectReference Include="..\Cervejaria.Repository\Cervejaria.Repository.csproj" />
     <ProjectReference Include="..\Cervejaria.Service\Cervejaria.Service.csproj" />
   </ItemGroup>
