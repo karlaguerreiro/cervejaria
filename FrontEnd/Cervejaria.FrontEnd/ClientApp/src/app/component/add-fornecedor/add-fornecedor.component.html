@@ -2,7 +2,7 @@
   <p class="new-header fw-bold my-3 h4">Novo Fornecedor</p>
   <mat-form-field class="w-99" appearance="fill">
     <mat-label>Fornecedor</mat-label>
-    <input matInput disabled value=""/>
+    <input matInput disable formControlName="tipo"/>
   </mat-form-field>
   <div class="w-100 d-flex flex-wrap justify-content-between">
     <mat-form-field class="col-4" appearance="fill">
@@ -20,6 +20,9 @@
       <input matInput formControlName="ie" />
     </mat-form-field>
 
+
+    <form class="formulario" [formGroup]="secondFormGroup">
+      
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>CEP</mat-label>
       <input matInput formControlName="cep" />
@@ -33,7 +36,25 @@
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Complemento</mat-label>
       <input matInput formControlName="complemento" />
-    </mat-form-field>       
+    </mat-form-field>
+  </form>
+
+  <form class="formulario" [formGroup]="tFormGroup">
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Contato</mat-label>
+      <input matInput formControlName="contato" />
+    </mat-form-field>
+
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input matInput formControlName="telefone" />
+    </mat-form-field>
+  </form>
   </div>
 
   <div class="btn-finish">
