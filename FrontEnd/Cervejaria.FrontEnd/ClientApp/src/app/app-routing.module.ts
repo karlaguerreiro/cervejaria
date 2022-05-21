@@ -1,4 +1,3 @@
-import { AddProdutoComponent } from './component/add-produto/add-produto.component';
 import { ClienteComponent } from './views/cliente/cliente.component';
 import { InsumoComponent } from './views/insumo/insumo.component';
 import { ReceitaComponent } from './views/receita/receita.component';
@@ -50,10 +49,6 @@ const routes: Routes = [
   {
     path: 'add-receita',
     component: AddReceitaComponent,
-  },
-  {
-    path: 'add-produto',
-    component: AddProdutoComponent,
   },
   {
     path: 'produtos',
