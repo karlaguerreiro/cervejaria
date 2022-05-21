@@ -7,6 +7,7 @@ using Cervejaria.Domain.Contracts.Notificator;
 using Cervejaria.Domain.Contracts.Service.BusinessServices;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cervejaria.Api.Controllers.V1
