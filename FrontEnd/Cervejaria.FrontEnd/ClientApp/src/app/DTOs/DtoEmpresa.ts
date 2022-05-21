@@ -1,4 +1,4 @@
-export interface DtoEmpregoAnterior{
+export interface DtoEmpresa{
     id?: number;
     empresa: string;
     cargo: string;
