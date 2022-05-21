@@ -2,107 +2,65 @@
   <p class="new-header fw-bold my-3 h4">Novo Fornecedor</p>
   <mat-form-field class="w-99" appearance="fill">
     <mat-label>Fornecedor</mat-label>
-    <input matInput disabled value="" />
+    <input matInput disable formControlName="tipo"/>
   </mat-form-field>
+  <div class="w-100 d-flex flex-wrap justify-content-between">
+    <mat-form-field class="col-4" appearance="fill">
+      <mat-label>Nome Fornecedor</mat-label>
+      <input matInput formControlName="nome" />
+    </mat-form-field>
 
-  <table class="w-100" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Nome do Fornecedor</mat-label>
-          <input matInput />
-        </mat-form-field>
-      </td>
-      <br />
-      <td>
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label>CPF/CNPJ</mat-label>
-          <input matInput />
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Inscrição Estadual</mat-label>
-          <input matInput />
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>CPF/CNPJ</mat-label>
+      <input matInput formControlName="cpf_cnpj" />
+    </mat-form-field>
 
-  <form [formGroup]="secondFormGroup">
-    <table class="w-100" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Nome do Contato</mat-label>
-            <input matInput placeholder=" João Carlos" />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Contato (email)</mat-label>
-            <input matInput placeholder="Ex. contato@empresa.com.br" />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Telefone</mat-label>
-            <input matInput placeholder="Ex. (41) 3666-4545" />
-          </mat-form-field>
-        </td>
-      </tr>
-    </table>
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Inscrição Estadual</mat-label>
+      <input matInput formControlName="ie" />
+    </mat-form-field>
+
+
+    <form class="formulario" [formGroup]="secondFormGroup">
+      
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>CEP</mat-label>
+      <input matInput formControlName="cep" />
+    </mat-form-field>
+
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Número</mat-label>
+      <input matInput formControlName="numero" />
+    </mat-form-field>
+
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Complemento</mat-label>
+      <input matInput formControlName="complemento" />
+    </mat-form-field>
   </form>
 
-  <form [formGroup]="thirdFormGroup">
-    <table class="w-100" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>CEP</mat-label>
-            <input matInput #postalCode maxlength="15" placeholder="Ex. 83333-111" />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Endereço</mat-label>
-            <input matInput placeholder="Ex. Rua Antonia" />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Número</mat-label>
-            <input matInput placeholder="Ex. 1069" type="number" maxlength="15" />
-          </mat-form-field>
-        </td>
-      </tr>
+  <form class="formulario" [formGroup]="tFormGroup">
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Contato</mat-label>
+      <input matInput formControlName="contato" />
+    </mat-form-field>
 
-      <tr>
-        <td>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Complemento</mat-label>
-            <input matInput placeholder="Ex. Barracão, Loja, etc..." />
-          </mat-form-field>
-        </td>
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
 
-        <td>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Cidade</mat-label>
-            <input matInput placeholder="Ex. Curitiba" />
-            0
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Estado</mat-label>
-            <input matInput placeholder="Ex. PR" maxlength="2" />
-          </mat-form-field>
-        </td>
-      </tr>
-    </table>
+    <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input matInput formControlName="telefone" />
+    </mat-form-field>
   </form>
+  </div>
+
   <div class="btn-finish">
-    <button type="submit" mat-raised-button class="Salvar">Salvar</button>
+    <button type="submit" mat-raised-button class="Salvar" (click)="Save()">
+      Salvar
+    </button>
     <button type="reset" mat-raised-button class="Limpar">Limpar</button>
   </div>
 </form>
