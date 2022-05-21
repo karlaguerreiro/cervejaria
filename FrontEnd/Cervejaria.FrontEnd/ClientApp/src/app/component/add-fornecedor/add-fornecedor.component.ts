@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder,
-         FormControl, 
-         FormGroup, 
-         Validators 
+         FormControl,
+         FormGroup,
+         Validators
 } from '@angular/forms';
 
 import { tipoUsuario } from 'src/app/Models/TipoUsuario';
-import { ClienteService } from 'src/app/Service/Cliente.Service';
+import { ClienteFornecedorService} from 'src/app/Service/ClienteFornecedor.Service';
 
 @Component({
   selector: 'app-add-fornecedor',
@@ -26,7 +26,7 @@ export class AddFornecedorComponent implements OnInit {
   dataSource: any;
   constructor(
     private _formBuilder: FormBuilder,
-    private _clienteService: ClienteService
+    private _clienteService: ClienteFornecedorService
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class AddFornecedorComponent implements OnInit {
   Save() {
     //console.log(this.firstFormGroup.value);
     var x = this._clienteService
-      .inserirClientes(this.firstFormGroup.value)
+      .Save(this.firstFormGroup.value)
       .subscribe({
         next: (base: any) => {
           let x = base;

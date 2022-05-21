@@ -39,7 +39,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { Component } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { ClienteService } from './Service/Cliente.Service';
+import { ClienteFornecedorService } from './Service/ClienteFornecedor.Service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { FuncionarioService } from './Service/Funcionario.service';
@@ -89,7 +89,7 @@ import { FuncionarioService } from './Service/Funcionario.service';
   ],
   providers: [
     InsumoService,
-    ClienteService,
+    ClienteFornecedorService,
     // FornecedorService,
     // ProdutoService,
     // ReceitaService,

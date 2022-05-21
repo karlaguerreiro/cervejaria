@@ -5,16 +5,20 @@ import { BaseResponse } from '../Models/BaseResponse';
 import { ClienteFornecedor } from '../Models/ClienteFornecedor';
 
 @Injectable()
-export class ClienteService {
+export class ClienteFornecedorService {
 constructor(private http: HttpClient) { }
 
     protected UrlServiceV1: string = "https://cervejaria-api.herokuapp.com/";
 
-    public obterClientes() : Observable<BaseResponse<ClienteFornecedor[]>> {
+    public GetAll() : Observable<BaseResponse<ClienteFornecedor[]>> {
       return this.http.get<BaseResponse<ClienteFornecedor[]>>(this.UrlServiceV1 + "api/V1/ClienteFornecedor");
     }
 
-    public inserirClientes(args: any) : any {
+    public Save(args: any) : any {
       return this.http.post<any>(this.UrlServiceV1 + "api/V1/ClienteFornecedor", args);
+    }
+
+    public GetByType(type: number) : any {
+      return this.http.get<any>(this.UrlServiceV1 + "api/V1/ClienteFornecedor/type/" + type);
     }
 }

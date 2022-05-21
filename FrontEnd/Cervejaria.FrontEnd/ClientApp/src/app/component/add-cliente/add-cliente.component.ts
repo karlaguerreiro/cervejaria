@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { tipoUsuario } from 'src/app/Models/TipoUsuario';
-import { ClienteService } from 'src/app/Service/Cliente.Service';
+import { ClienteFornecedorService} from 'src/app/Service/ClienteFornecedor.Service';
 
 @Component({
   selector: 'app-add-cliente',
@@ -26,15 +26,15 @@ export class AddClienteComponent implements OnInit {
   dataSource: any;
   constructor(
     private _formBuilder: FormBuilder,
-    private _clienteService: ClienteService
+    private _clienteService: ClienteFornecedorService
   ) {}
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
       Nome: [''],
       Tipo: this.tipoControl.value,
-      CnpjCpf: [''],
-      Ie: [''],
+      CnpjCpf: ['',Validators.maxLength(15)],
+      Ie: ['',Validators.max(3)],
       Contato: (this.secondFormGroup = this._formBuilder.group({
         Telefone: ['', Validators.required],
         Contato1: ['', Validators.required],
@@ -49,9 +49,8 @@ export class AddClienteComponent implements OnInit {
   }
 
   Save() {
-    //console.log(this.firstFormGroup.value);
     var x = this._clienteService
-      .inserirClientes(this.firstFormGroup.value)
+      .Save(this.firstFormGroup.value)
       .subscribe({
         next: (base: any) => {
           let x = base;
