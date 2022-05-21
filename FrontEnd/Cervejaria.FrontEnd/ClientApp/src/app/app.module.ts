@@ -39,6 +39,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { ClienteService } from './Service/Cliente.Service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ElementDialogComponent } from './modal/element-dialog/element-dialog.component';
+import { CommonModule } from '@angular/common';  
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -62,7 +71,8 @@ import { MatSelectModule } from '@angular/material/select';
     ListFuncionarioComponent,
     ClienteComponent,
     FuncionarioComponent,
-
+    ElementDialogComponent,
+    
   ],
   imports: [
     MatDatepickerModule,
@@ -81,7 +91,11 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule,
+    MatDialogModule,
+    CommonModule,
+    
   ],
   providers: [
     InsumoService,

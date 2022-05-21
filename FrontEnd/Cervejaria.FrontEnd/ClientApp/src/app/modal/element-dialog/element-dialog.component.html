@@ -1,0 +1,33 @@
+<h1 *ngIf="!showDiv" mat-dialog-title>Exibir receita</h1>
+<h1 *ngIf="showDiv" mat-dialog-title>Editar receita</h1>
+<div *ngIf="!showDiv" mat-dialog-content>
+  <span style="font-weight: bold; font-size: 12px;">Ingredientes:</span>
+  {{data.ingrediente}}
+</div>
+<hr>
+<div *ngIf="showDiv" mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Código</mat-label>
+    <input matInput [(ngModel)]="data.codigo">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="data.nome">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Tipo</mat-label>
+    <input matInput [(ngModel)]="data.tipo">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Ingredientes</mat-label>
+    <input matInput [(ngModel)]="data.ingrediente">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button *ngIf="showDiv" class="success" [mat-dialog-close]="data" mat-icon-button>
+    Atualizar
+  </button>
+  <button (click)="onCancel()" mat-icon-button>
+    Cancelar
+  </button>
+</div>

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListReceitaComponent } from './list-receita.component';
+import { ElementDialogComponent } from './element-dialog.component';
 
-describe('ListReceitaComponent', () => {
-  let component: ListReceitaComponent;
-  let fixture: ComponentFixture<ListReceitaComponent>;
+describe('ElementDialogComponent', () => {
+  let component: ElementDialogComponent;
+  let fixture: ComponentFixture<ElementDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListReceitaComponent ]
+      declarations: [ ElementDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListReceitaComponent);
+    fixture = TestBed.createComponent(ElementDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

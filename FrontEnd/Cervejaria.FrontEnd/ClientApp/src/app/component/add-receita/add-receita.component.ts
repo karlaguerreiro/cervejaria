@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReceitaService } from 'src/app/Service/receita.service';
 
 @Component({
   selector: 'app-add-receita',
@@ -11,7 +12,7 @@ export class AddReceitaComponent implements OnInit {
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
   control!: FormControl;
-  constructor(private _formBuilder: FormBuilder)
+  constructor(private _formBuilder: FormBuilder,  private receitaService: ReceitaService)
   {
     this.control = _formBuilder.control({value: 'my val', disabled: true});
   }
@@ -22,5 +23,12 @@ export class AddReceitaComponent implements OnInit {
       ingredientes: ['', Validators.required],
       modoDePreparo: ['', Validators.required]
     });
+  }
+
+  public Save()
+  {
+    var test = this.receitaService.inserirReceitas(this.firstFormGroup.value);
+    console.log('teste',this.firstFormGroup.value);
+    this.ngOnInit();
   }
 }

@@ -12,6 +12,7 @@ import { AddClienteComponent } from './component/add-cliente/add-cliente.compone
 import { ListProdutoComponent } from './component/list-produto/list-produto.component';
 import { AddReceitaComponent } from './component/add-receita/add-receita.component';
 import { AddFuncionarioComponent } from './component/add-funcionario/add-funcionario.component';
+import { ListReceitaComponent } from './component/list-receita/list-receita.component';
 
 const routes: Routes = [
   {
@@ -44,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: 'receitas',
-    component: ReceitaComponent,
+    component: ListReceitaComponent,
   },
   {
     path: 'add-receita',
