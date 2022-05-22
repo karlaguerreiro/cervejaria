@@ -8,10 +8,9 @@ import { InsumoService } from 'src/app/Service/Insumo.service';
 })
 
 export class ListInsumoComponent implements OnInit {
-  displayedColumns: string[] = ['nome', 'dataCompra','valor' , 'precoUnit'];
+  displayedColumns: string[] = ['nome', 'dataCompra','undMedida', 'precoUnit'];
   dataSource: any;
-  constructor(private insumoService: InsumoService) {
-   }
+  constructor(private insumoService: InsumoService) {}
 
    ngOnInit(): void {
      this.insumoService.obterInsumos().subscribe(
@@ -19,7 +18,5 @@ export class ListInsumoComponent implements OnInit {
         let x = base;
         this.dataSource = x.data;
         console.log(this.dataSource);
-      }}
-    );
-  }
+      }});}
 }

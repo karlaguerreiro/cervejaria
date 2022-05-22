@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { FornecedorService } from 'src/app/Service/Fornecedor.service';
+import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.Service';
 
 @Component({
   selector: 'app-list-fornecedor',
@@ -18,12 +18,10 @@ export class ListFornecedorComponent implements OnInit {
   displayedColumns: string[] = ['nome','contato','telefone'];
   dataSource: any;
 
-  constructor(private FornecedorService: FornecedorService) {
-
-  }
+  constructor(private _service: ClienteFornecedorService) { }
 
   ngOnInit(): void {
-    this.FornecedorService.obterFornecedor().subscribe(
+    this._service.GetAll().subscribe(
       {
         next: base => {
           let x = base;
