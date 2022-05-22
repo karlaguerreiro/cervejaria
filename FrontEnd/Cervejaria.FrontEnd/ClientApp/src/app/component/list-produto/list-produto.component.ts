@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-produto.component.css']
 })
 export class ListProdutoComponent implements OnInit {
+  displayedColumns: string[] = ['nomeproduto','descricaoproduto','qntproduto'];
+  dataSource: any;
 
   constructor() { }
 
