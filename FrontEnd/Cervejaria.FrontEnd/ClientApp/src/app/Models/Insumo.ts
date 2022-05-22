@@ -1,7 +1,9 @@
 export interface  Insumo {
   nome: string ;
-  valor: string;
+  //valor: string;
   dataCompra: string;
-  precoUnit: Number;
+  precoUnit: number;
   unidMedida: string;
+  //fornecedor : Fornecedor;
 }
+

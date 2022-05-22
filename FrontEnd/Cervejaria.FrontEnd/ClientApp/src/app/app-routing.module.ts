@@ -12,7 +12,11 @@ import { AddClienteComponent } from './component/add-cliente/add-cliente.compone
 import { ListProdutoComponent } from './component/list-produto/list-produto.component';
 import { AddReceitaComponent } from './component/add-receita/add-receita.component';
 import { AddFuncionarioComponent } from './component/add-funcionario/add-funcionario.component';
+<<<<<<< HEAD
 import { ListReceitaComponent } from './component/list-receita/list-receita.component';
+=======
+import { AddProdutoComponent } from './component/add-produto/add-produto.component';
+>>>>>>> 64616f43ce0ed66ddacf74cc0082452c722147e2
 
 const routes: Routes = [
   {
@@ -58,6 +62,10 @@ const routes: Routes = [
   {
     path: 'fornecedor',
     component: ListFornecedorComponent,
+  },
+  {
+    path: 'add-produto',
+    component: AddProdutoComponent,
   },
   {
     path: 'add-fornecedor',

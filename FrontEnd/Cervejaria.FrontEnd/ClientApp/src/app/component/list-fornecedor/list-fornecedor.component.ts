@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.Service';
 
 @Component({
   selector: 'app-list-fornecedor',
@@ -7,23 +8,28 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   styleUrls: ['./list-fornecedor.component.css'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
 })
 export class ListFornecedorComponent implements OnInit {
-  dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['Fornecedor', 'Código', 'Nome'];
-  expandedElement: PeriodicElement | undefined;
-  isUrl(str: string) {
-      if(typeof str == "number" )  return false; 
-      return (str.includes('http'))
-  }
-  constructor() { }
+  displayedColumns: string[] = ['nome','contato','telefone'];
+  dataSource: any;
+
+  constructor(private _service: ClienteFornecedorService) { }
 
   ngOnInit(): void {
+    this._service.GetAll().subscribe(
+      {
+        next: base => {
+          let x = base;
+          this.dataSource = x.data;
+          console.log(this.dataSource);
+        }
+      }
+    );
   }
 
 };
@@ -36,20 +42,3 @@ export interface PeriodicElement {
   Insumos: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    Fornecedor: "Fornecedor Teste",
-    Código: 123,
-    Nome: 'Lupulo',
-    descricao: `teste`,
-    Insumos:`Lupulo`,
-  },
-  {
-    Fornecedor: "Fornecedor Teste",
-    Código: 321,
-    Nome: 'Cevada',
-    descricao: `teste`,
-    Insumos:`cevada`,
-  },
-
-];
