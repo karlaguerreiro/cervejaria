@@ -2,12 +2,11 @@ export interface Funcionario{
     nome: string;
     dataNascimento: string;
     cpf: string;
-  
     email: string;
     telefone: string;
     cep: string;
     endereco: string;
-    numero: string;
+    numero: number;
     complemento: string;
     empresa: string;
     cargo: string;

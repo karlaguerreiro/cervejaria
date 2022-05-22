@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder,
+         FormControl, 
+         FormGroup, 
+         Validators, 
+} from '@angular/forms';
 
 @Component({
   selector: 'app-add-produto',
@@ -6,10 +11,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-produto.component.css']
 })
 export class AddProdutoComponent implements OnInit {
+  firstFormGroup!:FormGroup;
 
-  constructor() { }
+  constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.firstFormGroup=this._formBuilder.group({
+      nome:['',Validators.required],
+      descricao:['',Validators.required],
+      fabricacao:['',Validators.required], 
+      validade:['',Validators.required], 
+      quantidade:['',Validators.required],
+      unidadeMedida:['',Validators.required],    
+    })
   }
 
 }

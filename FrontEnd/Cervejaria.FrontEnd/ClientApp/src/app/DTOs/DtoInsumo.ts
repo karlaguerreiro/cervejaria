@@ -3,6 +3,6 @@ export interface  DtoInsumo {
     dataCompra: string;
     precoUnit: number;
     unidMedida: string;
-    idFornecedor: number;
+    idClienteFornecedor: number;
     validade: string;
   }

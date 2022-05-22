@@ -12,7 +12,6 @@ namespace Cervejaria.CrossCutting.Interop.ViewModel.Business
     {
         public ClienteFornecedorViewModel()
         {
-            Insumos = new HashSet<InsumoViewModel>();
         }
 
         public int? Id { get; init; }
@@ -25,6 +24,5 @@ namespace Cervejaria.CrossCutting.Interop.ViewModel.Business
 
         public virtual ContatoViewModel Contato { get; init; }
         public virtual EnderecoViewModel Endereco { get; init; }
-        public virtual ICollection<InsumoViewModel> Insumos { get; init; }
     }
 }
