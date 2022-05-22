@@ -40,20 +40,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { ClienteFornecedorService } from './Service/ClienteFornecedor.Service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-<<<<<<< HEAD
 import { MatIconModule } from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ElementDialogComponent } from './modal/element-dialog/element-dialog.component';
 import { CommonModule } from '@angular/common';  
-
-
-
-
-
-=======
 import { FuncionarioService } from './Service/Funcionario.service';
 import { InsumoService } from './Service/Insumo.service';
->>>>>>> 64616f43ce0ed66ddacf74cc0082452c722147e2
+
 
 @NgModule({
   declarations: [
