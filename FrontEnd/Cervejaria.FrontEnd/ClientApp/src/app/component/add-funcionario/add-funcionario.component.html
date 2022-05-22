@@ -8,67 +8,65 @@
   <div class="w-100 d-flex flex-wrap justify-content-between">
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Nome do Funcionario</mat-label>
-      <input matInput FormControlName="nome" />
+      <input matInput formControlName="nome" />
     </mat-form-field>
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>CPF</mat-label>
-      <input matInput FormControlName="cpf" />
+      <input matInput formControlName="cpf" />
     </mat-form-field>
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Data de Nascimento</mat-label>
-      <input matInput [matDatepicker]="picker" FormControlName="data_nascimento">
+      <input matInput [matDatepicker]="picker" formControlName="data_nasc"/>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-
-
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Contato de Emergência</mat-label>
-      <input matInput placeholder=" João Carlos" FormControlName="contato" />
+      <input matInput placeholder=" João Carlos" formControlName="contato" />
     </mat-form-field>
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Email</mat-label>
-      <input matInput placeholder="Ex. contato@empresa.com.br" FormControlName="email" />
+      <input matInput placeholder="Ex. contato@empresa.com.br" formControlName="email" />
     </mat-form-field>
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Telefone</mat-label>
-      <input matInput placeholder="Ex. (41) 3666-4545" FormControlName="telefone" />
+      <input matInput placeholder="Ex. (41) 3666-4545" formControlName="telefone" />
     </mat-form-field>
 
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>CEP</mat-label>
-      <input matInput #postalCode maxlength="15" placeholder="Ex. 83333-111" FormControlName="cep" />
+      <input matInput #postalCode maxlength="15" placeholder="Ex. 83333-111" formControlName="cep" />
     </mat-form-field>
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Endereço</mat-label>
-      <input matInput placeholder="Ex. Rua Antonia" FormControlName="endereco" />
+      <input matInput placeholder="Ex. Rua Antonia" formControlName="endereco" />
     </mat-form-field>
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Número</mat-label>
-      <input matInput FormControlName="numero" type="number" maxlength="5" />
+      <input matInput formControlName="numero" type="number" maxlength="5" />
     </mat-form-field>
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Complemento</mat-label>
-      <input matInput FormControlName="complemento" />
+      <input matInput formControlName="complemento" />
     </mat-form-field>
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Cidade</mat-label>
-      <input matInput FormControlName="cidade" />
+      <input matInput />
     </mat-form-field>
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Estado</mat-label>
-      <input matInput placeholder="Ex: PR" maxlength="2" FormControlName="estado" />
+      <input matInput placeholder="Ex: PR" maxlength="2" />
     </mat-form-field>
 
 
@@ -79,50 +77,61 @@
     
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Empresa</mat-label>
-      <input matInput FormControlName="empresa" />
+      <input matInput formControlName="empresa" />
     </mat-form-field>
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Cargo</mat-label>
-      <input matInput FormControlName="cargo" />
+      <input matInput formControlName="cargo" />
     </mat-form-field>
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Data de Entrada</mat-label>
-      <input matInput [matDatepicker]="picker1" FormControlName="data_entrada">
+      <input matInput [matDatepicker]="picker1" formControlName="data_entrada">
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="col-4 px-2" appearance="fill">
       <mat-label>Data de Saída</mat-label>
-      <input matInput [matDatepicker]="picker2" FormControlName="data_saida">
+      <input matInput [matDatepicker]="picker2" formControlName="data_saida">
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
-
 
     <!-- TODO - Adicionar um mais para adicionar mais empregos anteriores -->
     <mat-label class="col-12 p-2">
       <p class="new-header my-3 h5">Cargo na Empresa</p>
     </mat-label>
    
-    
-
     <mat-form-field class="col-4 px-2" appearance="fill">
-      <mat-label>Cargo</mat-label>
-      <input matInput FormControlName="cargo_atual" />
+      <mat-label>Função</mat-label>
+      <input matInput formControlName="cargo" />
     </mat-form-field>
     
-      <mat-form-field class="col-4 px-2" appearance="fill">
+      <mat-form-field class="col-8 px-2" appearance="fill">
         <mat-label>Descrição</mat-label>
-        <input matInput FormControlName="descricao" />
+        <input matInput formControlName="descricao" />
       </mat-form-field>
 
+      <mat-label class="col-12 p-2">
+        <p class="new-header my-3 h5">Cadastro de Login</p>
+      </mat-label>
+
       <mat-form-field class="col-4 px-2" appearance="fill">
-        <mat-label>Período</mat-label>
-        <input matInput FormControlName="periodo" />
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="nomeUsuario" />
       </mat-form-field>
+      
+        <mat-form-field class="col-4 px-2" appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input matInput formControlName="senha" />
+        </mat-form-field>
+
+        <mat-form-field class="col-4 px-2" appearance="fill">
+          <mat-label>Nível de Acesso</mat-label>
+          <input matInput formControlName="nivelAcesso" />
+        </mat-form-field>
   </div>
 
   <div class="btn-finish">
