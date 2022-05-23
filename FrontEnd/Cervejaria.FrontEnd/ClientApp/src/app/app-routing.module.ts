@@ -13,9 +13,10 @@ import { ListProdutoComponent } from './component/list-produto/list-produto.comp
 import { AddReceitaComponent } from './component/add-receita/add-receita.component';
 import { AddFuncionarioComponent } from './component/add-funcionario/add-funcionario.component';
 import { ListReceitaComponent } from './component/list-receita/list-receita.component';
+import { AddProdutoComponent } from './component/add-produto/add-produto.component';
 
 const routes: Routes = [
-  {
+{
     path: '',
     component: HomeComponent,
   },
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: 'fornecedor',
     component: ListFornecedorComponent,
+  },
+  {
+    path: 'add-produto',
+    component: AddProdutoComponent,
   },
   {
     path: 'add-fornecedor',

@@ -1,3 +1,5 @@
+// import { ReceitaService } from './Service/Receita.service';
+// import { ProdutoService } from './Service/Produto.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,7 +21,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AddInsumoComponent } from './component/add-insumo/add-insumo.component';
-import { InsumoService } from './Service/insumo.service';
 import { ListFornecedorComponent } from './component/list-fornecedor/list-fornecedor.component';
 import { FornecedorComponent } from './views/fornecedor/fornecedor.component';
 import { AddFornecedorComponent } from './component/add-fornecedor/add-fornecedor.component';
@@ -36,17 +37,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { Component } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { ClienteService } from './Service/Cliente.Service';
+import { ClienteFornecedorService } from './Service/ClienteFornecedor.Service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ElementDialogComponent } from './modal/element-dialog/element-dialog.component';
 import { CommonModule } from '@angular/common';  
-
-
-
-
+import { FuncionarioService } from './Service/Funcionario.service';
+import { InsumoService } from './Service/Insumo.service';
 
 
 @NgModule({
@@ -99,7 +98,11 @@ import { CommonModule } from '@angular/common';
   ],
   providers: [
     InsumoService,
-    ClienteService,
+    ClienteFornecedorService,
+    // FornecedorService,
+    // ProdutoService,
+    // ReceitaService,
+    FuncionarioService,
     { provide: APP_BASE_HREF, useValue: '/' }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

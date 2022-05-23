@@ -28,7 +28,7 @@ namespace Cervejaria.Api
             services.AddDbContext<Context>(options =>
             {
                 options.UseInMemoryDatabase("CERVEJARIA");
-                // options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")); DESCOMENTAR PARA UTILIZAR O SQLSERVER
+                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));// DESCOMENTAR PARA UTILIZAR O SQLSERVER
             });
 
             services.AddSingleton(sp => sp.GetRequiredService<ILoggerFactory>().CreateLogger("DefaultLogger"));
@@ -45,12 +45,11 @@ namespace Cervejaria.Api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cervejaria.Api v1"));
-            }
+            if (env.IsDevelopment()){}
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cervejaria.Api v1"));
+
 
             app.UseHttpsRedirection();
 

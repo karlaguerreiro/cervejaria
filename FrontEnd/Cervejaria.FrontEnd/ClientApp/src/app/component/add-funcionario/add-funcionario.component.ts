@@ -1,73 +1,72 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder,
-         FormControl, 
-         FormGroup, 
-         Validators 
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
 } from '@angular/forms';
-import { tipoUsuario } from 'src/app/Models/TipoUsuario';
-import { ClienteService } from 'src/app/Service/Cliente.Service';
+import { FuncionarioService } from 'src/app/Service/Funcionario.service';
 
 @Component({
   selector: 'app-add-funcionario',
   templateUrl: './add-funcionario.component.html',
-  styleUrls: ['./add-funcionario.component.css']
+  styleUrls: ['./add-funcionario.component.css'],
 })
-
-
 export class AddFuncionarioComponent implements OnInit {
-  firstFormGroup!: FormGroup;
-  secondFormGroup!: FormGroup;
-  thirdFormGroup!: FormGroup;
-  fourthFormGroup!: FormGroup;
-  fifthFormGroup!: FormGroup;
+  funcionarioForm: FormGroup;
   @Input()
   tipoControl: FormControl = new FormControl(0);
   dataSource: any;
+  date = new FormControl(new Date());
+  serializedDate = new FormControl(new Date().toISOString());
+
   constructor(
     private _formBuilder: FormBuilder,
-    private _clienteService: ClienteService
-  ) {}
+    private _funcionarioService: FuncionarioService
+  ) {
+    this.funcionarioForm = this._formBuilder.group({
+      //Usuario
+      nomeUsuario: ['', Validators.required],
+      senha: ['', Validators.required],
+      nivelAcesso: ['', Validators.required],
 
-  ngOnInit(): void {
-    this.firstFormGroup = this._formBuilder.group({
-      Nome: [''],
-      Cpf: [''],
-      Contato: (this.secondFormGroup = this._formBuilder.group({
-        Telefone: ['', Validators.required],
-        Contato1: ['', Validators.required],
-        Email: ['', Validators.email],
+      //Contato
+      Contato: (this.funcionarioForm = this._formBuilder.group({
+        contato: ['', Validators.required],
+        email: ['', Validators.email],
+        telefone: ['', Validators.required],
       })),
-      Endereco: (this.thirdFormGroup = this._formBuilder.group({
-        CEP: ['', Validators.max(8)],
-        Numero: [0, Validators.required],
-        Complemento: ['', Validators.required],
+      //Endereco
+      Endereco: (this.funcionarioForm = this._formBuilder.group({
+        cep: ['', Validators.max(8)],
+        complemento: ['', Validators.required],
+        numero: [0, Validators.required],
       })),
-      EmpregoAnterior: (this.fourthFormGroup = this._formBuilder.group({
-        Empresa: ['', Validators.required],
-        Cargo: ['', Validators.required],
+      //Emprego anterior
+      EmpregoAnterior: (this.funcionarioForm = this._formBuilder.group({
+        empresa: ['', Validators.required],
+        cargo: ['', Validators.required],
+        dataEntrada: ['', Validators.required],
+        dataSaida: ['', Validators.required],
       })),
-      EmpregoAtual: (this.fifthFormGroup = this._formBuilder.group({
-        Funcao: ['', Validators.required],
-        Descricao: ['', Validators.required],
-      })),
+      //Info Usuario
+      InfoUsuario: (this.funcionarioForm = this._formBuilder.group({
+      nome: ['', Validators.required],
+      cpf: ['', Validators.required],
+      dataNascimento: ['', Validators.required],
+      }))
     });
   }
-// TODO terminar de criar o componente
 
+  ngOnInit() {}
 
-
-  Save() {
-    //console.log(this.firstFormGroup.value);
-    var x = this._clienteService
-      .inserirClientes(this.firstFormGroup.value)
-      .subscribe({
-        next: (base: any) => {
-          let x = base;
-          this.firstFormGroup.value.Nome = x.data.nome;
-          this.firstFormGroup.value.CnpjCpf = x.data.cpf;
-          console.log(this.firstFormGroup.value);
-        },
+  public Save() {
+    console.log(this.funcionarioForm.value);
+    this._funcionarioService
+      .inserirFuncionario(this.funcionarioForm.value)
+      .subscribe((response) => {
+        console.log(response);
+        this.ngOnInit();
       });
   }
-
 }

@@ -1,1 +1,64 @@
-<p>add-produto works!</p>
+<form class="formulario" [formGroup]="firstFormGroup">
+    <p class="new-header fw-bold my-3 h4">Novo Produto</p>
+    <mat-form-field class="w-99" appearance="fill">
+      <mat-label>Produto</mat-label>
+      <input matInput disabled value="" />
+    </mat-form-field>
+  
+    <table class="w-100" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Nome do Produto</mat-label>
+            <input matInput formControlName="nome"/>
+          </mat-form-field>
+        </td>
+        <br />
+        <td>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Descrição do Produto</mat-label>
+            <input matInput formControlName="descricao"/>
+          </mat-form-field>
+        </td>
+        <mat-form-field class= "w-100" appearance="fill">
+            <mat-label>Data de Fabricação</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fabricacao">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>          
+      </tr>
+    </table>    
+        <table class="w-100" cellspacing="0">
+          <tr>
+            <td>
+                <mat-form-field class= "w-100" appearance="fill">
+                    <mat-label>Data de Validade</mat-label>
+                    <input matInput [matDatepicker]="picker2" formControlName="validade">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label>Quantidade de Produto</mat-label>
+                <input matInput placeholder="" formControlName="quantidade"/>
+              </mat-form-field>
+            </td>
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Selecione uma Unidade de Medida</mat-label>
+                <select matNativeControl formControlName="unidadeMedida">
+                  <option value="Selecione" selected>Selecione...</option>
+                  <option value="litros">Litros</option>
+                  <option value="kilos">KG</option>
+                  <option value="unidade">Unidade</option>
+                </select>
+              </mat-form-field>
+          </tr>
+        </table>      
+      <div class="btn-finish">
+        <button type="submit" mat-raised-button class="Salvar">Salvar</button>
+        <button type="reset" mat-raised-button class="Limpar">Limpar</button>
+      </div>
+</form>

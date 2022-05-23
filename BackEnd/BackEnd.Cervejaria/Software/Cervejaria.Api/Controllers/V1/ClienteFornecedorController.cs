@@ -7,6 +7,7 @@ using Cervejaria.Domain.Contracts.Notificator;
 using Cervejaria.Domain.Contracts.Service.BusinessServices;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cervejaria.Api.Controllers.V1
@@ -36,6 +37,10 @@ namespace Cervejaria.Api.Controllers.V1
         [HttpGet]
         public async Task<IActionResult> Get() =>
             CustomResponse(_mapper.Map<IEnumerable<ClienteFornecedorDto>>(await _service.Get()));
+        
+        [HttpGet("type/{type:int}")]
+        public async Task<IActionResult> GetByType(int type) =>
+            CustomResponse(_mapper.Map<IEnumerable<ClienteFornecedorDto>>(await _service.GetByType(type)));
 
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
