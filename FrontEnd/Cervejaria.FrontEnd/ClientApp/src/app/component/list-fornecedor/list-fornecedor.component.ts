@@ -6,17 +6,28 @@ import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.serv
   selector: 'app-list-fornecedor',
   templateUrl: './list-fornecedor.component.html',
   styleUrls: ['./list-fornecedor.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class ListFornecedorComponent implements OnInit {
-  displayedColumns = ['nome', 'contato', 'telefone'];
-  dataSource: any;
-
-  constructor(private fornecedorservice: ClienteFornecedorService) { }
+  dataSource:any;
+  columnsToDisplay = ['id', 'nome'];
+  expandedElement: any | undefined;
+  isUrl(str: string) {
+    if (typeof str == "number") return false;
+    return (str.includes('http'))
+  }
+  constructor(private service: ClienteFornecedorService) { }
 
   ngOnInit(): void {
-    this.fornecedorservice.GetAll().subscribe(
+    this.service.GetByType(1).subscribe(
       {
-        next: base => {
+        next: (base: any) => {
           let x = base;
           this.dataSource = x.data;
           console.log(this.dataSource);
@@ -24,5 +35,4 @@ export class ListFornecedorComponent implements OnInit {
       }
     );
   }
-
-};
+}

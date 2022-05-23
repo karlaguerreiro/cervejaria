@@ -27,60 +27,35 @@ export class AddFornecedorComponent implements OnInit {
 
 
   constructor(
-  private _formBuilder: FormBuilder, 
+  private _formBuilder: FormBuilder,
   private _FornecedorService: ClienteFornecedorService
-  ) 
+  )
     {
     this.fornecedorForm = this._formBuilder.group({
       nome: ['', Validators.required],
-      cpf_cnpj: ['', Validators.required],
-      ie: ['', Validators.required],
-      tipo: [1, Validators.required],
-      id_contato: [],
-      id_endereco: [],
-
-      // Tabela Endereço
-      
-      cep: ['', Validators.required],
-      numero: ['', Validators.required],
+      cnpjCpf: ['', Validators.maxLength(15)],
+      ie: ['', Validators.max(3)],
+      tipo: this.tipoControl.value,
+      contato: this._formBuilder.group({
+      telefone: [''],
+      contato1: [''],
+      email: [''],
+      }),
+      endereço: this._formBuilder.group({
+      cep: ['', Validators.max(8)],
+      numero: [0, Validators.required],
       complemento: ['', Validators.required],
-
-
-      //Tabela Contato
-     
-      contato: ['', Validators.required],
-      email: ['', Validators.email],
-      telefone: ['', Validators.required],
-
-
-  })
+      })
+    });
   }
   ngOnInit() { }
 
   public Save() {
-    console.log(JSON.stringify(this.fornecedorForm.value));
-    if(this.fornecedorForm.valid) {
-      const endereco: DtoEndereco= {
-        cep: this.fornecedorForm.value.cep,
-        complemento: this.fornecedorForm.value.complemento,
-        numero: this.fornecedorForm.value.numero,
-      };
-
-    const contato: DtoContato = {
-      email: this.fornecedorForm.value.email,
-      telefone: this.fornecedorForm.value.telefone,
-      contato: this.fornecedorForm.value.contato,
-    };
-
-    const fornecedor: DtoClienteFornecedor = {
-      nome: this.fornecedorForm.value.nome,
-      cpf_cnpj: this.fornecedorForm.value.cpf_cnpj,
-      ie: this.fornecedorForm.value.ie,
-      tipo: this.fornecedorForm.value.tipo,
-      id_contato: this.fornecedorForm.value.id_contato,
-      id_endereco: this.fornecedorForm.value.id_endereco,
-    };
-      
-  }
+    this._FornecedorService.Save(this.fornecedorForm.value).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.ngOnInit();
+      }
+    );
 }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ClienteFornecedor } from 'src/app/Models/ClienteFornecedor';
+import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
 
 @Component({
   selector: 'app-list-cliente',
@@ -15,44 +16,24 @@ import { ClienteFornecedor } from 'src/app/Models/ClienteFornecedor';
   ],
 })
 export class ListClienteComponent implements OnInit {
-  dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['Código', 'Cliente', 'Contato','IE' , 'Estado'];
-  expandedElement: PeriodicElement | undefined;
+  dataSource:any;
+  columnsToDisplay = ['id', 'nome'];
+  expandedElement: any | undefined;
   isUrl(str: string) {
     if (typeof str == "number") return false;
     return (str.includes('http'))
   }
-
-  constructor() { }
+  constructor(private service: ClienteFornecedorService) { }
 
   ngOnInit(): void {
+    this.service.GetByType(0).subscribe(
+      {
+        next: (base: any) => {
+          let x = base;
+          this.dataSource = x.data;
+          console.log(this.dataSource);
+        }
+      }
+    );
   }
-
 }
-export interface PeriodicElement {
-  Cliente: string;
-  Código: number;
-  Contato: string;
-  IE:number,
-  Estado:string,
-  
-
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    Cliente: "Cliente 1",
-    Código: 101,
-    Contato: 'Jorge',
-    IE: 125452125,
-    Estado:"PR",
-  },
-  {
-    Cliente: "Cliente 2",
-    Código: 102,
-    Contato: 'João',
-    IE:124195235,
-    Estado:"RJ",
-  },
-
-];
