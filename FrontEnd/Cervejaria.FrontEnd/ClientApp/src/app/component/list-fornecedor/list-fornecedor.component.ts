@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.Service';
+import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
 
 @Component({
   selector: 'app-list-fornecedor',
@@ -15,15 +15,19 @@ import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.Serv
   ],
 })
 export class ListFornecedorComponent implements OnInit {
-  displayedColumns: string[] = ['nome','contato','telefone'];
-  dataSource: any;
-
-  constructor(private _service: ClienteFornecedorService) { }
+  dataSource:any;
+  columnsToDisplay = ['id', 'nome'];
+  expandedElement: any | undefined;
+  isUrl(str: string) {
+    if (typeof str == "number") return false;
+    return (str.includes('http'))
+  }
+  constructor(private service: ClienteFornecedorService) { }
 
   ngOnInit(): void {
-    this._service.GetAll().subscribe(
+    this.service.GetByType(1).subscribe(
       {
-        next: base => {
+        next: (base: any) => {
           let x = base;
           this.dataSource = x.data;
           console.log(this.dataSource);
@@ -31,14 +35,4 @@ export class ListFornecedorComponent implements OnInit {
       }
     );
   }
-
-};
-
-export interface PeriodicElement {
-  Fornecedor: string;
-  Código: number;
-  Nome: string;
-  descricao: string;
-  Insumos: string;
 }
-
