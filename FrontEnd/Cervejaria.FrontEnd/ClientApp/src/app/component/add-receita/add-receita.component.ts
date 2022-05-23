@@ -27,7 +27,7 @@ export class AddReceitaComponent implements OnInit {
 
   public Save()
   {
-    var test = this.receitaService.inserirReceitas(this.firstFormGroup.value);
+    var test = this.receitaService.inserirReceita(this.firstFormGroup.value);
     console.log('teste',this.firstFormGroup.value);
     this.ngOnInit();
   }
