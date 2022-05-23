@@ -7,7 +7,9 @@ import {
 } from '@angular/forms';
 import { tipoUsuario } from 'src/app/Models/TipoUsuario';
 import { DtoClienteFornecedor } from 'src/app/DTOs/DtoClienteFornecedor';
-import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.Service';
+import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
+import { DtoEndereco } from 'src/app/DTOs/DtoEndereco';
+import { DtoContato } from 'src/app/DTOs/DtoContato';
 
 @Component({
   selector: 'app-add-fornecedor',
@@ -15,50 +17,70 @@ import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.Serv
   styleUrls: ['./add-fornecedor.component.css']
 })
 export class AddFornecedorComponent implements OnInit {
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  tFormGroup: FormGroup;
+  fornecedorForm: FormGroup;
   @Input()
-  tipoControl: FormControl = new FormControl(0);
+  tipoControl: FormControl = new FormControl(1);
   tipos: tipoUsuario[] = [
-    { value: 0, viewValue: 'Cliente' },
     { value: 1, viewValue: 'Fornecedor' },
   ];
   dataSource: any;
 
 
-  constructor(private _formBuilder: FormBuilder, private _clienteFornecedorService: ClienteFornecedorService
-  ) {
-    this.firstFormGroup = this._formBuilder.group({
+  constructor(
+  private _formBuilder: FormBuilder, 
+  private _FornecedorService: ClienteFornecedorService
+  ) 
+    {
+    this.fornecedorForm = this._formBuilder.group({
       nome: ['', Validators.required],
       cpf_cnpj: ['', Validators.required],
       ie: ['', Validators.required],
-      tipo: ['', Validators.required],
+      tipo: [1, Validators.required],
+      id_contato: [],
+      id_endereco: [],
 
       // Tabela Endereço
-      Endereco: (this.secondFormGroup = this._formBuilder.group({
+      
       cep: ['', Validators.required],
       numero: ['', Validators.required],
       complemento: ['', Validators.required],
-    })),
+
 
       //Tabela Contato
-      Contato: (this.tFormGroup = this._formBuilder.group({
+     
       contato: ['', Validators.required],
       email: ['', Validators.email],
       telefone: ['', Validators.required],
 
-    })),
+
   })
   }
   ngOnInit() { }
 
   public Save() {
-      this._clienteFornecedorService.Save(this.firstFormGroup.value).subscribe(
-        (response: any) => {
-          console.log(response);
-          this.ngOnInit();
-        }
-      );
+    console.log(JSON.stringify(this.fornecedorForm.value));
+    if(this.fornecedorForm.valid) {
+      const endereco: DtoEndereco= {
+        cep: this.fornecedorForm.value.cep,
+        complemento: this.fornecedorForm.value.complemento,
+        numero: this.fornecedorForm.value.numero,
+      };
+
+    const contato: DtoContato = {
+      email: this.fornecedorForm.value.email,
+      telefone: this.fornecedorForm.value.telefone,
+      contato: this.fornecedorForm.value.contato,
+    };
+
+    const fornecedor: DtoClienteFornecedor = {
+      nome: this.fornecedorForm.value.nome,
+      cpf_cnpj: this.fornecedorForm.value.cpf_cnpj,
+      ie: this.fornecedorForm.value.ie,
+      tipo: this.fornecedorForm.value.tipo,
+      id_contato: this.fornecedorForm.value.id_contato,
+      id_endereco: this.fornecedorForm.value.id_endereco,
+    };
+      
   }
+}
 }

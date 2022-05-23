@@ -4,6 +4,6 @@ export interface DtoClienteFornecedor {
     cpf_cnpj: string;
     ie: string;
     tipo: string;
-    id_endereco: number;    
-    id_contato: number;
+    id_endereco?: number;    
+    id_contato?: number;
 }
