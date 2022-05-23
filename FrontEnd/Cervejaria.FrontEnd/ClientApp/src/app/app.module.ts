@@ -37,7 +37,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { Component } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { ClienteFornecedorService } from './Service/ClienteFornecedor.Service';
+import { ClienteFornecedorService } from './Service/ClienteFornecedor.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';

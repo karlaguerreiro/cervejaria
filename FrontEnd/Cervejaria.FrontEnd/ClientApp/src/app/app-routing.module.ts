@@ -1,3 +1,4 @@
+import { ListFuncionarioComponent } from './component/list-funcionario/list-funcionario.component';
 import { ClienteComponent } from './views/cliente/cliente.component';
 import { InsumoComponent } from './views/insumo/insumo.component';
 import { ReceitaComponent } from './views/receita/receita.component';
@@ -57,16 +58,12 @@ const routes: Routes = [
     component: ListProdutoComponent,
   },
   {
-    path: 'fornecedor',
-    component: ListFornecedorComponent,
-  },
-  {
     path: 'add-produto',
     component: AddProdutoComponent,
   },
   {
-    path: 'add-fornecedor',
-    component: AddFornecedorComponent,
+    path: 'funcionario',
+    component: ListFuncionarioComponent,
   },
   {
     path: 'add-funcionario',
