@@ -1,3 +1,4 @@
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, Input, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -27,7 +28,7 @@ export class AddClienteComponent implements OnInit {
     this.clienteForm = this._formBuilder.group({
       nome: ['', Validators.required],
       cnpjCpf: ['', Validators.maxLength(15)],
-      ie: ['', Validators.max(3)],
+      ie: ['', Validators.required],
       tipo: this.tipoControl.value,
       contato: this._formBuilder.group({
       telefone: [''],
@@ -48,8 +49,10 @@ export class AddClienteComponent implements OnInit {
       this._clienteService.Save(this.clienteForm.value).subscribe(
         (response: any) => {
           console.log(response);
-          this.ngOnInit();
+          this.ngOnInit();         
+                
         }
       );
+  
   }
 }
