@@ -1,5 +1,5 @@
 // import { ReceitaService } from './Service/Receita.service';
-// import { ProdutoService } from './Service/Produto.service';
+import { ProdutoService } from './Service/Produto.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -100,7 +100,7 @@ import { InsumoService } from './Service/Insumo.service';
     InsumoService,
     ClienteFornecedorService,
     // FornecedorService,
-    // ProdutoService,
+    ProdutoService,
     // ReceitaService,
     FuncionarioService,
     { provide: APP_BASE_HREF, useValue: '/' }

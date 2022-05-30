@@ -4,6 +4,7 @@ import { FormBuilder,
          FormGroup, 
          Validators, 
 } from '@angular/forms';
+import { ProdutoService } from 'src/app/Service/Produto.service';
 
 @Component({
   selector: 'app-add-produto',
@@ -13,7 +14,9 @@ import { FormBuilder,
 export class AddProdutoComponent implements OnInit {
   firstFormGroup!:FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,
+    private produtoService:ProdutoService) { }
+  
 
   ngOnInit(): void {
     this.firstFormGroup=this._formBuilder.group({
@@ -27,3 +30,5 @@ export class AddProdutoComponent implements OnInit {
   }
 
 }
+
+/* */
