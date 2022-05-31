@@ -1,4 +1,4 @@
-import { ReceitaService } from './Service/Receita.service';
+import { ReceitaService } from './Service/receita.service';
 import { ProdutoService } from './Service/Produto.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';

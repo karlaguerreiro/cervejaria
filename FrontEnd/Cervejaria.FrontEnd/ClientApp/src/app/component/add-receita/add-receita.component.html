@@ -4,7 +4,12 @@
             <ng-template matStepLabel>Insira o Titulo da receita</ng-template>
             <mat-form-field appearance="fill">
                 <mat-label>Titulo Receita: </mat-label>
-                <input matInput placeholder="Título da Receita" formControlName="nome" required>
+                <input matInput placeholder="Título da Receita" formControlName="nome">
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Descricao Receita: </mat-label>
+                <input matInput placeholder="Descricao" formControlName="descricao">
             </mat-form-field>
             <div>
                 <button mat-button matStepperNext>Próximo</button>
@@ -41,18 +46,10 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-            <div>
-                <h3>
-                    Click Log
-                </h3>
-            </div>
-
-            <div *ngIf="!clickedRows.size">
-                Clicked rows will be logged here
-            </div>
+            <br>
             <ul>
                 <li *ngFor="let clickedRow of clickedRows">
-                    Clicked on {{clickedRow.id}}
+                    Adicionado: {{clickedRow.nome}}
                 </li>
             </ul>
             <div>

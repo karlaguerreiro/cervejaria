@@ -1,4 +1,5 @@
 export interface  DtoInsumo {
+    IdInsumo: number;
     id: number;
     nome: string;
     dataCompra: string;

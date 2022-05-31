@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DtoInsumo } from 'src/app/DTOs/DtoInsumo';
 import { InsumoService } from 'src/app/Service/Insumo.service';
-import { ReceitaService } from 'src/app/Service/Receita.service';
+import { ReceitaService } from 'src/app/Service/receita.service';
 
 @Component({
   selector: 'app-add-receita',
@@ -29,20 +29,27 @@ export class AddReceitaComponent implements OnInit {
         this.dataSource = x.data;
         console.log(this.dataSource);
       }});
+
     this.firstFormGroup = this._formBuilder.group({
       nome: ['', Validators.required],
-      InsumoReceitas: [this.clickedRows.values],
+      InsumoReceitas: [...this.clickedRows],
       descricao: ['', Validators.required]
     });
   }
 
   public Save()
   {
+    var x = [...this.clickedRows];
+    x.forEach(el => { el.IdInsumo = el.id });
+    this.firstFormGroup.value.InsumoReceitas = x;
+    console.log('obj', this.firstFormGroup.value);
+
     this.receitaService.inserirReceita(this.firstFormGroup.value).subscribe(
       { next: base =>
         console.log(base.data)
       });
-    console.log('teste',this.firstFormGroup.value);
+
+
     this.ngOnInit();
   }
 }
