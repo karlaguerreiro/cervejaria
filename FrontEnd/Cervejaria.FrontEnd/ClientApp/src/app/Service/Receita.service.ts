@@ -4,9 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseResponse } from '../Models/BaseResponse';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ReceitaService {
   constructor(private http: HttpClient) {}
   protected UrlServiceV1: string = 'https://cervejaria-api.herokuapp.com/';

@@ -1,4 +1,4 @@
-// import { ReceitaService } from './Service/Receita.service';
+import { ReceitaService } from './Service/Receita.service';
 import { ProdutoService } from './Service/Produto.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -34,7 +34,6 @@ import { ClienteComponent } from './views/cliente/cliente.component';
 import { FuncionarioComponent } from './views/funcionario/funcionario.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { Component } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ClienteFornecedorService } from './Service/ClienteFornecedor.service';
@@ -43,7 +42,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ElementDialogComponent } from './modal/element-dialog/element-dialog.component';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 import { FuncionarioService } from './Service/Funcionario.service';
 import { InsumoService } from './Service/Insumo.service';
 
@@ -71,7 +70,7 @@ import { InsumoService } from './Service/Insumo.service';
     ClienteComponent,
     FuncionarioComponent,
     ElementDialogComponent,
-    
+
   ],
   imports: [
     MatDatepickerModule,
@@ -94,14 +93,14 @@ import { InsumoService } from './Service/Insumo.service';
     MatIconModule,
     MatDialogModule,
     CommonModule,
-    
+
   ],
   providers: [
     InsumoService,
     ClienteFornecedorService,
     // FornecedorService,
     ProdutoService,
-    // ReceitaService,
+    ReceitaService,
     FuncionarioService,
     { provide: APP_BASE_HREF, useValue: '/' }
   ],

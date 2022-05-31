@@ -1,5 +1,6 @@
 export interface  DtoInsumo {
-    nome: string ;
+    id: number;
+    nome: string;
     dataCompra: string;
     precoUnit: number;
     unidMedida: string;

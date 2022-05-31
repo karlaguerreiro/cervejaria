@@ -4,7 +4,7 @@
             <ng-template matStepLabel>Insira o Titulo da receita</ng-template>
             <mat-form-field appearance="fill">
                 <mat-label>Titulo Receita: </mat-label>
-                <input matInput placeholder="Título da Receita" formControlName="tituloReceita" required>
+                <input matInput placeholder="Título da Receita" formControlName="nome" required>
             </mat-form-field>
             <div>
                 <button mat-button matStepperNext>Próximo</button>
@@ -14,28 +14,53 @@
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Lista de Ingredientes</ng-template>
-            <mat-form-field appearance="fill">
-                <mat-label>Ingredientes: </mat-label>
-                <input matInput placeholder="Ingredientes" formControlName="ingredientes" required>
-            </mat-form-field>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+                <!-- Name Column -->
+                <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef>Nome</th>
+                    <td mat-cell *matCellDef="let element">{{element.nome}}</td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="undMedida">
+                    <th mat-header-cell *matHeaderCellDef>Unidade de Medida</th>
+                    <td mat-cell *matCellDef="let element">{{element.undMedida}}</td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="dataCompra">
+                    <th mat-header-cell *matHeaderCellDef>Data Compra</th>
+                    <td mat-cell *matCellDef="let element">{{element.dataCompra}}</td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="precoUnit">
+                    <th mat-header-cell *matHeaderCellDef>Preço Unitário</th>
+                    <td mat-cell *matCellDef="let element">{{ element.precoUnit | currency:'BRL' }}</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <div>
+                <h3>
+                    Click Log
+                </h3>
+            </div>
+
+            <div *ngIf="!clickedRows.size">
+                Clicked rows will be logged here
+            </div>
+            <ul>
+                <li *ngFor="let clickedRow of clickedRows">
+                    Clicked on {{clickedRow.id}}
+                </li>
+            </ul>
             <div>
                 <button mat-button matStepperPrevious>Voltar</button>
                 <button mat-button matStepperNext>Próximo</button>
             </div>
         </form>
     </mat-step>
-    <!-- <mat-step [stepControl]="secondFormGroup" label="Preparo">
-        <form [formGroup]="firstFormGroup">
-            <mat-form-field appearance="fill">
-                <mat-label>Modo de Preparo: </mat-label>
-                <input matInput formControlName="modoDePreparo" placeholder="Modo de Preparo" required>
-            </mat-form-field> -->
-            <!-- <div>
-                <button mat-button matStepperPrevious>Voltar</button>
-                <button mat-button matStepperNext>Próximo</button>
-            </div>
-        </form>
-    </mat-step> -->
     <mat-step>
         <ng-template matStepLabel>Feito!</ng-template>
         <p>Receita Adicionada com Sucesso!</p>

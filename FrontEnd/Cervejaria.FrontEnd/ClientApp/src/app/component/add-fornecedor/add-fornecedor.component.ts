@@ -25,7 +25,6 @@ export class AddFornecedorComponent implements OnInit {
   ];
   dataSource: any;
 
-
   constructor(
   private _formBuilder: FormBuilder,
   private _FornecedorService: ClienteFornecedorService
@@ -37,14 +36,14 @@ export class AddFornecedorComponent implements OnInit {
       ie: ['', Validators.max(3)],
       tipo: this.tipoControl.value,
       contato: this._formBuilder.group({
-      telefone: [''],
-      contato1: [''],
-      email: [''],
+        telefone: ['', Validators.required],
+        contato1: ['', Validators.required],
+        email: ['',Validators.email],
       }),
       endereço: this._formBuilder.group({
-      cep: ['', Validators.max(8)],
-      numero: [0, Validators.required],
-      complemento: ['', Validators.required],
+        cep: ['', Validators.max(8)],
+        numero: [0, Validators.required],
+        complemento: ['', Validators.required],
       })
     });
   }

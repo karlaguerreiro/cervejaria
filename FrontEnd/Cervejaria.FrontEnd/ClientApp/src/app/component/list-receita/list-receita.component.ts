@@ -5,6 +5,9 @@ import { MatTable } from '@angular/material/table';
 import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dialog.component'
 import { CommonModule } from '@angular/common'
 import { elementAt } from 'rxjs';
+import { ReceitaService } from 'src/app/Service/receita.service';
+import { DtoReceita } from 'src/app/DTOs/DtoReceita';
+import { InsumoService } from 'src/app/Service/Insumo.service';
 
 
 export interface PeriodicElement {
@@ -12,17 +15,8 @@ export interface PeriodicElement {
   codigo: number;
   tipo: string;
   ingrediente: string;
-  
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {codigo: 1,  nome: 'hydrogen',    tipo: 'pilsen', ingrediente:'cevada, lupolu, água'},
-  {codigo: 2,  nome: 'Helium',    tipo: 'Lager', ingrediente:' trigo, cevada, água'},
-  {codigo: 3,  nome: 'Lithium',   tipo: 'Puro malte', ingrediente:' Malte, lupolu, água'},
- 
- 
- 
-];
+}
 
 @Component({
   selector: 'app-list-receita',
@@ -32,35 +26,40 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ListReceitaComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>
-  displayedColumns: string[] = ['codigo', 'nome', 'tipo', 'action'];
-  dataSource = ELEMENT_DATA;
-  
-  constructor(public dialog: MatDialog) {}
+  displayedColumns: string[] = ['id', 'tituloReceita', 'descricao', 'action'];
+  dataSource:any;
 
-  ngOnInit(): void {
-  
+  constructor(public dialog: MatDialog, private service: ReceitaService)
+  {
+
   }
 
-  openDialog(element: PeriodicElement | null): void{
+  ngOnInit(): void {
+    this.service.obterReceitas().subscribe(
+      { next: base => {
+        let x = base;
+        this.dataSource = x.data;
+        console.log(this.dataSource);
+      }});
+  }
+
+  openDialog(element: DtoReceita | null): void {
     const dialogRef = this.dialog.open(ElementDialogComponent, {
       width: '300px',
       data: element === null ? {
-        codigo: null,
-        nome: null,
-        tipo: null,
-        ingrediente: null,
-      
+        id: null,
+        tituloReceita: null,
+        descricao: null
       } :  {
-        codigo: element.codigo,
-        nome: element.nome,
-        tipo: element.tipo,
-        ingrediente: element.ingrediente,
+        id: element.id,
+        tituloReceita: element.tituloReceita,
+        descricao: element.descricao,
       }
     });
 
   dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        if (this.dataSource.map(p => p.codigo).includes(result.codigo)) {
+        if (this.dataSource.map((p: { id: any; }) => p.id).includes(result.codigo)) {
           this.dataSource[result.codigo - 1] = result;
           this.table.renderRows();
         }else{
@@ -69,37 +68,37 @@ export class ListReceitaComponent implements OnInit {
         }
       }
   });
-
   }
 
   deleteReceita(codigo: number): void {
-    this.dataSource = this.dataSource.filter(p => p.codigo !== codigo);
+    this.dataSource = this.dataSource.filter((p: { id: number; }) => p.id !== codigo);
   }
 
-  editReceita(element: PeriodicElement): void {
+  editReceita(element: DtoReceita): void {
     this.openDialog(element);
+    this.service.inserirReceita(element).subscribe(
+      { next: base => {
+        console.log(base);
+      }});
   }
 
   showReceita(element: any): void {
     const dialogRef = this.dialog.open(ElementDialogComponent, {
       width: '300px',
       data: element === null ? {
-        codigo: null,
-        nome: null,
-        tipo: null,
-        ingrediente: null,
-      
-      } :  {
-        codigo: null,
-        nome: element.nome,
-        tipo: element.tipo,
-        ingrediente: element.ingrediente,
+        id: null,
+        tituloReceita: null,
+        descricao: null
+      } : {
+        id: element.id,
+        tituloReceita: element.tituloReceita,
+        descricao: element.descricao
       }
     });
 
   dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        if (this.dataSource.map(p => p.codigo).includes(result.codigo)) {
+        if (this.dataSource.map((p: { id: any; }) => p.id).includes(result.codigo)) {
           this.dataSource[result.codigo - 1] = result;
           this.table.renderRows();
         }else{
