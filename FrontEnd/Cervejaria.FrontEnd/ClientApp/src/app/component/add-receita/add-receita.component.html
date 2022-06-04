@@ -1,70 +1,38 @@
-<mat-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Insira o Titulo da receita</ng-template>
-            <mat-form-field appearance="fill">
-                <mat-label>Titulo Receita: </mat-label>
-                <input matInput placeholder="Título da Receita" formControlName="nome">
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="fill">
-                <mat-label>Descricao Receita: </mat-label>
-                <input matInput placeholder="Descricao" formControlName="descricao">
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperNext>Próximo</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Lista de Ingredientes</ng-template>
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-                <!-- Name Column -->
-                <ng-container matColumnDef="nome">
-                    <th mat-header-cell *matHeaderCellDef>Nome</th>
-                    <td mat-cell *matCellDef="let element">{{element.nome}}</td>
-                </ng-container>
+<form class="formulario" [formGroup]="receitaForm" formDir="ngform">
+    <p class="new-header fw-bold my-3 h4">Nova Receita</p>
 
-                <!-- Weight Column -->
-                <ng-container matColumnDef="undMedida">
-                    <th mat-header-cell *matHeaderCellDef>Unidade de Medida</th>
-                    <td mat-cell *matCellDef="let element">{{element.undMedida}}</td>
-                </ng-container>
+    <div class="w-100 d-flex flex-wrap justify-content-between">
+      <mat-form-field class="col-6 px-2" appearance="fill">
+        <mat-label>Receita</mat-label>
+        <input matInput formControlName="nome" />
+      </mat-form-field>
+  
+      <mat-form-field class="col-6 px-2" appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <input matInput formControlName="descricao" />
+      </mat-form-field>
 
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="dataCompra">
-                    <th mat-header-cell *matHeaderCellDef>Data Compra</th>
-                    <td mat-cell *matCellDef="let element">{{element.dataCompra}}</td>
-                </ng-container>
+      <mat-label class="col-12 p-2">
+        <p class="new-header my-3 h5">Insumos da Receita</p>
+      </mat-label>
 
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="precoUnit">
-                    <th mat-header-cell *matHeaderCellDef>Preço Unitário</th>
-                    <td mat-cell *matCellDef="let element">{{ element.precoUnit | currency:'BRL' }}</td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <br>
-            <ul>
-                <li *ngFor="let clickedRow of clickedRows">
-                    Adicionado: {{clickedRow.nome}}
-                </li>
-            </ul>
-            <div>
-                <button mat-button matStepperPrevious>Voltar</button>
-                <button mat-button matStepperNext>Próximo</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Feito!</ng-template>
-        <p>Receita Adicionada com Sucesso!</p>
-        <div>
-            <button mat-button matStepperPrevious>Voltar</button>
-            <button mat-button (click)="stepper.reset()">Limpar</button>
-            <button mat-button (click)="Save()">Salvar</button>
-        </div>
-    </mat-step>
-</mat-stepper>
+      <mat-form-field class="col-6 px-2" appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder=" João Carlos" formControlName="nome" />
+      </mat-form-field>
+
+      <mat-form-field class="col-6 px-2" appearance="fill">
+        <mat-label>Quantidade</mat-label>
+        <input matInput placeholder="Ex: PR" maxlength="2" />
+      </mat-form-field>   
+        
+     
+    </div>
+  
+    <div class="btn-finish">
+      <button type="submit" mat-raised-button class="Salvar" (click)="Save()">
+        Salvar
+      </button>
+      <!-- <button type="reset" mat-raised-button class="Limpar">Limpar</button> -->
+    </div>
+  </form>

@@ -6,10 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { tipoUsuario } from 'src/app/Models/TipoUsuario';
-import { DtoClienteFornecedor } from 'src/app/DTOs/DtoClienteFornecedor';
 import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
-import { DtoEndereco } from 'src/app/DTOs/DtoEndereco';
-import { DtoContato } from 'src/app/DTOs/DtoContato';
+
 
 @Component({
   selector: 'app-add-fornecedor',
@@ -24,6 +22,8 @@ export class AddFornecedorComponent implements OnInit {
     { value: 1, viewValue: 'Fornecedor' },
   ];
   dataSource: any;
+  date = new FormControl(new Date());
+  serializedDate = new FormControl(new Date().toISOString());
 
   constructor(
   private _formBuilder: FormBuilder,
@@ -35,21 +35,21 @@ export class AddFornecedorComponent implements OnInit {
       cnpjCpf: ['', Validators.maxLength(15)],
       ie: ['', Validators.max(3)],
       tipo: this.tipoControl.value,
-      contato: this._formBuilder.group({
-        telefone: ['', Validators.required],
-        contato1: ['', Validators.required],
-        email: ['',Validators.email],
-      }),
-      endereço: this._formBuilder.group({
-        cep: ['', Validators.max(8)],
-        numero: [0, Validators.required],
-        complemento: ['', Validators.required],
-      })
+  
+      
+      telefone: ['', Validators.required],
+      contato1: ['', Validators.required],
+      email: ['',Validators.email],
+      
+      cep: ['', Validators.max(8)],
+      numero: [0, Validators.required],
+      complemento: ['', Validators.required],
+    
     });
   }
   ngOnInit() { }
 
-  public Save() {
+  public async Save() {
     this._FornecedorService.Save(this.fornecedorForm.value).subscribe(
       (response: any) => {
         console.log(response);

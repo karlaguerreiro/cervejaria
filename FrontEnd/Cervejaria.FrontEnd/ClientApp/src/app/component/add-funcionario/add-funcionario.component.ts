@@ -8,7 +8,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { FuncionarioService } from 'src/app/Service/Funcionario.service';
-import { DtoInfoUsuario } from 'src/app/DTOs/DtoInfoUsuario';
 import { DtoUsuario } from 'src/app/DTOs/DtoUsuario';
 import { DtoCargo } from 'src/app/DTOs/DtoCargo';
 import { DtoEmpresa } from 'src/app/DTOs/DtoEmpresa';
@@ -42,7 +41,6 @@ export class AddFuncionarioComponent implements OnInit {
 
       //Endereco
       cep: ['', Validators.required],
-      endereco: ['', Validators.required],
       numero: ['', Validators.required],
       complemento: ['', Validators.required],
 
