@@ -55,8 +55,13 @@ namespace Cervejaria.Repository
             return await Db.SaveChangesAsync();
            
         }
-        
-        public void Dispose() =>
+
+        public void Dispose() 
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing) =>
             Db?.Dispose();
     }
 }

@@ -20,7 +20,7 @@ namespace Cervejaria.Api.Controllers.Main
             !_notificator.HasNotifications();
         
         protected ActionResult CustomResponse(object result = null) =>
-            IsValid() ? result == null ? NoContent() : 
+            IsValid() ? result == null ? NoContent() :
             Ok(new { success = true, data = result}) :
             BadRequest(new { success = false, errors = _notificator.GetNotifications().Select(n => n.ErrorMessage) });
     }

@@ -2,7 +2,7 @@
 
 namespace Cervejaria.Domain.Enuns
 {
-    public enum TipoUsuario : Int32
+    public enum TipoUsuario
     {
         Cliente,
         Fornecedor

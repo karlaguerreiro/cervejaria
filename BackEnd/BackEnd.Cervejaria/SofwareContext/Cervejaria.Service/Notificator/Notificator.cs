@@ -14,8 +14,8 @@ namespace Cervejaria.Service.Notificator
             _notifications = new ValidationResult();
         }
 
-        public void Handle(ValidationFailure Notification) =>
-            _notifications.Errors.Add(Notification);
+        public void Handle(ValidationFailure notification) =>
+            _notifications.Errors.Add(notification);
         
         public List<ValidationFailure> GetNotifications() =>
             _notifications.Errors;
