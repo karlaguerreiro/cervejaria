@@ -12,7 +12,7 @@
 
         <ng-container matColumnDef="tituloReceita">
             <th mat-header-cell *matHeaderCellDef> Titulo </th>
-            <td mat-cell *matCellDef="let element"> {{element.tituloReceita}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
         </ng-container>
 
         <ng-container matColumnDef="descricao">
@@ -27,7 +27,7 @@
           <mat-icon>edit</mat-icon>
         </button>
                 <button (click)="showReceita(element)" mat-icon-button>
-          <mat-icon>visibility</mat-icon>
+          Ver Insumos
         </button>
                 <button (click)="deleteReceita(element.id)" mat-icon-button>
           <mat-icon>delete</mat-icon>

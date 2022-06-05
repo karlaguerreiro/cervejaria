@@ -16,12 +16,11 @@ namespace Cervejaria.Api.Controllers.V1
     [ApiController]
     public class InsumoController : MainController
     {
-        private readonly IService<Insumo> _service;
         private readonly IInsumoService _insumoService;
 
-        public InsumoController(INotificator notificator, IService<Insumo> service, IMapper mapper, IInsumoService insumoService) : base(notificator, mapper)
+        public InsumoController(INotificator notificator,IMapper mapper, IInsumoService insumoService) : base(notificator, mapper)
         {
-            this._service = service;
+            this._insumoService = insumoService;
             _insumoService = insumoService;
         }
 
@@ -31,20 +30,25 @@ namespace Cervejaria.Api.Controllers.V1
 
         [HttpPut]
         public async Task<IActionResult> Put(InsumoViewModel viewModel) =>
-            CustomResponse(_mapper.Map<InsumoDto>(await _service.UpdateAsync(_mapper.Map<Insumo>(viewModel))));
+            CustomResponse(_mapper.Map<InsumoDto>(await _insumoService.UpdateAsync(_mapper.Map<Insumo>(viewModel))));
 
+
+        [HttpGet("byReceita/{id:int}")]
+        public async Task<IActionResult> GetByIdReceita(int id) =>
+            CustomResponse(_mapper.Map<IEnumerable<InsumoDto>>(await _insumoService.GetByIdReceita(id)));
+        
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id) =>
-            CustomResponse(_mapper.Map<InsumoDto>(await _service.GetByIdAsync(id)));
+            CustomResponse(_mapper.Map<InsumoDto>(await _insumoService.GetByIdAsync(id)));
 
         [HttpGet]
         public async Task<IActionResult> Get() =>
-            CustomResponse(_mapper.Map<IEnumerable<InsumoDto>>(await _service.Get()));
+            CustomResponse(_mapper.Map<IEnumerable<InsumoDto>>(await _insumoService.Get()));
 
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _service.Delete(id);
+            await _insumoService.Delete(id);
             return CustomResponse();
         }
     }

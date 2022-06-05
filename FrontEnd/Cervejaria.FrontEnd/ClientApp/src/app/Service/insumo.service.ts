@@ -18,9 +18,14 @@ constructor(private http: HttpClient) { }
       })
     }
 
-    public obterInsumos() : Observable< BaseResponse<Insumo[]>> {
+    public obterInsumos() : Observable<BaseResponse<Insumo[]>> {
       return this.http.get<BaseResponse<Insumo[]>>(this.UrlServiceV1 + "api/V1/Insumo");
     }
+
+    public obterInsumosPorIdReceita(id: number) : Observable<BaseResponse<Insumo[]>> {
+      return this.http.get<BaseResponse<Insumo[]>>(this.UrlServiceV1 + "api/V1/Insumo/byReceita/" + id);
+    }
+
 
     public inserirInsumo(insumo: DtoInsumo) : Observable<Insumo> {
       return this.http.post<any>(this.UrlServiceV1 + "api/V1/Insumo", insumo, this.headerOptions);

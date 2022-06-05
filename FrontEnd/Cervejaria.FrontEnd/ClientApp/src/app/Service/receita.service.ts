@@ -29,4 +29,17 @@ export class ReceitaService {
       this.headerOptions
     );
   }
+  public alterarReceita(receita: DtoReceita ): Observable<BaseResponse<DtoReceita>> {
+    return this.http.put<BaseResponse<any>>(
+      this.UrlServiceV1 + 'api/V1/Receita',
+      receita,
+      this.headerOptions
+    );
+  }
+  public deletarReceita(id: number ): Observable<BaseResponse<DtoReceita>> {
+    return this.http.delete<BaseResponse<any>>(
+      this.UrlServiceV1 + 'api/V1/Receita/' + id,
+      this.headerOptions
+    );
+  }
 }

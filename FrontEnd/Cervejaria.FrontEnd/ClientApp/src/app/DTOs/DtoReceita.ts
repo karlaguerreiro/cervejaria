@@ -1,6 +1,6 @@
 export interface DtoReceita {
     id?: number;
-    tituloReceita: string;
+    nome: string;
     descricao: string;
 
 }
