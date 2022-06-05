@@ -1,6 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { PeriodicElement } from 'src/app/component/list-receita/list-receita.component'
+import { DtoReceita } from 'src/app/DTOs/DtoReceita';
+import { Receita } from 'src/app/Models/Receita';
+import { InsumoService } from 'src/app/Service/Insumo.service';
+import { ReceitaService } from 'src/app/Service/receita.service';
 
 @Component({
   selector: 'app-element-dialog',
@@ -8,26 +11,31 @@ import { PeriodicElement } from 'src/app/component/list-receita/list-receita.com
   styleUrls: ['./element-dialog.component.css']
 })
 export class ElementDialogComponent implements OnInit {
-  element!: PeriodicElement; 
   showDiv!: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: PeriodicElement,
+    public data: DtoReceita,
     public dialogRef: MatDialogRef<ElementDialogComponent>,
+    private service: ReceitaService
   ) {}
-    
+
   ngOnInit(): void {
 
-    if (this.data.codigo != null) {
+    if (this.data.id != null) {
       this.showDiv = true;
-      
     }else {
       this.showDiv = false;
-  
+
     }
   }
-  
+  Update(element: DtoReceita){
+    this.service.alterarReceita(element).subscribe(
+  { next: base => {
+    console.log(base);
+  }});
+}
+
   onCancel(): void {
     this.dialogRef.close()
   }

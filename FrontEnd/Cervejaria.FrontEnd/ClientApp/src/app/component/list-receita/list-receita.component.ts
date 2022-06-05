@@ -8,6 +8,8 @@ import { elementAt } from 'rxjs';
 import { ReceitaService } from 'src/app/Service/receita.service';
 import { DtoReceita } from 'src/app/DTOs/DtoReceita';
 import { InsumoService } from 'src/app/Service/Insumo.service';
+import { ListInsumoComponent } from '../list-insumo/list-insumo.component';
+import { Insumo } from 'src/app/Models/Insumo';
 
 
 export interface PeriodicElement {
@@ -28,8 +30,8 @@ export class ListReceitaComponent implements OnInit {
   table!: MatTable<any>
   displayedColumns: string[] = ['id', 'tituloReceita', 'descricao', 'action'];
   dataSource:any;
-
-  constructor(public dialog: MatDialog, private service: ReceitaService)
+  public values!: Insumo[];
+  constructor(public dialog: MatDialog, private service: ReceitaService, private insumoService: InsumoService)
   {
 
   }
@@ -48,16 +50,19 @@ export class ListReceitaComponent implements OnInit {
       width: '300px',
       data: element === null ? {
         id: null,
-        tituloReceita: null,
+        nome: null,
         descricao: null
       } :  {
         id: element.id,
-        tituloReceita: element.tituloReceita,
+        nome: element.nome,
         descricao: element.descricao,
       }
     });
 
   dialogRef.afterClosed().subscribe(result => {
+    this.ngOnInit();
+    this.table.ngOnInit()
+    /*
       if (result !== undefined) {
         if (this.dataSource.map((p: { id: any; }) => p.id).includes(result.codigo)) {
           this.dataSource[result.codigo - 1] = result;
@@ -67,36 +72,37 @@ export class ListReceitaComponent implements OnInit {
           this.table.renderRows();
         }
       }
+      */
   });
   }
 
   deleteReceita(codigo: number): void {
-    this.dataSource = this.dataSource.filter((p: { id: number; }) => p.id !== codigo);
+    this.dataSource = this.dataSource.filter((p: { id: number; }) => this.service.deletarReceita(p.id).subscribe(
+      { next: base => {
+        console.log(base);
+      }}));
   }
 
   editReceita(element: DtoReceita): void {
     this.openDialog(element);
-    this.service.inserirReceita(element).subscribe(
-      { next: base => {
-        console.log(base);
-      }});
+
   }
 
   showReceita(element: any): void {
-    const dialogRef = this.dialog.open(ElementDialogComponent, {
-      width: '300px',
-      data: element === null ? {
-        id: null,
-        tituloReceita: null,
-        descricao: null
-      } : {
-        id: element.id,
-        tituloReceita: element.tituloReceita,
-        descricao: element.descricao
-      }
+    this.insumoService.obterInsumosPorIdReceita(element.id).subscribe(
+      { next: base => {
+        let x = base;
+        this.values = x.data;
+        console.log(x.data);
+      }})
+      // tem que chamar duas vezes o list insumo, da primeira vez ta bugando, o componente ta iniciando primeiro que a chamada da api
+    const dialogRef = this.dialog.open(ListInsumoComponent, {
+      width: '500px',
+      data: this.values
     });
-
   dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+      /*
       if (result !== undefined) {
         if (this.dataSource.map((p: { id: any; }) => p.id).includes(result.codigo)) {
           this.dataSource[result.codigo - 1] = result;
@@ -106,6 +112,7 @@ export class ListReceitaComponent implements OnInit {
           this.table.renderRows();
         }
       }
+      */
   });
 
   }

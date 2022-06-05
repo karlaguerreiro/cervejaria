@@ -13,8 +13,8 @@ import { AddClienteComponent } from './component/add-cliente/add-cliente.compone
 import { ListProdutoComponent } from './component/list-produto/list-produto.component';
 import { AddReceitaComponent } from './component/add-receita/add-receita.component';
 import { AddFuncionarioComponent } from './component/add-funcionario/add-funcionario.component';
-import { ListReceitaComponent } from './component/list-receita/list-receita.component';
 import { AddProdutoComponent } from './component/add-produto/add-produto.component';
+import { ListReceitaComponent } from './component/list-receita/list-receita.component';
 
 const routes: Routes = [
 {
@@ -62,7 +62,7 @@ const routes: Routes = [
     component: AddProdutoComponent,
   },
   {
-    path: 'funcionario',
+    path: 'funcionarios',
     component: ListFuncionarioComponent,
   },
   {

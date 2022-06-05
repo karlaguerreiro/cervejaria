@@ -10,9 +10,7 @@ import { ReceitaService } from 'src/app/Service/receita.service';
   styleUrls: ['./add-receita.component.css']
 })
 export class AddReceitaComponent implements OnInit {
-  isLinear = false;
   receitaForm!: FormGroup;
-  control!: FormControl;
   displayedColumns: string[] = ['nome', 'dataCompra','undMedida', 'precoUnit'];
   dataSource: any;
   clickedRows = new Set<DtoInsumo>();

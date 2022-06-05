@@ -1,4 +1,4 @@
-import { ReceitaService } from './Service/receita.service';
+
 import { ProdutoService } from './Service/Produto.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,7 +15,6 @@ import { ListInsumoComponent } from './component/list-insumo/list-insumo.compone
 import { InsumoComponent } from './views/insumo/insumo.component'
 import { ReceitaComponent } from './views/receita/receita.component';
 import { AddReceitaComponent } from './component/add-receita/add-receita.component';
-import { ListReceitaComponent } from './component/list-receita/list-receita.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
@@ -45,6 +44,8 @@ import { ElementDialogComponent } from './modal/element-dialog/element-dialog.co
 import { CommonModule } from '@angular/common';
 import { FuncionarioService } from './Service/Funcionario.service';
 import { InsumoService } from './Service/Insumo.service';
+import { ReceitaService } from './Service/receita.service';
+import { ListReceitaComponent } from './component/list-receita/list-receita.component';
 
 
 @NgModule({

@@ -9,6 +9,8 @@ using Cervejaria.Domain.Contracts.Service.CommonServices;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cervejaria.Api.Controllers.V1
@@ -37,7 +39,7 @@ namespace Cervejaria.Api.Controllers.V1
 
         [HttpGet]
         public async Task<IActionResult> Get() =>
-            CustomResponse(_mapper.Map<ReceitaDto>(await _service.Get()));
+            CustomResponse(_mapper.Map<IEnumerable<ReceitaDto>>(await _service.Get()));
 
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
