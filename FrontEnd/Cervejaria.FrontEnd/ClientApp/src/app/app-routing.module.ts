@@ -62,7 +62,7 @@ const routes: Routes = [
     component: AddProdutoComponent,
   },
   {
-    path: 'funcionario',
+    path: 'funcionarios',
     component: ListFuncionarioComponent,
   },
   {

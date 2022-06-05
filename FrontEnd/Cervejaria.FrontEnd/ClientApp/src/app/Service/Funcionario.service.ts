@@ -25,7 +25,7 @@ export class FuncionarioService {
 
   public obterFuncionarios(): Observable<BaseResponse<Funcionario[]>> {
     return this.http.get<BaseResponse<Funcionario[]>>(
-      this.UrlServiceV1 + 'api/V1/Funcionario'
+      this.UrlServiceV1 + 'api/V1/Usuario'
     );
   }
 
@@ -33,7 +33,7 @@ export class FuncionarioService {
     funcionario : any
   ): Observable<BaseResponse<any>> {
     return this.http.post<BaseResponse<any>>(
-      this.UrlServiceV1 + 'api/V1/Funcionario',
+      this.UrlServiceV1 + 'api/V1/Usuario',
       funcionario,
       this.headerOptions
     );
