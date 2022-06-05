@@ -11,8 +11,7 @@ import { ReceitaService } from 'src/app/Service/receita.service';
 })
 export class AddReceitaComponent implements OnInit {
   isLinear = false;
-  firstFormGroup!: FormGroup;
-  secondFormGroup!: FormGroup;
+  receitaForm!: FormGroup;
   control!: FormControl;
   displayedColumns: string[] = ['nome', 'dataCompra','undMedida', 'precoUnit'];
   dataSource: any;
@@ -30,7 +29,7 @@ export class AddReceitaComponent implements OnInit {
         console.log(this.dataSource);
       }});
 
-    this.firstFormGroup = this._formBuilder.group({
+    this.receitaForm = this._formBuilder.group({
       nome: ['', Validators.required],
       InsumoReceitas: [...this.clickedRows],
       descricao: ['', Validators.required]
@@ -41,10 +40,10 @@ export class AddReceitaComponent implements OnInit {
   {
     var x = [...this.clickedRows];
     x.forEach(el => { el.IdInsumo = el.id });
-    this.firstFormGroup.value.InsumoReceitas = x;
-    console.log('obj', this.firstFormGroup.value);
+    this.receitaForm.value.InsumoReceitas = x;
+    console.log('obj', this.receitaForm.value);
 
-    this.receitaService.inserirReceita(this.firstFormGroup.value).subscribe(
+    this.receitaService.inserirReceita(this.receitaForm.value).subscribe(
       { next: base =>
         console.log(base.data)
       });
