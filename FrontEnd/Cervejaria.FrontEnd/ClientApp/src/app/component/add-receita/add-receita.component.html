@@ -2,37 +2,37 @@
     <p class="new-header fw-bold my-3 h4">Nova Receita</p>
 
     <div class="w-100 d-flex flex-wrap justify-content-between">
-      <mat-form-field class="col-6 px-2" appearance="fill">
-        <mat-label>Receita</mat-label>
-        <input matInput formControlName="nome" />
-      </mat-form-field>
-  
-      <mat-form-field class="col-6 px-2" appearance="fill">
-        <mat-label>Descrição</mat-label>
-        <input matInput formControlName="descricao" />
-      </mat-form-field>
+        <mat-form-field class="col-6 px-2" appearance="fill">
+            <mat-label>Receita</mat-label>
+            <input matInput formControlName="nome" />
+        </mat-form-field>
 
-      <mat-label class="col-12 p-2">
-        <p class="new-header my-3 h5">Insumos da Receita</p>
-      </mat-label>
+        <mat-form-field class="col-6 px-2" appearance="fill">
+            <mat-label>Descrição</mat-label>
+            <input matInput formControlName="descricao" />
+        </mat-form-field>
 
-      <mat-form-field class="col-6 px-2" appearance="fill">
-        <mat-label>Nome</mat-label>
-        <input matInput placeholder=" João Carlos" formControlName="nome" />
-      </mat-form-field>
+        <mat-label class="col-12 p-2">
+            <p class="new-header my-3 h5">Insumos da Receita</p>
+        </mat-label>
 
-      <mat-form-field class="col-6 px-2" appearance="fill">
-        <mat-label>Quantidade</mat-label>
-        <input matInput placeholder="Ex: PR" maxlength="2" />
-      </mat-form-field>   
-        
-     
+        <mat-form-field class="col-6 px-2" appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder=" João Carlos" formControlName="nome" />
+        </mat-form-field>
+
+        <mat-form-field class="col-6 px-2" appearance="fill">
+            <mat-label>Quantidade</mat-label>
+            <input matInput placeholder="Ex: PR" maxlength="2" />
+        </mat-form-field>
+
+
     </div>
-  
+
     <div class="btn-finish">
-      <button type="submit" mat-raised-button class="Salvar" (click)="Save()">
+        <button type="submit" mat-raised-button class="Salvar" (click)="Save()">
         Salvar
       </button>
-      <!-- <button type="reset" mat-raised-button class="Limpar">Limpar</button> -->
+        <!-- <button type="reset" mat-raised-button class="Limpar">Limpar</button> -->
     </div>
-  </form>
+</form>
