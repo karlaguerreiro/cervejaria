@@ -1,3 +1,5 @@
+import { DtoContato } from './../../DTOs/DtoContato';
+import { DtoUsuario } from 'src/app/DTOs/DtoUsuario';
 
 import { FuncionarioService } from 'src/app/Service/Funcionario.service';
 import { Funcionario } from './../../Models/Funcionario';
@@ -5,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dialog.component';
+import { DtoInfoUsuario } from 'src/app/DTOs/DtoInfoUsuario';
 export interface PeriodicElement {
   nome: string;
   codigo: number;
@@ -22,6 +25,8 @@ export class ListFuncionarioComponent implements OnInit {
   table!: MatTable<any>
   displayedColumns: string[] = ['id', 'nome', 'email', 'telefone', 'action'];
   dataSource:any;
+  values: any;
+  FuncionarioService: any;
   constructor(public dialog: MatDialog, private service: FuncionarioService) { }
   
   ngOnInit(): void {
@@ -34,65 +39,55 @@ export class ListFuncionarioComponent implements OnInit {
   }
  });
 }
+openDialog(element: DtoInfoUsuario | DtoUsuario): void {
+  const dialogRef = this.dialog.open(ElementDialogComponent, {
+    width: '300px',
+    data: element === null ? {
+      id: null,
+      nome: null,
+      email: null,
+      telefone: null
+    } :  {
+      // id: element.id,
+      // nome: element.nome,
+      // email: element.email,
+      // telefone: element.telefone,
+    }
+  });
 
-  openDialog(element: Funcionario | null): void {
-    const dialogRef = this.dialog.open(ElementDialogComponent, {
-      width: '300px',
-      data: element === null ? {
-        id: null,
-        nome: null,
-        email: null,
-        telefone: null
-      } :  {
-        id: element,
-        nome: element.nome,
-        email: element.email,
-        telefone: element.telefone,
-      }
-    });
+  dialogRef.afterClosed().subscribe(result => {
+    this.ngOnInit();
+    this.table.ngOnInit();
+  });
 }
 
-//   dialogRef.afterClosed().subscribe(result => {
-//     if (result !== undefined) {
-//       if (this.dataSource.map((p: { id: any; }) => p.id).includes(result.codigo)) {
-//         this.dataSource[result.codigo - 1] = result;
-//         this.table.renderRows();
-//       }else{
-//         this.dataSource.push(result);
-//         this.table.renderRows();
-//       }
-//     });
+  deleteReceita(codigo: number) {
+    this.dataSource = this.dataSource.filter((p: { id: number; }) => this.service.deletarFuncionario(p.id).subscribe(
+      { next: (base: any) => {
+        console.log(base);
+      }}));
+  }
 
-//   deleteReceita(codigo: number): void {
-//     this.dataSource = this.dataSource.filter((receita: { id: number; }) => receita.id !== codigo);
-//     this.table.renderRows();
-//   }
 
-//   editReceita(element: Funcionario | null): void {
-//        this.openDialog(element);
-//        this.service.atualizarFuncionario(element).subscribe(
-//           { next: base => {
-//             let x = base;
-//             this.dataSource = x.data;
-//             console.log(this.dataSource);
-//           }
-//         });
-// }
+  editReceita(element: Funcionario | null) {
+    // this.openDialog(element);
+}
 
-//   showReceita(element: any): void {
-//     const dialogRef = this.dialog.open(ElementDialogComponent, {
-//       width: '300px',
-//       data: element === null ? {
-//         id: null,
-//         nome: null,
-//         email: null,
-//         telefone: null
-//       } :  {
-//         id: element.id,
-//         nome: element.nome,
-//         email: element.email,
-//         telefone: element.telefone,
-//       }
-//     });
-//   }
-};
+  showReceita(element: any) : void{
+    this.FuncionarioService.obterFuncionario(element.id).subscribe(
+      { next: (base: any) => {
+        let x = base;
+        this.dataSource = x.data;
+        console.log(this.dataSource);
+      }
+    });
+    const dialogRef = this.dialog.open(ElementDialogComponent, {
+      width: '500px',
+      data: this.values 
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
+  }
+}
+

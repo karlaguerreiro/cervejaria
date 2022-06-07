@@ -21,4 +21,13 @@ constructor(private http: HttpClient) { }
     public GetByType(type: number) : any {
       return this.http.get<any>(this.UrlServiceV1 + "api/V1/ClienteFornecedor/type/" + type);
     }
-}
+
+    public Edit(args: any) : any {
+      return this.http.put<any>(this.UrlServiceV1 + "api/V1/ClienteFornecedor", args);
+    }
+
+    public Delete(id: number) : any {
+      return this.http.delete<any>(this.UrlServiceV1 + "api/V1/ClienteFornecedor/" + id);
+    } 
+
+  }

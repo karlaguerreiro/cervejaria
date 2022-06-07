@@ -85,7 +85,6 @@ export class ListReceitaComponent implements OnInit {
 
   editReceita(element: DtoReceita): void {
     this.openDialog(element);
-
   }
 
   showReceita(element: any): void {

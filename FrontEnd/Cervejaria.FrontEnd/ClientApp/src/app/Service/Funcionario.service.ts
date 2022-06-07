@@ -109,4 +109,15 @@ export class FuncionarioService {
         .subscribe((id) => resolve(id));
     });
   }
+
+
+  public deletarFuncionario(id: number ): Observable<BaseResponse<Funcionario>> {
+    return this.http.delete<BaseResponse<any>>(
+      this.UrlServiceV1 + 'api/V1/Usuario/' + id,
+      this.headerOptions
+    );
+  }
+
 }
+
+
