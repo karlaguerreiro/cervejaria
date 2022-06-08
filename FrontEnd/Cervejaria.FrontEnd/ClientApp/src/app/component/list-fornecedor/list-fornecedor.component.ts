@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ClienteFornecedor } from 'src/app/Models/ClienteFornecedor';
 import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
+import { MatTable } from '@angular/material/table';
+import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dialog.component';
 
 @Component({
   selector: 'app-list-fornecedor',
@@ -15,9 +18,13 @@ import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.serv
   ],
 })
 export class ListFornecedorComponent implements OnInit {
-  dataSource:any;
-  columnsToDisplay = ['id', 'nome'];
+  table!: MatTable<any>
+  dataSource:ClienteFornecedor[]=[];
+  displayedColumns : string[] = ['id', 'nome' , 'telefone' , 'email', 'action'];
   expandedElement: any | undefined;
+  dialog: any;
+  clienteService: any;
+  values: any;
   isUrl(str: string) {
     if (typeof str == "number") return false;
     return (str.includes('http'))
@@ -35,4 +42,49 @@ export class ListFornecedorComponent implements OnInit {
       }
     );
   }
-}
+
+  openDialog(element: ClienteFornecedor): void {
+    const dialogRef = this.dialog.open(ElementDialogComponent, {
+      width: '300px',
+      data: element === null ? {
+        id: null,
+        nome: null,
+        telefone: null,
+        email: null
+      } :  {
+        id: element.id,
+        nome: element.nome,
+        telefone: element.telefone,
+        email: element.email,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+      this.table.ngOnInit()
+      /*
+        if (result !== undefined) {
+          if (this.dataSource.map((p: { id: any; }) => p.id).includes(result.codigo)) {
+            this.dataSource[result.codigo - 1] = result;
+          }
+        }
+      }
+      */
+    });
+  }
+
+    deleteFornecedor( id: number): void {
+      this.service.Delete(id).subscribe(()=>{
+        this.ngOnInit();
+      })
+    }
+
+    editFornecedor(element: ClienteFornecedor): void {
+      this.openDialog(element);
+    }
+
+  }
+
+
+
+

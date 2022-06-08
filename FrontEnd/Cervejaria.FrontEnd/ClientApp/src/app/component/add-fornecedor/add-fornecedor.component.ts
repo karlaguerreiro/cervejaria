@@ -55,6 +55,7 @@ export class AddFornecedorComponent implements OnInit {
         console.log(response);
         this.ngOnInit();
       }
-    );
+    )
+   
 }
 }
