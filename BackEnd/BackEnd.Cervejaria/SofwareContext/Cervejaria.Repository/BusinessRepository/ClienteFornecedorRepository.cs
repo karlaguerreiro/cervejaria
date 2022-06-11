@@ -21,15 +21,9 @@ namespace Cervejaria.Repository.BusinessRepository
                 .Where(e => e.Id == id).FirstOrDefaultAsync();
 
         public async Task<IEnumerable<ClienteFornecedor>> GetByType(int type) => 
-            await DbSet.Select(e => new ClienteFornecedor()
-        {
-            Nome = e.Nome,
-            Id = e.Id,
-            Tipo = e.Tipo,
-            Contato = new Contato()
-            {
-                Contato1 = e.Contato.Contato1
-            },
-        }).Where(e => (int)e.Tipo == type).ToListAsync();
+            await DbSet
+                .Include(e => e.Contato)
+                .Include(e => e.Endereco)
+                .Include(e => e.Insumos).Where(e => (int)e.Tipo == type).ToListAsync();
     }
 }
