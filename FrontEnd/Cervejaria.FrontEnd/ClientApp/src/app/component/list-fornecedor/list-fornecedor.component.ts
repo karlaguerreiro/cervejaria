@@ -4,7 +4,10 @@ import { ClienteFornecedor } from 'src/app/Models/ClienteFornecedor';
 import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
 import { MatTable } from '@angular/material/table';
 import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dialog.component';
-
+import { DtoClienteFornecedor } from 'src/app/DTOs/DtoClienteFornecedor';
+import { MatDialog } from '@angular/material/dialog';
+import { ElementDialogFornecedorComponent } from 'src/app/modal/element-dialog-fornecedor/element-dialog-fornecedor.component';
+import { DtoContato } from 'src/app/DTOs/DtoContato';
 @Component({
   selector: 'app-list-fornecedor',
   templateUrl: './list-fornecedor.component.html',
@@ -19,7 +22,7 @@ import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dia
 })
 export class ListFornecedorComponent implements OnInit {
   table!: MatTable<any>
-  dataSource:ClienteFornecedor[]=[];
+  dataSource:any;
   displayedColumns : string[] = ['id', 'nome' , 'telefone' , 'email', 'action'];
   expandedElement: any | undefined;
   dialog: any;
@@ -29,7 +32,7 @@ export class ListFornecedorComponent implements OnInit {
     if (typeof str == "number") return false;
     return (str.includes('http'))
   }
-  constructor(private service: ClienteFornecedorService) { }
+  constructor(public dialogo: MatDialog ,private service: ClienteFornecedorService) { }
 
   ngOnInit(): void {
     this.service.GetByType(1).subscribe(
@@ -43,20 +46,21 @@ export class ListFornecedorComponent implements OnInit {
     );
   }
 
-  openDialog(element: ClienteFornecedor): void {
-    const dialogRef = this.dialog.open(ElementDialogComponent, {
+  openDialog(element: DtoClienteFornecedor): void {
+    const dialogRef = this.dialogo.open(ElementDialogFornecedorComponent, {
       width: '300px',
       data: element === null ? {
         id: null,
         nome: null,
         telefone: null,
-        email: null
+        email: null,
       } :  {
         id: element.id,
         nome: element.nome,
-        telefone: element.telefone,
-        email: element.email,
+        telefone: element.cpf_cnpj,
+        email: element.id_endereco,
       }
+      
     });
 
     dialogRef.afterClosed().subscribe(() => {
@@ -79,9 +83,11 @@ export class ListFornecedorComponent implements OnInit {
       })
     }
 
-    editFornecedor(element: ClienteFornecedor): void {
+    editFornecedor(element: DtoClienteFornecedor): void {
       this.openDialog(element);
     }
+
+    
 
   }
 
