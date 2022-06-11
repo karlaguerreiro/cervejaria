@@ -19,10 +19,10 @@
     </mat-form-field>
 </div>
 <div mat-dialog-actions style="display: flex">
-    <button *ngIf="showDiv" class="success" [mat-dialog-close]="data" mat-icon-button (click)="Update(data)">
+    <button *ngIf="showDiv" class="success" [mat-dialog-close]="data" mat-raised-button (click)="Update(data)">
     Atualizar
   </button>
-    <button (click)="onCancel()" mat-icon-button>
+    <button (click)="onCancel()" mat-raised-button class="success">
     Cancelar
   </button>
 </div>

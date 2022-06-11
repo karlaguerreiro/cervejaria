@@ -16,6 +16,8 @@ import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.serv
 })
 export class AddFornecedorComponent implements OnInit {
   fornecedorForm: FormGroup;
+  secondFormGroup!: FormGroup;
+  thirdFormGroup!: FormGroup;
   @Input()
   tipoControl: FormControl = new FormControl(1);
   tipos: tipoUsuario[] = [
@@ -28,33 +30,33 @@ export class AddFornecedorComponent implements OnInit {
   constructor(
   private _formBuilder: FormBuilder,
   private _FornecedorService: ClienteFornecedorService
-  )
-    {
+  ){
     this.fornecedorForm = this._formBuilder.group({
       nome: ['', Validators.required],
       cnpjCpf: ['', Validators.maxLength(15)],
-      ie: ['', Validators.max(3)],
+      ie: ['', Validators.required],
       tipo: this.tipoControl.value,
-  
-      
-      telefone: ['', Validators.required],
-      contato1: ['', Validators.required],
-      email: ['',Validators.email],
-      
-      cep: ['', Validators.max(8)],
-      numero: [0, Validators.required],
-      complemento: ['', Validators.required],
-    
-    });
+      Contato: (this.secondFormGroup = this._formBuilder.group({
+        Telefone: ['', Validators.required],
+        Contato1: ['', Validators.required],
+        Email: ['', Validators.email],
+      })),
+      endereco: (this.thirdFormGroup = this._formBuilder.group({
+        cep: ['', Validators.required],
+        numero: [0, Validators.required],
+        complemento: ['', Validators.required],
+      }))});
   }
-  ngOnInit() { }
+  
+  ngOnInit(): void { }
 
   public async Save() {
     this._FornecedorService.Save(this.fornecedorForm.value).subscribe(
       (response: any) => {
         console.log(response);
-        this.ngOnInit();
+        this.ngOnInit();      
       }
-    );
+    )
+   
 }
 }

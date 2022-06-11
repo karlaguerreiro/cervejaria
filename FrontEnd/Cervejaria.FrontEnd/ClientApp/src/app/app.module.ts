@@ -46,6 +46,7 @@ import { FuncionarioService } from './Service/Funcionario.service';
 import { InsumoService } from './Service/Insumo.service';
 import { ReceitaService } from './Service/receita.service';
 import { ListReceitaComponent } from './component/list-receita/list-receita.component';
+import { ElementDialogFornecedorComponent } from './modal/element-dialog-fornecedor/element-dialog-fornecedor.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { ListReceitaComponent } from './component/list-receita/list-receita.comp
     ClienteComponent,
     FuncionarioComponent,
     ElementDialogComponent,
+    ElementDialogFornecedorComponent,
 
   ],
   imports: [

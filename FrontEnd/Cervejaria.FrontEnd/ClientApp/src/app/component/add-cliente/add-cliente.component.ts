@@ -15,6 +15,8 @@ import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.serv
 })
 export class AddClienteComponent implements OnInit {
   clienteForm!: FormGroup;
+  secondFormGroup!: FormGroup;
+  thirdFormGroup!: FormGroup;
   @Input()
   tipoControl: FormControl = new FormControl(0);
   tipos: tipoUsuario[] = [
@@ -30,17 +32,16 @@ export class AddClienteComponent implements OnInit {
       cnpjCpf: ['', Validators.maxLength(15)],
       ie: ['', Validators.required],
       tipo: this.tipoControl.value,
-      contato: this._formBuilder.group({
-      telefone: [''],
-      contato1: [''],
-      email: [''],
-      }),
-      endereço: this._formBuilder.group({
-      cep: ['', Validators.max(8)],
-      numero: [0, Validators.required],
-      complemento: ['', Validators.required],
-      })
-    });
+      Contato: (this.secondFormGroup = this._formBuilder.group({
+        Telefone: ['', Validators.required],
+        Contato1: ['', Validators.required],
+        Email: ['', Validators.email],
+      })),
+      endereco: (this.thirdFormGroup = this._formBuilder.group({
+        cep: ['', Validators.required],
+        numero: [0, Validators.required],
+        complemento: ['', Validators.required],
+      }))});
   }
 
   ngOnInit(): void { }
@@ -49,9 +50,9 @@ export class AddClienteComponent implements OnInit {
       this._clienteService.Save(this.clienteForm.value).subscribe(
         (response: any) => {
           console.log(response);
-          this.ngOnInit();         
-                
+          this.ngOnInit();                       
         }
+        
       );
   
   }

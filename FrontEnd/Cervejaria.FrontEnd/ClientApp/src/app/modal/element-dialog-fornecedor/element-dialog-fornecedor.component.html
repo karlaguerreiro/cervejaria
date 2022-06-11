@@ -1,0 +1,32 @@
+<h1 *ngIf="showDiv" mat-dialog-title>Exibir Fornecedor</h1>
+<h1 *ngIf="!showDiv" mat-dialog-title>Editar Fornecedor</h1>
+<div *ngIf="!showDiv" mat-dialog-content>
+    <span style="font-weight: bold; font-size: 12px;">Fornecedor:</span> {{data.id}}
+</div>
+<hr>
+<div *ngIf="!showDiv" mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Código</mat-label>
+    <input matInput [(ngModel)]="data.id">
+  </mat-form-field>
+  <hr>
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="data.nome">
+  </mat-form-field>
+  <hr>
+  <mat-form-field appearance="fill">
+    <mat-label>Inscrição Estadual</mat-label>
+    <input matInput [(ngModel)]="data.ie">
+  </mat-form-field>  
+</div>
+
+<div mat-dialog-actions style="display: flex">
+  <button *ngIf="!showDiv" class="success" [mat-dialog-close]="data" mat-raised-button (click)="Update(data)">
+  Atualizar
+</button>
+
+<button (click)="onCancel()" mat-raised-button class="success">
+  Cancelar
+</button>
+</div>

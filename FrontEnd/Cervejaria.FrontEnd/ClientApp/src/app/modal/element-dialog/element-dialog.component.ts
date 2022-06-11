@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DtoReceita } from 'src/app/DTOs/DtoReceita';
 import { Receita } from 'src/app/Models/Receita';
-import { InsumoService } from 'src/app/Service/Insumo.service';
 import { ReceitaService } from 'src/app/Service/receita.service';
 
 @Component({
