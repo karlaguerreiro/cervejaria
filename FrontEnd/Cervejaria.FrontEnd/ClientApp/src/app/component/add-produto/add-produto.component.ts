@@ -12,22 +12,38 @@ import { ProdutoService } from 'src/app/Service/Produto.service';
   styleUrls: ['./add-produto.component.css']
 })
 export class AddProdutoComponent implements OnInit {
-  firstFormGroup!:FormGroup;
+  produtoForm!:FormGroup;
+  dataSource: any;
+  date = new FormControl(new Date());
+  serializedDate = new FormControl(new Date().toISOString());
 
-  constructor(private _formBuilder: FormBuilder,
-    private produtoService:ProdutoService) { }
+  constructor(
+    private _formBuilder: FormBuilder,
+    private produtoService:ProdutoService) {
+      this.produtoForm =this._formBuilder.group({
+        nome:['',Validators.required],
+        descricao:['',Validators.required],
+        fabricacao:['',Validators.required], 
+        validade:['',Validators.required], 
+        quantidade:['',Validators.required],
+        unidadeMedida:['',Validators.required],    
+      })
+     }
   
 
   ngOnInit(): void {
-    this.firstFormGroup=this._formBuilder.group({
-      nome:['',Validators.required],
-      descricao:['',Validators.required],
-      fabricacao:['',Validators.required], 
-      validade:['',Validators.required], 
-      quantidade:['',Validators.required],
-      unidadeMedida:['',Validators.required],    
-    })
+
   }
+
+  public async Save() {
+    this.produtoService.Save(this.produtoForm.value).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.ngOnInit();      
+      }
+    )
+   
+}
 
 }
 

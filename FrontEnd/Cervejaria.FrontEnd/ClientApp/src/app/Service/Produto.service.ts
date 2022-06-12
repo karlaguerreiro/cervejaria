@@ -20,7 +20,7 @@ export class ProdutoService {
   }
 
   public GetByType(type: number) : any {
-    return this.http.get<any>(this.UrlServiceV1 + "api/V1/Produto/type/" + type);
+    return this.http.get<any>(this.UrlServiceV1 + "api/V1/Produto/");
   }
 
   public Edit(args: any) : any {
