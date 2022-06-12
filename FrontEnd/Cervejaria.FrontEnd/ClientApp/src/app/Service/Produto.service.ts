@@ -11,15 +11,15 @@ export class ProdutoService {
 
   protected UrlServiceV1: string = "https://cervejaria-api.herokuapp.com/";
 
-  public GetAll() : Observable<BaseResponse<DtoProduto[]>> {
-    return this.http.get<BaseResponse<DtoProduto[]>>(this.UrlServiceV1 + "api/V1/Produto");
-  }
+  // public GetAll() : Observable<BaseResponse<DtoProduto[]>> {
+  //   return this.http.get<BaseResponse<DtoProduto[]>>(this.UrlServiceV1 + "api/V1/Produto");
+  // }
 
   public Save(args: any) : any {
     return this.http.post<any>(this.UrlServiceV1 + "api/V1/Produto", args);
   }
 
-  public GetByType(type: number) : any {
+  public GetAll() : any {
     return this.http.get<any>(this.UrlServiceV1 + "api/V1/Produto/");
   }
 

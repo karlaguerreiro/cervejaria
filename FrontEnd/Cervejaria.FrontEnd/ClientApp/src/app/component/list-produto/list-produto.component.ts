@@ -33,7 +33,7 @@ export class ListProdutoComponent implements OnInit {
   constructor(private service: ProdutoService) { }
 
   ngOnInit(): void {
-    this.service.GetByType(0).subscribe(
+    this.service.GetAll().subscribe(
       {
         next: (base: any) => {
           let x = base;

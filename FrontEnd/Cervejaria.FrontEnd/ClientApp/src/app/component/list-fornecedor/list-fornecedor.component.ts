@@ -47,7 +47,7 @@ export class ListFornecedorComponent implements OnInit {
   }
 
   openDialog(element: DtoClienteFornecedor): void {
-    const dialogRef = this.dialogo.open(ElementDialogFornecedorComponent, {
+    const dialogRef = this.dialog.open(ElementDialogFornecedorComponent, {
       width: '300px',
       data: element === null ? {
         id: null,

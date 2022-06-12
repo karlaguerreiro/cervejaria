@@ -1,6 +1,3 @@
-import { DtoContato } from './../../DTOs/DtoContato';
-import { DtoUsuario } from 'src/app/DTOs/DtoUsuario';
-
 import { FuncionarioService } from 'src/app/Service/Funcionario.service';
 import { Funcionario } from './../../Models/Funcionario';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,86 +5,93 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dialog.component';
 import { DtoInfoUsuario } from 'src/app/DTOs/DtoInfoUsuario';
-export interface PeriodicElement {
-  nome: string;
-  codigo: number;
-  tipo: string;
-  ingrediente: string;
-}
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-list-funcionario',
   templateUrl: './list-funcionario.component.html',
-  styleUrls: ['./list-funcionario.component.css']
+  styleUrls: ['./list-funcionario.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
 })
 export class ListFuncionarioComponent implements OnInit {
   @ViewChild(MatTable)
-  table!: MatTable<any>
+  table!: MatTable<any>;
+  dataSource: any;
   displayedColumns: string[] = ['id', 'nome', 'email', 'telefone', 'action'];
-  dataSource:any;
-  values: any;
-  FuncionarioService: any;
-  constructor(public dialog: MatDialog, private service: FuncionarioService) { }
-  
+  expandedElement: any | undefined;
+  dialog: any;
+
+  constructor(private service: FuncionarioService) {}
+
   ngOnInit(): void {
-    this.service.obterFuncionarios().subscribe(
-      { next: base => {
+    this.service.obterFuncionarios().subscribe({
+      next: (base) => {
         let x = base;
         this.dataSource = x.data;
         console.log(this.dataSource);
-
-  }
- });
-}
-openDialog(element: DtoInfoUsuario | DtoUsuario): void {
-  const dialogRef = this.dialog.open(ElementDialogComponent, {
-    width: '300px',
-    data: element === null ? {
-      id: null,
-      nome: null,
-      email: null,
-      telefone: null
-    } :  {
-      // id: element.id,
-      // nome: element.nome,
-      // email: element.email,
-      // telefone: element.telefone,
-    }
-  });
-
-  dialogRef.afterClosed().subscribe(result => {
-    this.ngOnInit();
-    this.table.ngOnInit();
-  });
-}
-
-  deleteReceita(codigo: number) {
-    this.dataSource = this.dataSource.filter((p: { id: number; }) => this.service.deletarFuncionario(p.id).subscribe(
-      { next: (base: any) => {
-        console.log(base);
-      }}));
+      },
+    });
   }
 
+  openDialog(element: Funcionario): void {
+    const dialogRef = this.dialog.open(ElementDialogFuncionarioComponent, {
+      width: '300px',
+      data:
+        element === null?
+           {
+              id: null,
+              nome: null,
+              telefone: null,
+              email: null,
+            }
+          : {
+              id: element.id,
+              nome: element.nome,
+              telefone: element.telefone,
+              email: element.email,
+            },
+    });
 
-  editReceita(element: Funcionario | null) {
-    // this.openDialog(element);
-}
-
-  showReceita(element: any) : void{
-    this.FuncionarioService.obterFuncionario(element.id).subscribe(
-      { next: (base: any) => {
-        let x = base;
-        this.dataSource = x.data;
-        console.log(this.dataSource);
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+      this.table.ngOnInit();
+      /*
+        if (result !== undefined) {
+          if (this.dataSource.map((p: { id: any; }) => p.id).includes(result.codigo)) {
+            this.dataSource[result.codigo - 1] = result;
+          }
+        }
       }
+      */
     });
-    const dialogRef = this.dialog.open(ElementDialogComponent, {
-      width: '500px',
-      data: this.values 
-    });
-    dialogRef.afterClosed().subscribe(result => {
+  }
+
+  deleteFuncionario(id: number): void {
+    this.service.Delete(id).subscribe(() => {
       this.ngOnInit();
     });
   }
+
+  editFuncionario(element: Funcionario | null) {
+    // this.openDialog(element);
+  }
+}
+function ElementDialogFuncionarioComponent(ElementDialogFuncionarioComponent: any, arg1: { width: string; data: { id: null; nome: null; telefone: null; email: null; } | { id: number | undefined; nome: number; telefone: number; email: number; }; }) {
+  throw new Error('Function not implemented.');
 }
 

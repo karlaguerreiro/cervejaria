@@ -14,6 +14,9 @@ import { DtoInfoUsuario } from '../DTOs/DtoInfoUsuario';
   providedIn: 'root',
 })
 export class FuncionarioService {
+  GetAll() {
+    throw new Error('Method not implemented.');
+  }
   protected UrlServiceV1: string = 'https://cervejaria-api.herokuapp.com/';
 
   headerOptions = {
@@ -23,8 +26,8 @@ export class FuncionarioService {
   };
   constructor(private http: HttpClient) {}
 
-  public obterFuncionarios(): Observable<BaseResponse<Funcionario[]>> {
-    return this.http.get<BaseResponse<Funcionario[]>>(
+  public obterFuncionarios(): Observable<BaseResponse<DtoInfoUsuario[]>> {
+    return this.http.get<BaseResponse<DtoInfoUsuario[]>>(
       this.UrlServiceV1 + 'api/V1/Usuario'
     );
   }
@@ -111,13 +114,14 @@ export class FuncionarioService {
   }
 
 
-  public deletarFuncionario(id: number ): Observable<BaseResponse<Funcionario>> {
-    return this.http.delete<BaseResponse<any>>(
-      this.UrlServiceV1 + 'api/V1/Usuario/' + id,
-      this.headerOptions
-    );
+
+  public Edit(args: any) : any {
+    return this.http.put<any>(this.UrlServiceV1 + "api/V1/Usuario", args);
   }
 
+  public Delete(id: number) : any {
+    return this.http.delete<any>(this.UrlServiceV1 + "api/V1/Usuario/" + id);
+  } 
 }
 
 
