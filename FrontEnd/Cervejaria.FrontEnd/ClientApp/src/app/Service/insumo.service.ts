@@ -30,4 +30,12 @@ constructor(private http: HttpClient) { }
     public inserirInsumo(insumo: DtoInsumo) : Observable<Insumo> {
       return this.http.post<any>(this.UrlServiceV1 + "api/V1/Insumo", insumo, this.headerOptions);
     }
+
+    public Edit(args: any) : any {
+      return this.http.put<any>(this.UrlServiceV1 + "api/V1/Insumo", args);
+    }
+  
+    public Delete(id: number) : any {
+      return this.http.delete<any>(this.UrlServiceV1 + "api/V1/Insumo/" + id);
+    } 
 }

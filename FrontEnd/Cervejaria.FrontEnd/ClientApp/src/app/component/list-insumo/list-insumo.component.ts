@@ -1,37 +1,89 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DtoInsumo } from 'src/app/DTOs/DtoInsumo';
 import { InsumoService } from 'src/app/Service/Insumo.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { MatTable } from '@angular/material/table';
+import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dialog.component';
 
 @Component({
   selector: 'app-list-insumo',
   templateUrl: './list-insumo.component.html',
   styleUrls: ['./list-insumo.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 
 export class ListInsumoComponent implements OnInit {
-  displayedColumns: string[] = ['nome', 'dataCompra', 'undMedida', 'precoUnit'];
-  public dataSource: any;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DtoInsumo[], private insumoService: InsumoService,public dialogRef: MatDialogRef<ListInsumoComponent>) {}
+  @ViewChild(MatTable)
+  table!: MatTable<any>
+  dataSource: DtoInsumo[] = [];
+  displayedColumns: string[] = ['nome', 'dataCompra', 'undMedida', 'action'];
+  expandedElement: any | null;
+  dialog: any;
+  values: any;
+  isUrl(str: string) {
+    if (typeof str == "number") return false;
+    return (str.includes('http'))
+  }
+
+  constructor(private service: InsumoService) {}
 
    ngOnInit(): void {
-     if (this.data !== null || this.data !== undefined)
-    {
-      this.dataSource = this.data;
-    }
-    else{
-     this.insumoService.obterInsumos().subscribe(
-      { next: base => {
-        let x = base;
-        this.dataSource = x.data;
-        console.log(this.dataSource);
-      }});
-    }
+    this.service.obterInsumos().subscribe(
+      {
+        next: (base: any) => {
+          let x = base;
+          this.dataSource = x.data;
+          console.log(this.dataSource);
+        }
+      }
+    );
     }
 
-  onCancel(): void {
-    this.dialogRef.close()
-  }
+    openDialog(element: DtoInsumo): void {
+      const dialogRef = this.dialog.open(ElementDialogComponent, {
+        width: '300px',
+        data: element === null ? {
+          id: null,
+          nome: null,
+          validade: null, 
+        } :  {
+          id: element.id,
+          nome: element.nome,
+          validade: element.validade,
+        }
+      });
+  
+      dialogRef.afterClosed().subscribe(() => {
+        this.ngOnInit();
+        this.table.ngOnInit()
+        /*
+          if (result !== undefined) {
+            if (this.dataSource.map((p: { id: any; }) => p.id).includes(result.codigo)) {
+              this.dataSource[result.codigo - 1] = result;
+            }
+          }
+        }
+        */
+      });
+    }
+
+    deleteInsumo( id: number): void {
+      this.service.Delete(id).subscribe(()=>{
+        this.ngOnInit();
+        this.table.ngOnInit()
+      })
+    }
+
+    editInsumo(element: DtoInsumo): void {
+      this.openDialog(element);
+    }
 
 
 }
