@@ -4,6 +4,8 @@ import { ClienteFornecedor } from 'src/app/Models/ClienteFornecedor';
 import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
 import { MatTable } from '@angular/material/table';
 import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ElementDialogClientComponent } from 'src/app/modal/element-dialog-client/element-dialog-client.component';
 
 @Component({
   selector: 'app-list-cliente',
@@ -22,15 +24,15 @@ export class ListClienteComponent implements OnInit {
   table!: MatTable<any>
   dataSource:ClienteFornecedor[]=[];
   displayedColumns : string[] = ['id', 'nome' , 'telefone' , 'email', 'action'];
-  expandedElement: any | undefined;
-  dialog: any;
-  clienteService: any;
+  expandedElement: any | undefined;  clienteService: any;
   values: any;
   isUrl(str: string) {
     if (typeof str == "number") return false;
     return (str.includes('http'))
   }
-  constructor(private service: ClienteFornecedorService) { }
+  constructor(private service: ClienteFornecedorService,
+    private dialog: MatDialog
+    )  { }
 
   ngOnInit(): void {
     this.service.GetByType(0).subscribe(
@@ -45,16 +47,20 @@ export class ListClienteComponent implements OnInit {
   }
 
   openDialog(element: ClienteFornecedor): void {
-    const dialogRef = this.dialog.open(ElementDialogComponent, {
+    const dialogRef = this.dialog.open(ElementDialogClientComponent, {
       width: '300px',
       data: element === null ? {
         id: null,
         nome: null,
+        cnpjCpf: null,
+        ie: null,
         telefone: null,
         email: null
       } :  {
         id: element.id,
         nome: element.nome,
+        cnpjCpf: element.cnpjCpf,
+        ie: element.ie,
         telefone: element.telefone,
         email: element.email,
       }
@@ -83,6 +89,7 @@ export class ListClienteComponent implements OnInit {
 
     editCliente(element: ClienteFornecedor): void {
       this.openDialog(element);
+
     }
 
 

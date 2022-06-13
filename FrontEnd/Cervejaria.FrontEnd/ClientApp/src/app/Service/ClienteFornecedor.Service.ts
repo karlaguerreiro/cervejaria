@@ -45,4 +45,16 @@ constructor(private http: HttpClient) { }
       );
     }
 
+    public alterarCliente(fornecedor: DtoClienteFornecedor): Observable<BaseResponse<DtoClienteFornecedor>>{
+      return this.http.put<BaseResponse<any>>(
+        this.UrlServiceV1 + 'api/V1/ClienteFornecedor',
+        cliente,
+        this.headerOptions
+      );
+    }
+
   }
+function cliente<T>(arg0: string, cliente: any, headerOptions: { headers: HttpHeaders; }): Observable<BaseResponse<DtoClienteFornecedor>> {
+  throw new Error('Function not implemented.');
+}
+

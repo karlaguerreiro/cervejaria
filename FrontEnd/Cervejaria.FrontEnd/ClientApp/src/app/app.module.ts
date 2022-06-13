@@ -47,6 +47,11 @@ import { InsumoService } from './Service/Insumo.service';
 import { ReceitaService } from './Service/receita.service';
 import { ListReceitaComponent } from './component/list-receita/list-receita.component';
 import { ElementDialogFornecedorComponent } from './modal/element-dialog-fornecedor/element-dialog-fornecedor.component';
+import { ElementDialogClientComponent } from './modal/element-dialog-client/element-dialog-client.component';
+import { ElementDialogInsumoComponent } from './modal/element-dialog-insumo/element-dialog-insumo.component';
+import { ElementDialogReceitaComponent } from './modal/element-dialog-receita/element-dialog-receita.component';
+import { ElementDialogProdutoComponent } from './modal/element-dialog-produto/element-dialog-produto.component';
+import { ElementDialogFuncionarioComponent } from './modal/element-dialog-funcionario/element-dialog-funcionario.component';
 
 
 @NgModule({
@@ -73,6 +78,11 @@ import { ElementDialogFornecedorComponent } from './modal/element-dialog-fornece
     FuncionarioComponent,
     ElementDialogComponent,
     ElementDialogFornecedorComponent,
+    ElementDialogClientComponent,
+    ElementDialogInsumoComponent,
+    ElementDialogReceitaComponent,
+    ElementDialogProdutoComponent,
+    ElementDialogFuncionarioComponent,
 
   ],
   imports: [
