@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { BaseResponse } from '../Models/BaseResponse';
 import { ClienteFornecedor } from '../Models/ClienteFornecedor';
-import { DtoClienteFornecedor } from '../DTOs/DtoClienteFornecedor';
 
 @Injectable()
 export class ClienteFornecedorService {
@@ -29,32 +28,44 @@ constructor(private http: HttpClient) { }
       return this.http.get<any>(this.UrlServiceV1 + "api/V1/ClienteFornecedor/type/" + type);
     }
 
-    public Edit(args: any) : any {
-      return this.http.put<any>(this.UrlServiceV1 + "api/V1/ClienteFornecedor", args);
-    }
+    // public Edit(args :any) {
+    //   return this.http.put<any>(this.UrlServiceV1 + "api/V1/ClienteFornecedor/" ,args);
+    // }
 
     public Delete(id: number) : any {
       return this.http.delete<any>(this.UrlServiceV1 + "api/V1/ClienteFornecedor/" + id);
     }
     
-    public alterarFornecedor(fornecedor: DtoClienteFornecedor): Observable<BaseResponse<DtoClienteFornecedor>>{
+    public alterarFornecedor(fornecedor: ClienteFornecedor): Observable<BaseResponse<ClienteFornecedor>>{
       return this.http.put<BaseResponse<any>>(
-        this.UrlServiceV1 + 'api/V1/ClienteFornecedor',
-        fornecedor,
+        this.UrlServiceV1 + 'api/V1/ClienteFornecedor/1',
+        {
+          ...fornecedor,
+          tipo: 'Fornecedor',
+          contato: {
+             telefone: fornecedor.telefone,
+              email: fornecedor.email
+          }
+        },
         this.headerOptions
       );
     }
 
-    public alterarCliente(fornecedor: DtoClienteFornecedor): Observable<BaseResponse<DtoClienteFornecedor>>{
+    public alterarCliente(cliente: ClienteFornecedor): Observable<BaseResponse<ClienteFornecedor>>{
       return this.http.put<BaseResponse<any>>(
         this.UrlServiceV1 + 'api/V1/ClienteFornecedor',
-        cliente,
+        {
+          ...cliente,
+          tipo: 'Cliente',
+          contato: {
+            email : cliente.email,
+            telefone : cliente.telefone
+          }
+        },
         this.headerOptions
       );
     }
 
-  }
-function cliente<T>(arg0: string, cliente: any, headerOptions: { headers: HttpHeaders; }): Observable<BaseResponse<DtoClienteFornecedor>> {
-  throw new Error('Function not implemented.');
 }
+
 

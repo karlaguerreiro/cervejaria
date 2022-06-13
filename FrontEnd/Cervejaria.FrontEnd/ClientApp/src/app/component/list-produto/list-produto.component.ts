@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatTable } from '@angular/material/table';
 import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dialog.component';
+import { ElementDialogProdutoComponent } from 'src/app/modal/element-dialog-produto/element-dialog-produto.component';
 
 @Component({
   selector: 'app-list-produto',
@@ -45,9 +46,10 @@ export class ListProdutoComponent implements OnInit {
   }
 
   openDialog(element: DtoProduto): void {
-    const dialogRef = this.dialog.open(ElementDialogComponent, {
-      width: '300px',
-      data: element === null ? {
+    const dialogRef = this.dialog.open(ElementDialogProdutoComponent, {
+      width: '500px',
+      height: '500px',
+        data: element === null ? {
         id: null,
         nome: null,
         quantidade: null, 

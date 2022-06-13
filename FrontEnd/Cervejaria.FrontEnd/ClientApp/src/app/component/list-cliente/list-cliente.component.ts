@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ClienteFornecedor } from 'src/app/Models/ClienteFornecedor';
-import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
+import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.Service';
 import { MatTable } from '@angular/material/table';
 import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -46,9 +46,10 @@ export class ListClienteComponent implements OnInit {
     );
   }
 
-  openDialog(element: ClienteFornecedor): void {
+  openDialog(element: ClienteFornecedor| null): void {
     const dialogRef = this.dialog.open(ElementDialogClientComponent, {
-      width: '300px',
+      width: '500px',
+      height: '500px',
       data: element === null ? {
         id: null,
         nome: null,
@@ -68,7 +69,7 @@ export class ListClienteComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();
-      this.table.ngOnInit()
+      //this.table.ngOnInit()
       /*
         if (result !== undefined) {
           if (this.dataSource.map((p: { id: any; }) => p.id).includes(result.codigo)) {

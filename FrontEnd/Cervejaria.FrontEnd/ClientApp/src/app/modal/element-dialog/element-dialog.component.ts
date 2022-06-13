@@ -20,7 +20,6 @@ export class ElementDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     if (this.data.id != null) {
       this.showDiv = true;
     }else {
@@ -28,8 +27,8 @@ export class ElementDialogComponent implements OnInit {
 
     }
   }
-  Update(element: DtoReceita){
-    this.service.alterarReceita(element).subscribe(
+  Update(receita: DtoReceita){
+    this.service.alterarReceita(receita).subscribe(
   { next: base => {
     console.log(base);
   }});

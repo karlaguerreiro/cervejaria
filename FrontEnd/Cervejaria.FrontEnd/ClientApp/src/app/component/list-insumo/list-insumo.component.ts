@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DtoInsumo } from 'src/app/DTOs/DtoInsumo';
-import { InsumoService } from 'src/app/Service/Insumo.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatTable } from '@angular/material/table';
 import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dialog.component';
+import { InsumoService } from 'src/app/Service/insumo.service';
 
 @Component({
   selector: 'app-list-insumo',
@@ -25,14 +25,14 @@ export class ListInsumoComponent implements OnInit {
   dataSource: DtoInsumo[] = [];
   displayedColumns: string[] = ['nome', 'dataCompra', 'undMedida', 'action'];
   expandedElement: any | null;
-  dialog: any;
   values: any;
   isUrl(str: string) {
     if (typeof str == "number") return false;
     return (str.includes('http'))
   }
 
-  constructor(private service: InsumoService) {}
+  constructor(private service: InsumoService,
+    private dialog: MatDialog) {}
 
    ngOnInit(): void {
     this.service.obterInsumos().subscribe(
@@ -48,7 +48,8 @@ export class ListInsumoComponent implements OnInit {
 
     openDialog(element: DtoInsumo): void {
       const dialogRef = this.dialog.open(ElementDialogComponent, {
-        width: '300px',
+        width: '500px',
+        height: '500px',
         data: element === null ? {
           id: null,
           nome: null,

@@ -23,11 +23,16 @@ export class ProdutoService {
     return this.http.get<any>(this.UrlServiceV1 + "api/V1/Produto/");
   }
 
-  public Edit(args: any) : any {
-    return this.http.put<any>(this.UrlServiceV1 + "api/V1/Produto", args);
-  }
+  public alterarProduto(produto: DtoProduto) : Observable<BaseResponse<DtoProduto>> {
+    return this.http.put<BaseResponse<DtoProduto>>(
+      this.UrlServiceV1 + "api/V1/Produto",
+      produto
+    );
+    }
 
   public Delete(id: number) : any {
     return this.http.delete<any>(this.UrlServiceV1 + "api/V1/Produto/" + id);
   } 
+
+
 }

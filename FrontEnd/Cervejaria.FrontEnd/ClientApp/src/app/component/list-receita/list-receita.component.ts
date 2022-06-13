@@ -7,18 +7,10 @@ import { CommonModule } from '@angular/common'
 import { elementAt } from 'rxjs';
 import { ReceitaService } from 'src/app/Service/receita.service';
 import { DtoReceita } from 'src/app/DTOs/DtoReceita';
-import { InsumoService } from 'src/app/Service/Insumo.service';
+import { InsumoService } from 'src/app/Service/insumo.service';
 import { ListInsumoComponent } from '../list-insumo/list-insumo.component';
 import { Insumo } from 'src/app/Models/Insumo';
 
-
-export interface PeriodicElement {
-  nome: string;
-  codigo: number;
-  tipo: string;
-  ingrediente: string;
-
-}
 
 @Component({
   selector: 'app-list-receita',
@@ -47,11 +39,13 @@ export class ListReceitaComponent implements OnInit {
 
   openDialog(element: DtoReceita | null): void {
     const dialogRef = this.dialog.open(ElementDialogComponent, {
-      width: '300px',
+      width: '500px',
+      height: '500px',
       data: element === null ? {
         id: null,
         nome: null,
         descricao: null
+        
       } :  {
         id: element.id,
         nome: element.nome,

@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA,  } from '@angular/material/dialog';
-import { DtoClienteFornecedor } from 'src/app/DTOs/DtoClienteFornecedor';
 import { ClienteFornecedor } from 'src/app/Models/ClienteFornecedor';
-import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
+import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.Service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 @Component({
   selector: 'app-element-dialog-fornecedor',
@@ -14,7 +13,7 @@ export class ElementDialogFornecedorComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: DtoClienteFornecedor,
+    public data: ClienteFornecedor,
     public dialogRef: MatDialogRef<ElementDialogFornecedorComponent>,
     private service: ClienteFornecedorService,
   ) {}
@@ -27,13 +26,12 @@ export class ElementDialogFornecedorComponent implements OnInit {
 
     }
   }
-  Update(element: DtoClienteFornecedor) {
-    this.service.alterarFornecedor(element).subscribe(
-      {
-        next: base => {
-          console.log(base);
-        }
-      });
+  Update(fornecedor: ClienteFornecedor) {
+    this.service.alterarFornecedor(fornecedor).subscribe(
+      () => {
+        this.dialogRef.close();
+      }
+    );
   }
   onCancel(): void {
     this.dialogRef.close()

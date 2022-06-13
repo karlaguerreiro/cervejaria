@@ -1,1 +1,32 @@
-<p>element-dialog-insumo works!</p>
+<h1 *ngIf="showDiv" mat-dialog-title>Exibir Insumo</h1>
+<h1 *ngIf="!showDiv" mat-dialog-title>Editar Insumo</h1>
+<div *ngIf="!showDiv" mat-dialog-content>
+    <span style="font-weight: bold; font-size: 12px;">Insumo:</span> {{data.id}}
+</div>
+<hr>
+<div *ngIf="!showDiv" mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Código</mat-label>
+    <input matInput [(ngModel)]="data.id">
+  </mat-form-field>
+  <hr>
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="data.nome">
+  </mat-form-field>
+  <hr>
+  <mat-form-field appearance="fill">
+    <mat-label>Preço Unitário</mat-label>
+    <input matInput [(ngModel)]="data.precoUnit">
+  </mat-form-field>  
+</div>
+
+<div mat-dialog-actions style="display: flex">
+  <button *ngIf="!showDiv" class="success" mat-raised-button (click)="Update(data)">
+  Atualizar
+</button>
+
+<button (click)="onCancel()" mat-raised-button class="success">
+  Cancelar
+</button>
+</div>

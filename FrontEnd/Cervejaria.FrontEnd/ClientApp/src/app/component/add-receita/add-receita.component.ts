@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DtoInsumo } from 'src/app/DTOs/DtoInsumo';
-import { InsumoService } from 'src/app/Service/Insumo.service';
+import { InsumoService } from 'src/app/Service/insumo.service';
 import { ReceitaService } from 'src/app/Service/receita.service';
 
 @Component({

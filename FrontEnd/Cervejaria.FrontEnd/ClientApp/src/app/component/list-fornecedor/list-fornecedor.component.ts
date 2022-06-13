@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ClienteFornecedor } from 'src/app/Models/ClienteFornecedor';
-import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
+import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.Service';
 import { MatTable } from '@angular/material/table';
 import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dialog.component';
 import { DtoClienteFornecedor } from 'src/app/DTOs/DtoClienteFornecedor';
@@ -25,14 +25,14 @@ export class ListFornecedorComponent implements OnInit {
   dataSource:any;
   displayedColumns : string[] = ['id', 'nome' , 'telefone' , 'email', 'action'];
   expandedElement: any | undefined;
-  dialog: any;
+ 
   clienteService: any;
   values: any;
   isUrl(str: string) {
     if (typeof str == "number") return false;
     return (str.includes('http'))
   }
-  constructor(public dialogo: MatDialog ,private service: ClienteFornecedorService) { }
+  constructor(public dialog: MatDialog ,private service: ClienteFornecedorService) { }
 
   ngOnInit(): void {
     this.service.GetByType(1).subscribe(
@@ -46,26 +46,31 @@ export class ListFornecedorComponent implements OnInit {
     );
   }
 
-  openDialog(element: DtoClienteFornecedor): void {
+  openDialog(element: ClienteFornecedor): void {
     const dialogRef = this.dialog.open(ElementDialogFornecedorComponent, {
-      width: '300px',
+      width: '500px',
+      height: '500px',
       data: element === null ? {
         id: null,
         nome: null,
+        cnpjCpf: null,
+        ie: null,
         telefone: null,
-        email: null,
+        email: null
       } :  {
         id: element.id,
         nome: element.nome,
-        telefone: element.cpf_cnpj,
-        email: element.id_endereco,
+        cnpjCpf: element.cnpjCpf,
+        ie: element.ie,
+        telefone: element.telefone,
+        email: element.email,
       }
       
     });
 
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();
-      this.table.ngOnInit()
+      //this.table.ngOnInit()
       /*
         if (result !== undefined) {
           if (this.dataSource.map((p: { id: any; }) => p.id).includes(result.codigo)) {
@@ -83,7 +88,7 @@ export class ListFornecedorComponent implements OnInit {
       })
     }
 
-    editFornecedor(element: DtoClienteFornecedor): void {
+    editFornecedor(element: ClienteFornecedor): void {
       this.openDialog(element);
     }
 
