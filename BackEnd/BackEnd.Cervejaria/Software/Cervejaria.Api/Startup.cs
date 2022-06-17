@@ -1,3 +1,4 @@
+using Cervejaria.Api.Config;
 using Cervejaria.CrossCutting.IoC;
 using Cervejaria.Repository.Data;
 using Microsoft.AspNetCore.Builder;
@@ -9,7 +10,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+
+using Swashbuckle.AspNetCore.Filters;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Text.Json.Serialization;
 
 namespace Cervejaria.Api
@@ -37,24 +43,19 @@ namespace Cervejaria.Api
             services.RegisterDI();
             ConfigureFormatters(services);
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cervejaria.Api", Version = "v1" });
-            });
+            services.AddSwaggerOptions();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment()){}
             app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cervejaria.Api v1"));
-
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.SwaggerBuilder();
             app.UseCors(c =>
             {
                 c.AllowAnyHeader();
@@ -75,6 +76,7 @@ namespace Cervejaria.Api
             services.AddMvc()
                 .AddJsonOptions(options =>
                 {
+                    options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
                 }).AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
         }

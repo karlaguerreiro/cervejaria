@@ -12,7 +12,7 @@ namespace Cervejaria.CrossCutting.Mapper.Common
             CreateMap<InsumoViewModel, Insumo>();
 
             CreateMap<Insumo, InsumoDto>()
-                .ForMember(dest => dest.DataCompra, opt => opt.MapFrom(e => e.DataCompra.ToShortDateString()))
+                .ForMember(dest => dest.DataCompra, opt => opt.MapFrom(e => e.DataCompra.Value.ToShortDateString()))
                 .ForMember(dest => dest.Validade, opt => opt.MapFrom(e => e.Validade.Value.ToShortDateString()));
         }
     }

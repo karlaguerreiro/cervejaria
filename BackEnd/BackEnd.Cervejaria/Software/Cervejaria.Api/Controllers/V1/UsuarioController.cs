@@ -4,6 +4,7 @@ using Cervejaria.CrossCutting.Interop.ViewModel.Business;
 using Cervejaria.Domain.Business;
 using Cervejaria.Domain.Contracts.Notificator;
 using Cervejaria.Domain.Contracts.Service;
+using Cervejaria.Domain.Contracts.Service.BusinessServices;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,10 +15,12 @@ namespace Cervejaria.Api.Controllers.V1
     [ApiController]
     public class UsuarioController : MainController
     {
+        private readonly IUsuarioService _usuarioService;
         private readonly IService<Usuario> _service;
-        public UsuarioController(INotificator notificator, IService<Usuario> service, IMapper mapper) : base(notificator, mapper)
+        public UsuarioController(INotificator notificator, IService<Usuario> service, IMapper mapper, IUsuarioService usuarioService) : base(notificator, mapper)
         {
             _service = service;
+            _usuarioService = usuarioService;
         }
 
         [HttpPost]

@@ -12,7 +12,7 @@ namespace Cervejaria.Domain.Common
 
         }
         public string Nome { get; init; }
-        public DateTime DataCompra { get; init; }
+        public DateTime? DataCompra { get; init; }
         public DateTime? Validade { get; init; }
         public int? PrecoUnit { get; init; }
         public string UndMedida { get; init; }
