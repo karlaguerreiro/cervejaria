@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { tipoUsuario } from 'src/app/Models/TipoUsuario';
-import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
+import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.Service';
 @Component({
   selector: 'app-add-cliente',
   templateUrl: './add-cliente.component.html',

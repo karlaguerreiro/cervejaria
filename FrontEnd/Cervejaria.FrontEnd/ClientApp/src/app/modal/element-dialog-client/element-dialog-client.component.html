@@ -1,0 +1,40 @@
+<h1 *ngIf="!showDiv" mat-dialog-title>Exibir cliente</h1>
+<h1 *ngIf="showDiv" mat-dialog-title>Editar cliente</h1>
+<div *ngIf="!showDiv" mat-dialog-content>
+    <span style="font-weight: bold; font-size: 12px;">Cliente:</span> {{data.nome}}
+</div>
+<hr>
+<div *ngIf="showDiv" mat-dialog-content>
+    <mat-form-field appearance="fill">
+        <mat-label>Código</mat-label>
+        <input matInput [(ngModel)]="data.id">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="data.nome">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input matInput [(ngModel)]="data.cnpjCpf">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>IE</mat-label>
+        <input matInput [(ngModel)]="data.ie">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Telefone</mat-label>
+        <input matInput [(ngModel)]="data.telefone">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="data.email">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions style="display: flex">
+    <button *ngIf="showDiv" class="success" mat-raised-button (click)="Update(data)">
+    Atualizar
+  </button>
+    <button (click)="onCancel()" mat-raised-button class="success">
+    Cancelar
+  </button>
+</div>

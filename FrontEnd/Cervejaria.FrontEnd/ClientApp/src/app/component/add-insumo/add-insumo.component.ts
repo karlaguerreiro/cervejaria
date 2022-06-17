@@ -7,8 +7,8 @@ import {
 } from '@angular/forms';
 import { DtoInsumo } from 'src/app/DTOs/DtoInsumo';
 import { ClienteFornecedor } from 'src/app/Models/ClienteFornecedor';
-import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
-import { InsumoService } from 'src/app/Service/Insumo.service';
+import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.Service';
+import { InsumoService } from 'src/app/Service/insumo.service';
 
 @Component({
   selector: 'app-add-insumo',

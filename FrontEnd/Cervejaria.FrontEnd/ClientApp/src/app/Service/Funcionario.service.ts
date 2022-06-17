@@ -32,86 +32,82 @@ export class FuncionarioService {
     );
   }
 
-  public inserirFuncionario(
-    funcionario : any
-  ): Observable<BaseResponse<any>> {
-    return this.http.post<BaseResponse<any>>(
-      this.UrlServiceV1 + 'api/V1/Usuario',
-      funcionario,
-      this.headerOptions
-    );
+
+  public Save(args: any) : any {
+    return this.http.post<any>(this.UrlServiceV1 + "api/V1/Usuario", args);
   }
 
-  createEndereco(endereco: DtoEndereco): number | Promise<number> {
-    return new Promise((resolve) => {
-      this.http
-        .post<number>(
-          this.UrlServiceV1 + 'api/V1/Endereco',
-          endereco,
-          this.headerOptions
-        )
-        .subscribe((id) => resolve(id));
-    });
-  }
 
-  createUsuario(usuario: DtoUsuario): number | Promise<number> {
-    return new Promise((resolve) => {
-      this.http
-        .post<number>(
-          this.UrlServiceV1 + 'api/V1/Usuario',
-          usuario,
-          this.headerOptions
-        )
-        .subscribe((id) => resolve(id));
-    });
-  }
-  createEmpregoAnterior(
-    emprego: DtoEmpresa
-  ): number | PromiseLike<number> {
-    return new Promise((resolve) => {
-      this.http
-        .post<number>(
-          this.UrlServiceV1 + 'api/V1/EmpregoAnterior',
-          emprego,
-          this.headerOptions
-        )
-        .subscribe((id) => resolve(id));
-    });
-  }
+  // createEndereco(endereco: DtoEndereco): number | Promise<number> {
+  //   return new Promise((resolve) => {
+  //     this.http
+  //       .post<number>(
+  //         this.UrlServiceV1 + 'api/V1/Endereco',
+  //         endereco,
+  //         this.headerOptions
+  //       )
+  //       .subscribe((id) => resolve(id));
+  //   });
+  // }
 
-  createContato(contato: DtoContato): number | PromiseLike<number> {
-    return new Promise((resolve) => {
-      this.http
-        .post<number>(
-          this.UrlServiceV1 + 'api/V1/Contato',
-          contato,
-          this.headerOptions
-        )
-        .subscribe((id) => resolve(id));
-    });
-  }
-  createCargo(cargo: DtoCargo): number | PromiseLike<number> {
-    return new Promise((resolve) => {
-      this.http
-        .post<number>(
-          this.UrlServiceV1 + 'api/V1/Cargo',
-          cargo,
-          this.headerOptions
-        )
-        .subscribe((id) => resolve(id));
-    });
-  }
-  createInfoUsuario(info_usuario: DtoInfoUsuario) {
-    return new Promise((resolve) => {
-      this.http
-        .post<number>(
-          this.UrlServiceV1 + 'api/V1/InfoUsuario',
-          info_usuario,
-          this.headerOptions
-        )
-        .subscribe((id) => resolve(id));
-    });
-  }
+  // createUsuario(usuario: DtoUsuario): number | Promise<number> {
+  //   return new Promise((resolve) => {
+  //     this.http
+  //       .post<number>(
+  //         this.UrlServiceV1 + 'api/V1/Usuario',
+  //         usuario,
+  //         this.headerOptions
+  //       )
+  //       .subscribe((id) => resolve(id));
+  //   });
+  // }
+  // createEmpregoAnterior(
+  //   emprego: DtoEmpresa
+  // ): number | PromiseLike<number> {
+  //   return new Promise((resolve) => {
+  //     this.http
+  //       .post<number>(
+  //         this.UrlServiceV1 + 'api/V1/EmpregoAnterior',
+  //         emprego,
+  //         this.headerOptions
+  //       )
+  //       .subscribe((id) => resolve(id));
+  //   });
+  // }
+
+  // createContato(contato: DtoContato): number | PromiseLike<number> {
+  //   return new Promise((resolve) => {
+  //     this.http
+  //       .post<number>(
+  //         this.UrlServiceV1 + 'api/V1/Contato',
+  //         contato,
+  //         this.headerOptions
+  //       )
+  //       .subscribe((id) => resolve(id));
+  //   });
+  // }
+  // createCargo(cargo: DtoCargo): number | PromiseLike<number> {
+  //   return new Promise((resolve) => {
+  //     this.http
+  //       .post<number>(
+  //         this.UrlServiceV1 + 'api/V1/Cargo',
+  //         cargo,
+  //         this.headerOptions
+  //       )
+  //       .subscribe((id) => resolve(id));
+  //   });
+  // }
+  // createInfoUsuario(info_usuario: DtoInfoUsuario) {
+  //   return new Promise((resolve) => {
+  //     this.http
+  //       .post<number>(
+  //         this.UrlServiceV1 + 'api/V1/InfoUsuario',
+  //         info_usuario,
+  //         this.headerOptions
+  //       )
+  //       .subscribe((id) => resolve(id));
+  //   });
+  // }
 
 
 

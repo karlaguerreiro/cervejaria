@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ClienteFornecedor } from 'src/app/Models/ClienteFornecedor';
-import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.service';
+import { ClienteFornecedorService } from 'src/app/Service/ClienteFornecedor.Service';
 import { MatTable } from '@angular/material/table';
 import { ElementDialogComponent } from 'src/app/modal/element-dialog/element-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ElementDialogClientComponent } from 'src/app/modal/element-dialog-client/element-dialog-client.component';
 
 @Component({
   selector: 'app-list-cliente',
@@ -22,15 +24,15 @@ export class ListClienteComponent implements OnInit {
   table!: MatTable<any>
   dataSource:ClienteFornecedor[]=[];
   displayedColumns : string[] = ['id', 'nome' , 'telefone' , 'email', 'action'];
-  expandedElement: any | undefined;
-  dialog: any;
-  clienteService: any;
+  expandedElement: any | undefined;  clienteService: any;
   values: any;
   isUrl(str: string) {
     if (typeof str == "number") return false;
     return (str.includes('http'))
   }
-  constructor(private service: ClienteFornecedorService) { }
+  constructor(private service: ClienteFornecedorService,
+    private dialog: MatDialog
+    )  { }
 
   ngOnInit(): void {
     this.service.GetByType(0).subscribe(
@@ -44,17 +46,22 @@ export class ListClienteComponent implements OnInit {
     );
   }
 
-  openDialog(element: ClienteFornecedor): void {
-    const dialogRef = this.dialog.open(ElementDialogComponent, {
-      width: '300px',
+  openDialog(element: ClienteFornecedor| null): void {
+    const dialogRef = this.dialog.open(ElementDialogClientComponent, {
+      width: '500px',
+      height: '500px',
       data: element === null ? {
         id: null,
         nome: null,
+        cnpjCpf: null,
+        ie: null,
         telefone: null,
         email: null
       } :  {
         id: element.id,
         nome: element.nome,
+        cnpjCpf: element.cnpjCpf,
+        ie: element.ie,
         telefone: element.telefone,
         email: element.email,
       }
@@ -62,7 +69,7 @@ export class ListClienteComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();
-      this.table.ngOnInit()
+      //this.table.ngOnInit()
       /*
         if (result !== undefined) {
           if (this.dataSource.map((p: { id: any; }) => p.id).includes(result.codigo)) {
@@ -83,6 +90,7 @@ export class ListClienteComponent implements OnInit {
 
     editCliente(element: ClienteFornecedor): void {
       this.openDialog(element);
+
     }
 
 

@@ -1,7 +1,7 @@
-<h1 *ngIf="showDiv" mat-dialog-title>Exibir Fornecedor</h1>
-<h1 *ngIf="!showDiv" mat-dialog-title>Editar Fornecedor</h1>
+<h1 *ngIf="showDiv" mat-dialog-title>Exibir Insumo</h1>
+<h1 *ngIf="!showDiv" mat-dialog-title>Editar Insumo</h1>
 <div *ngIf="!showDiv" mat-dialog-content>
-    <span style="font-weight: bold; font-size: 12px;">Fornecedor:</span> {{data.id}}
+    <span style="font-weight: bold; font-size: 12px;">Insumo:</span> {{data.id}}
 </div>
 <hr>
 <div *ngIf="!showDiv" mat-dialog-content>
@@ -16,8 +16,8 @@
   </mat-form-field>
   <hr>
   <mat-form-field appearance="fill">
-    <mat-label>Inscrição Estadual</mat-label>
-    <input matInput [(ngModel)]="data.ie">
+    <mat-label>Preço Unitário</mat-label>
+    <input matInput [(ngModel)]="data.precoUnit">
   </mat-form-field>  
 </div>
 

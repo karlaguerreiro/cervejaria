@@ -35,7 +35,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { ClienteFornecedorService } from './Service/ClienteFornecedor.service';
+import { ClienteFornecedorService } from './Service/ClienteFornecedor.Service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
@@ -43,10 +43,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ElementDialogComponent } from './modal/element-dialog/element-dialog.component';
 import { CommonModule } from '@angular/common';
 import { FuncionarioService } from './Service/Funcionario.service';
-import { InsumoService } from './Service/Insumo.service';
+import { InsumoService } from './Service/insumo.service';
 import { ReceitaService } from './Service/receita.service';
 import { ListReceitaComponent } from './component/list-receita/list-receita.component';
 import { ElementDialogFornecedorComponent } from './modal/element-dialog-fornecedor/element-dialog-fornecedor.component';
+import { ElementDialogClientComponent } from './modal/element-dialog-client/element-dialog-client.component';
+import { ElementDialogInsumoComponent } from './modal/element-dialog-insumo/element-dialog-insumo.component';
+import { ElementDialogReceitaComponent } from './modal/element-dialog-receita/element-dialog-receita.component';
+import { ElementDialogProdutoComponent } from './modal/element-dialog-produto/element-dialog-produto.component';
+import { ElementDialogFuncionarioComponent } from './modal/element-dialog-funcionario/element-dialog-funcionario.component';
 
 
 @NgModule({
@@ -73,6 +78,11 @@ import { ElementDialogFornecedorComponent } from './modal/element-dialog-fornece
     FuncionarioComponent,
     ElementDialogComponent,
     ElementDialogFornecedorComponent,
+    ElementDialogClientComponent,
+    ElementDialogInsumoComponent,
+    ElementDialogReceitaComponent,
+    ElementDialogProdutoComponent,
+    ElementDialogFuncionarioComponent,
 
   ],
   imports: [

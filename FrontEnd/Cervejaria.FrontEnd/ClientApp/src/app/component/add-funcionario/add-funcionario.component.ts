@@ -1,5 +1,3 @@
-import { DtoContato } from './../../DTOs/DtoContato';
-import { DtoEndereco } from './../../DTOs/DtoEndereco';
 import { Component, Input, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -8,9 +6,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { FuncionarioService } from 'src/app/Service/Funcionario.service';
-import { DtoUsuario } from 'src/app/DTOs/DtoUsuario';
-import { DtoCargo } from 'src/app/DTOs/DtoCargo';
-import { DtoEmpresa } from 'src/app/DTOs/DtoEmpresa';
 
 @Component({
   selector: 'app-add-funcionario',
@@ -19,8 +14,12 @@ import { DtoEmpresa } from 'src/app/DTOs/DtoEmpresa';
 })
 export class AddFuncionarioComponent implements OnInit {
   funcionarioForm: FormGroup;
+  secondFormGroup!: FormGroup;
+  thirdFormGroup!: FormGroup;
+  fourthFormGroup!: FormGroup;
+  fifthFormGroup!: FormGroup;
+  sixthFormGroup!: FormGroup;
   @Input()
-  tipoControl: FormControl = new FormControl(0);
   dataSource: any;
   date = new FormControl(new Date());
   serializedDate = new FormControl(new Date().toISOString());
@@ -35,88 +34,46 @@ export class AddFuncionarioComponent implements OnInit {
       senha: ['', Validators.required],
       nivelAcesso: ['', Validators.required],
       //Info Usuario
-      nome: ['', Validators.required],
-      cpf: ['', Validators.required],
-      data_nasc: ['', Validators.required],
-
-      //Endereco
-      cep: ['', Validators.required],
-      numero: ['', Validators.required],
-      complemento: ['', Validators.required],
-
+      infoUsuarios: (this.secondFormGroup = this._formBuilder.group({
+        nome: ['', Validators.required],
+        cpf: ['', Validators.maxLength(15)],
+        dataNasc: ['', Validators.required],
+      })),
       //Contato
-      contato: ['', Validators.required],
-      email: ['', Validators.email],
-      telefone: ['', Validators.required],
-
+      contato: (this.thirdFormGroup = this._formBuilder.group({
+        contato1: ['', Validators.required],
+        email: ['', Validators.email],
+        telefone: ['', Validators.required],
+      })),
+      //Endereco
+      endereco: (this.fourthFormGroup = this._formBuilder.group({
+        cep: ['', Validators.required],
+        numero: ['', Validators.required],
+        complemento: ['', Validators.required],
+      })),
       //Emprego anterior
-      empresa: ['', Validators.required],
-      cargo: ['', Validators.required],
-      data_entrada: ['', Validators.required],
-      data_saida: ['', Validators.required],
-      
+      emprego: (this.fifthFormGroup = this._formBuilder.group({
+        empresa: ['', Validators.required],
+        cargo: ['', Validators.required],
+        dataEntrada: ['', Validators.required],
+        dataSaida: ['', Validators.required],
+      })),
       //Cargo a exercer
-      funcao: ['', Validators.required],
-      descricao: ['', Validators.required],
-
-      // //trashvalues
-      // cidade: ['', Validators.required],
-      // estado: ['', Validators.required],
-
+      cargo: (this.sixthFormGroup = this._formBuilder.group({
+        funcao: ['', Validators.required],
+        descricao: ['', Validators.required],
+      })),
     });
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
   public async Save() {
-    console.log(JSON.stringify(this.funcionarioForm.value));
-    if (this.funcionarioForm.valid) {
-      const endereco: DtoEndereco = {
-        cep: this.funcionarioForm.value.cep,
-        complemento: this.funcionarioForm.value.complemento,
-        numero: this.funcionarioForm.value.numero,
-      };
-      const contato: DtoContato = {
-        email: this.funcionarioForm.value.email,
-        telefone: this.funcionarioForm.value.telefone,
-        contato: this.funcionarioForm.value.contato,
-      };
-      const usuario: DtoUsuario = {
-        nome_usuario: this.funcionarioForm.value.nomeUsuario,
-        senha: this.funcionarioForm.value.senha,
-        nivel_acesso: this.funcionarioForm.value.nivelAcesso,
-      };
-      //Emprego Anterior
-      const emprego: DtoEmpresa = {
-        empresa: this.funcionarioForm.value.empresa,
-        cargo: this.funcionarioForm.value.cargo,
-        data_entrada: this.funcionarioForm.value.dataEntrada,
-        data_saida: this.funcionarioForm.value.dataSaida,
-      };
-      //Cargo á exercer
-      const cargo: DtoCargo = {
-        funcao: this.funcionarioForm.value.funcao,
-        // salario: this.funcionarioForm.value.salario,
-        // data_admissao: this.funcionarioForm.value.dataAdmissao,
-        // data_demissao: this.funcionarioForm.value.dataDemissao,
-        descricao: this.funcionarioForm.value.descricao,
-      };
-
-      const payload = {
-        ...usuario,
-        infoUsuarios: [
-          {
-            endereco,
-            contato,
-            emprego,
-            cargo,
-          },
-        ],
-      };
-
-      this._funcionarioService.inserirFuncionario(payload);
-
-      console.log(payload);
-    }
+    this._funcionarioService
+      .Save(this.funcionarioForm.value)
+      .subscribe((response: any) => {
+        console.log(response);
+        this.ngOnInit();
+      });
   }
 }
