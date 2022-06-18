@@ -39,6 +39,7 @@ namespace Cervejaria.Api.Controllers.V1
         /// <param name="viewModel"></param>
         /// <returns></returns>     
         [HttpPut]
+        [SwaggerRequestExample(typeof(CFViewModelPostExample), typeof(CFViewModelPostExample))]
         public async Task<IActionResult> Put(ClienteFornecedorViewModel viewModel) =>
             CustomResponse(await _service.UpdateAsync(_mapper.Map<ClienteFornecedor>(viewModel)));
 
